@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link text-dark" href="#">Nos Destinations</a>
-        <img src="./assets/image/travel-transparent.png" width="154" height="70" class="" alt="">
+        <img src="./assets/images/travel-transparent.png" width="154" height="70" class="" alt="">
         <a class="nav-item nav-link text-dark" href="#">Les Tours Operateurs</a>
       </div>
     </div>
@@ -30,7 +30,7 @@
   <div class="container py-5 bg-text">
     <header class="text-center text-white py-5">
       <h1 class="display-4 font-weight-bold mb-5 text-dark">Where will you go next ?</h1>
-      <button type="button" class="btn btn-dark btn-lg shadow-sm pl-4 pr-4">Start</button>
+      <a class="btn btn-dark btn-lg shadow-sm pl-4 pr-4" href="/view/home.php" role="button">Start</a>
     </header>
   </div>
 
