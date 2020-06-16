@@ -28,10 +28,17 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
         $extension_upload = $infosfichier['extension'];
         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
         if (in_array($extension_upload, $extensions_autorisees)) {
-            $file = $_FILES['operatorLogo'];
-            $contentFile = file_get_contents($file['tmp_name']);
-            $operatorLogo = ROOT.DS.'assets'.DS.'images'.DS.'operators_logos'.DS.$operatorName.'.'.$extension_upload;
-            file_put_contents($operatorLogo, $contentFile);
+            // $file = $_FILES['operatorLogo'];
+            // $contentFile = file_get_contents($file['tmp_name']);
+            // $operatorLogo = './images/operators_logos/'.$operatorName.'.'.$extension_upload;
+            // file_put_contents($operatorLogo, $contentFile);
+            // var_export(realpath('../images/operators_logos'));
+            // var_export(__DIR__);
+            $operatorLogo = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
+            move_uploaded_file(
+                $_FILES['operatorLogo']['tmp_name'],
+                $operatorLogo
+            );
         } else {
             echo ('wrong_extension');
         }
@@ -43,22 +50,25 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
     $operatorLogo = '';
 }
 
-echo ($operatorName.'<br>');
-echo ($operatorLink.'<br>');
-echo ($operatorLogo.'<br>');
 
 /* ----- CREATE NEW OPERATOR INSTANCE ----- */
-$operator = new Operator(['name' => ucfirst($operatorName), 'link' => $operatorLink, 'logo' => $operatorLogo]);
-echo ('$operator->getName() = '.$operator->getName().'</br>');
-echo ('$operator->getLink() = '.$operator->getLink().'</br>');
-echo ('$operator->getLogo() = '.$operator->getLogo().'</br>');
+$operator = new Operator([
+    'name' => ucfirst($operatorName), 
+    'link' => $operatorLink, 
+    'logo' => $operatorLogo
+]);
 
-if ($operatorManager->operatorExists($operator->getName())) {
-    $message = 'Operator already registered.';
+if ($operatorManager->checkOperatorExists($operator->getName())) {
+    echo ('Operator already registered');
+    // $message = 'Operator already registered.';
     unset($operator);
 } else {
     $operatorManager->createOperator($operator);
     $operatorManager->updateOperator($operator);
 }
 
-?>
+/* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
+$operatorUrl = '../../admin/fiche-operator-admin.php?'.$operator->getName();
+
+header("Location:".$operatorUrl);
+exit;

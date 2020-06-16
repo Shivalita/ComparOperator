@@ -52,13 +52,12 @@ class OperatorManager
     public function createOperator(Operator $operator)
     {
         $addOperatorQuery = $this->db->prepare(
-        'INSERT INTO operators(name, link, is_premium, logo)
-         VALUES(:name, :link, :is_premium, :logo)'
+        'INSERT INTO operators(name, link, logo)
+         VALUES(:name, :link, :logo)'
         );
 
         $addOperatorQuery->bindValue(':name', $operator->getName());
         $addOperatorQuery->bindValue(':link', $operator->getLink());
-        $addOperatorQuery->bindValue(':is_premium', $operator->getIsPremium());
         $addOperatorQuery->bindValue(':logo', $operator->getLogo());
 
         $addOperatorQuery->execute();
@@ -126,8 +125,9 @@ class OperatorManager
             $otherOperators[] = new Operator($operatorData);
             break;
         }
-        }
         return $otherOperators;
     }
+        
+}
 
 ?>

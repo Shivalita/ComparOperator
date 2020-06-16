@@ -1,3 +1,9 @@
+<?php
+include('../config.php');
+include(ROOT.DS.'assets'.DS.'config'.DS.'connection.php');
+include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,14 +16,14 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand text-white" href="index.php">ADMINISTRATOR</a>
+    <a class="navbar-brand text-white" href="admin.html">ADMINISTRATOR</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link text-white" href="../view/fiche-to-admin.php">Fiche TO</a>
-        <a class="nav-item nav-link text-white" href="../view/fiche-destination-admin.php">Fiche Destination</a>
+        <a class="nav-item nav-link text-white" href="/view/fiche-to-admin.html">Fiche TO</a>
+        <a class="nav-item nav-link text-white" href="/view/fiche-destination-admin.html">Fiche Destination</a>
       </div>
     </div>
   </nav>
@@ -43,14 +49,14 @@
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter un TO</strong></h4>
-        <form class="p-3" action="./apps/add_to.php" method="POST" enctype="multipart/form-data">
-          <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="#">
-          <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="#">
-          <input type="file" class="form-control-file" accept="image/*" name="#" required>
-        </form>
-        <div class="text-center">
+        <form class="p-3" action="../assets/apps/add_operator.php" method="POST" enctype="multipart/form-data">
+          <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName">
+          <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
+          <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" required>
+          <div class="text-center">
               <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
         </div>
+        </form>
       </div>
     </div>
   </div>
