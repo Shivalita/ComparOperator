@@ -13,6 +13,7 @@
   <?php include '../assets/partials/nav-admin.php'; ?>
 
   <div class="container mt-5">
+    <h1 class="text-center mb-5">Nom du tour operator!</h1>
     <h3>Liste destinations</h3>
     <div class="row">
 
@@ -20,7 +21,7 @@
         <div class="card">
           <div class="card-body d-inline-flex">
             <p>destinations n°1</p>
-            <a class="btn btn-warning ml-5" href="./view/fiche-to-admin.php" role="button">Fiche </a>
+            <a class="btn btn-warning ml-5" href="./view/fiche-operator-admin.php" role="button">Fiche </a>
           </div>
         </div>
       </div>
@@ -33,6 +34,7 @@
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
+        <!-- <p class="text-center text-danger font-weight-bold">VOTRE MESSAGE D'ERREUR</p> -->
         <form class="p-3" action="./apps/add_destination.php" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control mb-2" placeholder="Nom destination" name="#">
           <textarea class="form-control mb-2" placeholder="Description" name="#"></textarea>

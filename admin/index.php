@@ -16,7 +16,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link text-white" href="../view/fiche-to-admin.php">Fiche TO</a>
+        <a class="nav-item nav-link text-white" href="../view/fiche-operator-admin.php">Fiche TO</a>
         <a class="nav-item nav-link text-white" href="../view/fiche-destination-admin.php">Fiche Destination</a>
       </div>
     </div>
@@ -47,9 +47,13 @@
           <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="#">
           <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="#">
           <input type="file" class="form-control-file" accept="image/*" name="#" required>
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <label class="form-check-label" for="gridCheck1">
+            Example checkbox
+          </label>
         </form>
         <div class="text-center">
-              <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+          <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
         </div>
       </div>
     </div>
