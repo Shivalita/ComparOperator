@@ -22,8 +22,13 @@ include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+<<<<<<< HEAD
         <a class="nav-item nav-link text-white" href="/view/fiche-to-admin.html">Fiche TO</a>
         <a class="nav-item nav-link text-white" href="/view/fiche-destination-admin.html">Fiche Destination</a>
+=======
+        <a class="nav-item nav-link text-white" href="../view/fiche-operator-admin.php">Fiche TO</a>
+        <a class="nav-item nav-link text-white" href="../view/fiche-destination-admin.php">Fiche Destination</a>
+>>>>>>> 1e0576a9c7db10ce60c9dbce8384758584e280e6
       </div>
     </div>
   </nav>
@@ -49,12 +54,26 @@ include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter un TO</strong></h4>
+<<<<<<< HEAD
         <form class="p-3" action="../assets/apps/add_operator.php" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName">
           <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
           <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" required>
           <div class="text-center">
               <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+=======
+        <form class="p-3" action="./apps/add_to.php" method="POST" enctype="multipart/form-data">
+          <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="#">
+          <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="#">
+          <input type="file" class="form-control-file" accept="image/*" name="#" required>
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <label class="form-check-label" for="gridCheck1">
+            Example checkbox
+          </label>
+        </form>
+        <div class="text-center">
+          <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+>>>>>>> 1e0576a9c7db10ce60c9dbce8384758584e280e6
         </div>
         </form>
       </div>
