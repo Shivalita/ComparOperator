@@ -7,6 +7,7 @@ class Operator
     protected $rate;
     protected $link;
     protected $is_premium;
+    protected $logo;
 
     public function __construct(array $data)
     {
@@ -72,6 +73,16 @@ class Operator
     public function setIsPremium(bool $is_premium)
     {
         $this->is_premium = $is_premium;
+    }
+
+    public function getLogo() 
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(string $logo)
+    {
+        $this->logo = $logo;
     }
 }
 ?>
