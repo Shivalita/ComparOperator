@@ -50,7 +50,7 @@ class Operator
         return $this->rate;
     }
 
-    public function setRate(int $rate)
+    public function setRate(float $rate)
     {
         $this->rate = $rate;
     }
@@ -70,7 +70,7 @@ class Operator
         return $this->is_premium;
     }
 
-    public function setIsPremium(bool $is_premium)
+    public function setIsPremium(int $is_premium)
     {
         $this->is_premium = $is_premium;
     }

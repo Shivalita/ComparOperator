@@ -51,16 +51,26 @@ class OperatorManager
     /* ---------- CREATE OPERATOR ---------- */
     public function createOperator(Operator $operator)
     {
+
+        $operator->hydrate([
+            'id' => $this->db->lastInsertId(),
+            'rate' =>  5,
+            'is_premium' => 0
+        ]);
+    
         $addOperatorQuery = $this->db->prepare(
-        'INSERT INTO operators(name, link, logo)
-         VALUES(:name, :link, :logo)'
+        'INSERT INTO operators(name, rate, link, is_premium, logo)
+         VALUES(:name, :rate, :link, :is_premium, :logo)'
         );
 
         $addOperatorQuery->bindValue(':name', $operator->getName());
+        $addOperatorQuery->bindValue(':rate', $operator->getRate());
         $addOperatorQuery->bindValue(':link', $operator->getLink());
+        $addOperatorQuery->bindValue(':is_premium', $operator->getIsPremium());
         $addOperatorQuery->bindValue(':logo', $operator->getLogo());
 
         $addOperatorQuery->execute();
+
     }
 
     /* ---------- UPDATE OPERATOR ---------- */
@@ -68,11 +78,12 @@ class OperatorManager
     {
        $updateOperatorQuery = $this->db->prepare(
            'UPDATE operators 
-            SET name = ?, link = ?, is_premium = ?, logo = ?
+            SET name = ?, rate = ?, link = ?, is_premium = ?, logo = ?
             WHERE id = ?'
         );
        $updateOperatorQuery->execute([
            $operator->getName(),
+           $operator->getRate(),
            $operator->getLink(),
            $operator->getIsPremium(),
            $operator->getLogo(),
@@ -98,7 +109,7 @@ class OperatorManager
             );
             $getOperatorData->execute([$request]);
             $operatorData = $getOperatorData->fetch(PDO::FETCH_ASSOC);
-            
+       
         } else if (is_string($request)) {
             $getOperatorData = $this->db->prepare(
                 'SELECT * FROM operators WHERE name = ?'
@@ -108,7 +119,8 @@ class OperatorManager
             
         }
 
-        return new Operator($operatorData);
+        // return new Operator($operatorData);
+        return $operatorData;
     }
 
     /* ---------- GET OTHER OPERATORS LIST ---------- */
