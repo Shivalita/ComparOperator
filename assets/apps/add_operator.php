@@ -70,5 +70,9 @@ if ($operatorManager->checkOperatorExists($operator->getName())) {
 /* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
 $operatorUrl = '../../admin/fiche-operator-admin.php?'.$operator->getName();
 
-header("Location:".$operatorUrl);
-exit;
+// header("Location:".$operatorUrl);
+// exit;
+
+$operator->setName('TEST');
+$operatorManager->updateOperator($operator);
+echo $operator->getName();

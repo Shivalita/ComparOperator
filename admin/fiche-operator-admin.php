@@ -34,12 +34,7 @@
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
-<<<<<<< HEAD:admin/fiche-operator-admin.php
         <form class="p-3" action="../apps/add_destination.php" method="POST" enctype="multipart/form-data">
-=======
-        <!-- <p class="text-center text-danger font-weight-bold">VOTRE MESSAGE D'ERREUR</p> -->
-        <form class="p-3" action="./apps/add_destination.php" method="POST" enctype="multipart/form-data">
->>>>>>> 1e0576a9c7db10ce60c9dbce8384758584e280e6:admin/fiche-operator-admin.php
           <input type="text" class="form-control mb-2" placeholder="Nom destination" name="#">
           <textarea class="form-control mb-2" placeholder="Description" name="#"></textarea>
           <input type="file" class="form-control-file" accept="image/*" name="#" required>
