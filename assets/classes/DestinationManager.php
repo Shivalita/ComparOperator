@@ -50,25 +50,26 @@ class OperatorManager
 
 
     /* ---------- CREATE DESTINATION ---------- */
-    public function createDestination(Destination $destination)
+    public function createDestination(Destination $destination, $operatorName)
     {
         $addDestinationQuery = $this->db->prepare(
-        'INSERT INTO destinations(location, price, img)
-         VALUES(:location, :price, :img)'
+        'INSERT INTO destinations(location, price, img, description)
+         VALUES(:location, :price, :img, :description)'
         );
 
-        $addDestinationQuery->bindValue(':location', $operator->getLocation());
-        $addDestinationQuery->bindValue(':price', $operator->getPrice());
-        $addDestinationQuery->bindValue(':img', $operator->getImg());
+        $addDestinationQuery->bindValue(':location', $destination->getLocation());
+        $addDestinationQuery->bindValue(':price', $destination->getPrice());
+        $addDestinationQuery->bindValue(':img', $destination->getImg());
+        $addDestinationQuery->bindValue(':description', $destination->getDescription());
 
         $addDestinationQuery->execute();
 
-        $operatorId = 
+        $operator = $operatorManager->getOperator($operatorName);
+        $operatorId = $operator->getId();
 
         $operator->hydrate([
             'id' => $this->db->lastInsertId(),
             'operator_id' =>  $operatorId
-            
         ]);
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 17 juin 2020 à 14:53
+-- Généré le : mer. 17 juin 2020 à 16:51
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.6
 
@@ -32,7 +32,8 @@ CREATE TABLE `destinations` (
   `location` varchar(150) NOT NULL,
   `price` int(10) NOT NULL,
   `operator_id` int(10) NOT NULL,
-  `img` varchar(255) NOT NULL
+  `img` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -113,7 +114,7 @@ ALTER TABLE `destinations`
 -- AUTO_INCREMENT pour la table `operators`
 --
 ALTER TABLE `operators`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`

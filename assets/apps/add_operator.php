@@ -29,12 +29,6 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
         $extension_upload = $infosfichier['extension'];
         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
         if (in_array($extension_upload, $extensions_autorisees)) {
-            // $file = $_FILES['operatorLogo'];
-            // $contentFile = file_get_contents($file['tmp_name']);
-            // $operatorLogo = './images/operators_logos/'.$operatorName.'.'.$extension_upload;
-            // file_put_contents($operatorLogo, $contentFile);
-            // var_export(realpath('../images/operators_logos'));
-            // var_export(__DIR__);
             $operatorLogoPath = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
             move_uploaded_file(
                 $_FILES['operatorLogo']['tmp_name'],
@@ -70,8 +64,15 @@ if ($operatorManager->checkOperatorExists($operator->getName())) {
 }
 
 /* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
+function setFormattedOperatorName($nameToFormat) {
+    $nameToFormat = str_replace(' ', '%', $nameToFormat);
+    $nameToFormat = strtolower($nameToFormat);
+    return $nameToFormat;
+}
+
 if ($operator) {
-    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operator->getName();
+    $operatorUrlName = setFormattedOperatorName($operator->getName());
+    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName;
 
 header("Location:".$operatorUrl);
 exit;
