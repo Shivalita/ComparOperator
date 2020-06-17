@@ -34,7 +34,7 @@
           <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/random/1600x800/?travel/3" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
             <h3>Hello</h3>
-            <p>World</p>
+            <a class="btn btn-warning btn-lg" href="#" role="button">Visiter</a>
           </div>
         </div>
       </div>
@@ -43,32 +43,38 @@
 
   <div class="container">
     <h2 class="text-center mb-4">Nos destinations</h2>
-    <div class="row justify-content-center">
 
-      
-      <div class="col-sm-4">
-        <div class="card border-dark shadow" style="width: 18rem;">
-          <img src="https://source.unsplash.com/nnzkZNYWHaU/300x300" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <button type="button" class="btn btn-outline-secondary">Paris</button>
+    <div class="row row-cols-1 row-cols-md-3">
+
+      <div class="col mb-4">
+        <div class="card shadow">
+          <img src="https://source.unsplash.com/nnzkZNYWHaU/600x600" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="#" role="button">En savoir plus</a>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4">
-        <div class="card border-dark shadow" style="width: 18rem;">
-          <img src="https://source.unsplash.com/EXdXLrZXS9Q/300x300" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <button type="button" class="btn btn-outline-secondary">Londres</button>
+      <div class="col mb-4">
+        <div class="card shadow">
+          <img src="https://source.unsplash.com/nnzkZNYWHaU/600x600" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="#" role="button">En savoir plus</a>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4">
-        <div class="card border-dark shadow" style="width: 18rem;">
-          <img src="https://source.unsplash.com/random/300x300/?Barcelone" class="card-img-top" alt="...">
-          <div class="card-body text-center">
-            <button type="button" class="btn btn-outline-secondary">Barcelone</button>
+      <div class="col mb-4">
+        <div class="card shadow">
+          <img src="https://source.unsplash.com/nnzkZNYWHaU/600x600" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+            <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="#" role="button">En savoir plus</a>
           </div>
         </div>
       </div>

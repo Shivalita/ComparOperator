@@ -12,10 +12,81 @@ $operatorManager = new OperatorManager($db);
   <script src="https://kit.fontawesome.com/a58b6117a4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <title>Hello, world!</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <title>Operator</title>
 </head>
 <body>
-  <h1>Hello, world!</h1>
+  <?php include '../assets/partials/nav-user.php'; ?>
+
+  <div class="jumbotron jumbotron-fluid fond">
+    <div class="container text-center">
+      <h1 class="display-4 text-white">Nom Operator</h1>
+    </div>
+  </div>
+
+  <!-- <div class="container d-flex justify-content-center">
+    <div class="row row-cols-1 row-cols-md-1">
+      <div class="card mb-3 shadow" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="https://source.unsplash.com/random/800x800/?landscape" class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<div class="container">
+  <h1 class="text-center mt-3 mb-4">Les Destinations</h1>
+  <div class="row row-cols-1 row-cols-md-4">
+    <div class="col mb-4">
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <a class="btn btn-warning float-right font-weight-bold" href="#" role="button">Voir les prix</a>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-4">
+      <div class="card">
+        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <?php include '../assets/partials/footer.php'; ?>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

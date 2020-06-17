@@ -36,6 +36,7 @@
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
         <form class="p-3" action="../apps/add_destination.php" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control mb-2" placeholder="Nom destination" name="#">
+          <input type="text" class="form-control mb-2" placeholder="€" name="#">
           <textarea class="form-control mb-2" placeholder="Description" name="#"></textarea>
           <input type="file" class="form-control-file" accept="image/*" name="#" required>
         </form>
