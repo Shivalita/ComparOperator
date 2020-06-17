@@ -44,6 +44,8 @@
   <div class="container">
     <h2 class="text-center mb-4">Nos destinations</h2>
     <div class="row justify-content-center">
+
+      
       <div class="col-sm-4">
         <div class="card border-dark shadow" style="width: 18rem;">
           <img src="https://source.unsplash.com/nnzkZNYWHaU/300x300" class="card-img-top" alt="...">
