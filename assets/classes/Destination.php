@@ -6,7 +6,7 @@ class Destination
     protected $location;
     protected $price;
     protected $operator_id;
-    protected $picture;
+    protected $img;
 
     public function __construct(array $data)
     {
@@ -47,32 +47,34 @@ class Destination
 
     public function getPrice() 
     {
-        return $this->price;
+        return (int)$this->price;
     }
 
-    public function setPrice(int $price)
+    public function setPrice($price)
     {
+        $price = (int) $price;
         $this->price = $price;
     }
 
     public function getTourId() 
     {
-        return $this->operator_id;
+        return (int)$this->operator_id;
     }
 
-    public function setTourId(int $operator_id)
+    public function setTourId($operator_id)
     {
+        $operator_id = (int) $operator_id;
         $this->operator_id = $operator_id;
     }
 
-    public function getPicture() 
+    public function getImg() 
     {
-        return $this->picture;
+        return $this->img;
     }
 
-    public function setPicture(string $picture)
+    public function setImg(string $img)
     {
-        $this->picture = $picture;
+        $this->img = $img;
     }
 }
 ?>

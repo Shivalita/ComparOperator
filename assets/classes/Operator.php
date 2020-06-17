@@ -38,7 +38,7 @@ class Operator
 
     public function getName() 
     {
-        return ucfirst($this->name);
+        return ucwords($this->name);
     }
 
     public function setName(string $name)

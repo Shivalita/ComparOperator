@@ -1,7 +1,7 @@
 <?php
 include('../config.php');
-include(ROOT.DS.'assets'.DS.'config'.DS.'connection.php');
-include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
+// include(ROOT.DS.'assets'.DS.'config'.DS.'connection.php');
+// // include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
 ?>
 
 <!doctype html>
