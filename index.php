@@ -19,9 +19,9 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link text-dark" href="#">Nos Destinations</a>
+        <a class="nav-item nav-link text-dark" href="/view/destinations.php">Nos Destinations</a>
         <img src="./assets/images/travel-transparent.png" width="154" height="70" class="" alt="">
-        <a class="nav-item nav-link text-dark" href="#">Les Tours Operateurs</a>
+        <a class="nav-item nav-link text-dark" href="/view/operators.php">Les Tours Operateurs</a>
       </div>
     </div>
   </nav>

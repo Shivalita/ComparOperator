@@ -1,21 +1,32 @@
-    <div class="container p-3 mt-5 ">
-  <div class="row">
-    <div class="col-sm-4">
-      <img src="/assets/images/travel-transparent.png" width="198" height="90" class="mt-3" alt="">
-    </div>
-    <div class="col-sm-4">
-      <ul class="list-unstyled">
-        <li class="list mb-3"><i class="far fa-compass fa-2x"></i> Roanne, 42300 </li>
-        <li class="list mb-3"><i class="fas fa-phone fa-2x"></i> (+33) 04.99.99.99.99</li>
-        <li class="list"><i class="fas fa-at fa-2x"></i> contact@travel.fr </li>
-      </ul>
-    </div>
-    <div class="col-sm-4">
-      <ul class="list-unstyled">
-        <li class="list mb-3 ml-3"><i class="fab fa-twitter fa-2x"></i></li>
-        <li class="list mb-3"><i class="fab fa-facebook-f fa-2x"></i></li>
-        <li class="list mb-3"><i class="fab fa-instagram fa-2x"></i></li>
-      </ul>
+
+<footer class="page-footer font-small blue pt-4 border-top mt-5">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+
+      <div class="col-md-6 mt-md-0 mt-3 text-center">
+        <h5 class="text-uppercase">TRAVEL</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p>
+      </div>
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <div class="col-md-6 mb-md-0 mb-3 text-center">
+        <h5 class="text-uppercase">Links</h5>
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Contact</a>
+          </li>
+          <li>
+            <a href="#!">Mentions légals</a>
+          </li>
+          <li>
+            <a href="../admin/index.php">Rejoignez nous!</a>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
-</div>
+  <div class="footer-copyright text-center py-3">© 2020 Copyright: Perle & Antonin</a>
+  </div>
+</footer>
