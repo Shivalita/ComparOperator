@@ -57,12 +57,12 @@ class Destination
         $this->price = $price;
     }
 
-    public function getTourId() 
+    public function getOperatorId() 
     {
         return (int)$this->operator_id;
     }
 
-    public function setTourId($operator_id)
+    public function setOperatorId($operator_id)
     {
         $operator_id = (int) $operator_id;
         $this->operator_id = $operator_id;

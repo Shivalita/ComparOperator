@@ -11,6 +11,7 @@
 <body>
 
   <?php 
+    include ('../config.php');
     include '../assets/partials/nav-admin.php'; 
     include '../assets/apps/fiche-operator-process.php'; 
   ?>
@@ -37,15 +38,17 @@
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
-        <form class="p-3" action="../apps/add_destination.php" method="POST" enctype="multipart/form-data">
-          <input type="text" class="form-control mb-2" placeholder="Nom destination" name="#">
-          <input type="text" class="form-control mb-2" placeholder="€" name="#">
-          <textarea class="form-control mb-2" placeholder="Description" name="#"></textarea>
-          <input type="file" class="form-control-file" accept="image/*" name="#" required>
-        </form>
-        <div class="text-center">
+        <form class="p-3" action="../assets/apps/add_destination.php" method="POST" enctype="multipart/form-data">
+          <input type="text" class="form-control mb-2" placeholder="Nom destination" name="destinationLocation">
+          <input type="text" class="form-control mb-2" placeholder="€" name="destinationPrice">
+          <textarea class="form-control mb-2" placeholder="Description" name="destinationDescription"></textarea>
+          <input type="file" class="form-control-file" accept="image/*" name="destinationImage" required>
+          <input name="operator_id" type="hidden" value="<?= $operatorId ?>">
+          <div class="text-center">
               <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
         </div>
+        </form>
+      
       </div>
     </div>
   </div>
