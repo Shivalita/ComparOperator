@@ -7,6 +7,7 @@ class Destination
     protected $price;
     protected $operator_id;
     protected $img;
+    protected $description;
 
     public function __construct(array $data)
     {
@@ -37,7 +38,7 @@ class Destination
 
     public function getLocation() 
     {
-        return ucfirst($this->location);
+        return ucwords($this->location);
     }
 
     public function setLocation(string $location)
@@ -75,6 +76,16 @@ class Destination
     public function setImg(string $img)
     {
         $this->img = $img;
+    }
+
+    public function getDescription() 
+    {
+        return ucfirst($this->description);
+    }
+
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
     }
 }
 ?>

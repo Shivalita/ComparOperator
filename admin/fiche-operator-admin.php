@@ -10,7 +10,10 @@
 </head>
 <body>
 
-  <?php include '../assets/partials/nav-admin.php'; ?>
+  <?php 
+    include '../assets/partials/nav-admin.php'; 
+    include '../assets/apps/fiche-operator-process.php'; 
+  ?>
 
   <div class="container mt-5">
     <h1 class="text-center mb-5">Nom du tour operator!</h1>
