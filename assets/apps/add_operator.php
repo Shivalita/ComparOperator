@@ -71,46 +71,6 @@ if ($operatorManager->checkOperatorExists($operator->getName())) {
 if ($operator) {
     $operatorUrl = '../../admin/fiche-operator-admin.php?'.$operator->getName();
 
-// header("Location:".$operatorUrl);
-// exit;
+header("Location:".$operatorUrl);
+exit;
 }
-
-
-
-/* ----- TESTS ----- */
-
-// $operator->setName('TEST');
-// $operatorManager->updateOperator($operator);
-// echo $operator->getName();
-
-// $operator->setRate(5);
-// $operatorManager->updateOperator($operator);
-// echo $operator->getRate();
-
-// $operator->setIsPremium(true);
-// $operatorManager->updateOperator($operator);
-// echo $operator->getIsPremium();
-
-// echo ('getName 1 = '.$operator->getName());
-// $operatorManager->deleteOperator($operator);
-// echo ('getName 2 = '.$operator->getName());
-// $operatorManager->deleteOperator($operator);
-
-// $allOperatorsArray = $operatorManager->getAllOperators();
-// foreach ($allOperatorsArray as $singleOperator) {
-//     echo ($singleOperator['name']);
-// }
-
-// echo $operatorManager->countOperators();
-
-// echo $operatorManager->checkOperatorExists('test');
-
-$opeId = $operatorManager->getOperator($operator->getId());
-// $opeName = $operatorManager->getOperator($operator->getName());
-echo $opeId->getName().'<br>';
-// echo $opeName->getName().'<br>';
-// echo $opeName->getRate().'<br>';
-// echo $opeName->getId().'<br>';
-
-// echo $operator->getRate();
-var_dump($operatorManager->getOperator($operator->getId()));

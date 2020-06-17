@@ -6,6 +6,7 @@ class Destination
     protected $location;
     protected $price;
     protected $operator_id;
+    protected $picture;
 
     public function __construct(array $data)
     {
@@ -25,11 +26,12 @@ class Destination
 
     public function getId() 
     {
-        return $this->id;
+        return (int)$this->id;
     }
 
-    public function setId(int $id)
+    public function setId($id)
     {
+        $id = (int) $id;
         $this->id = $id;
     }
 
@@ -61,6 +63,16 @@ class Destination
     public function setTourId(int $operator_id)
     {
         $this->operator_id = $operator_id;
+    }
+
+    public function getPicture() 
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture)
+    {
+        $this->picture = $picture;
     }
 }
 ?>

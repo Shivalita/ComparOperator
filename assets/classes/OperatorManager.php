@@ -51,26 +51,26 @@ class OperatorManager
     /* ---------- CREATE OPERATOR ---------- */
     public function createOperator(Operator $operator)
     {
-
-        $operator->hydrate([
-            'id' => $this->db->lastInsertId(),
-            'rate' =>  5,
-            'is_premium' => 0
-        ]);
-    
         $addOperatorQuery = $this->db->prepare(
-        'INSERT INTO operators(name, rate, link, is_premium, logo)
-         VALUES(:name, :rate, :link, :is_premium, :logo)'
+        'INSERT INTO operators(name, link, logo)
+         VALUES(:name, :link, :logo)'
         );
 
         $addOperatorQuery->bindValue(':name', $operator->getName());
-        $addOperatorQuery->bindValue(':rate', $operator->getRate());
+        // $addOperatorQuery->bindValue(':rate', $operator->getRate());
         $addOperatorQuery->bindValue(':link', $operator->getLink());
-        $addOperatorQuery->bindValue(':is_premium', $operator->getIsPremium());
+        // $addOperatorQuery->bindValue(':is_premium', $operator->getIsPremium());
         $addOperatorQuery->bindValue(':logo', $operator->getLogo());
+        // $addOperatorQuery->bindValue(':id', $operator->getId());
 
         $addOperatorQuery->execute();
 
+        $operator->hydrate([
+            'id' => $this->db->lastInsertId(),
+            'is_premium' => 0,
+            'rate' =>  0
+            
+        ]);
     }
 
     /* ---------- UPDATE OPERATOR ---------- */
@@ -119,14 +119,13 @@ class OperatorManager
             
         }
 
-        // return new Operator($operatorData);
-        return $operatorData;
+        return new Operator($operatorData);
     }
 
     /* ---------- GET OTHER OPERATORS LIST ---------- */
     public function getOtherOperators($currentOperatorName)
     {
-        $otherOperators = [];
+        $otherOperatorsArray = [];
 
         $otherOperatorsQuery = $this->db->prepare(
             'SELECT * FROM operators WHERE name <> :name ORDER BY name'
@@ -134,10 +133,11 @@ class OperatorManager
         $otherOperatorsQuery->execute([':name' => $currentOperatorName]);
 
         while ($operatorData = $otherOperatorsQuery->fetch(PDO::FETCH_ASSOC)) {
-            $otherOperators[] = new Operator($operatorData);
-            break;
+            $otherOperator = new Operator($operatorData);
+            array_push($otherOperatorsArray, $otherOperator);
+            // break;
         }
-        return $otherOperators;
+        return $otherOperatorsArray;
     }
         
 }

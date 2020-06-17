@@ -27,11 +27,12 @@ class Operator
 
     public function getId() 
     {
-        return $this->id;
+        return (int)$this->id;
     }
 
-    public function setId(int $id)
+    public function setId($id)
     {
+        $id = (int) $id;
         $this->id = $id;
     }
 
@@ -50,8 +51,9 @@ class Operator
         return $this->rate;
     }
 
-    public function setRate(float $rate)
+    public function setRate($rate)
     {
+        $rate = (float) $rate;
         $this->rate = $rate;
     }
 
@@ -67,11 +69,12 @@ class Operator
 
     public function getIsPremium() 
     {
-        return $this->is_premium;
+        return (int)$this->is_premium;
     }
 
-    public function setIsPremium(int $is_premium)
+    public function setIsPremium($is_premium)
     {
+        $is_premium = (int) $is_premium;
         $this->is_premium = $is_premium;
     }
 
