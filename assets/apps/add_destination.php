@@ -1,6 +1,5 @@
 <?php
-
-include('../../config.php');
+// include($_SERVER['DOCUMENT_ROOT'].'/comparOperator/config.php');
 // include(ROOT.DS.'assets'.DS.'config'.DS.'connection.php');
 // include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
 
@@ -12,7 +11,7 @@ $operatorManager = new OperatorManager($db);
 if (!empty($_POST['operatorName']) && !empty($_POST['operatorLink'])) {
     $cleanName = cleanData($_POST['operatorName']);
     $operatorName = htmlspecialchars($cleanName);
-    $operatorLink = 'https://'.cleanData($_POST['operatorLink']);
+    $operatorLink = cleanData($_POST['operatorLink']);
 }
 
 /* Remove data spaces and backslashs */
@@ -35,12 +34,11 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
             // file_put_contents($operatorLogo, $contentFile);
             // var_export(realpath('../images/operators_logos'));
             // var_export(__DIR__);
-            $operatorLogoPath = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
+            $operatorLogo = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
             move_uploaded_file(
                 $_FILES['operatorLogo']['tmp_name'],
-                $operatorLogoPath
+                $operatorLogo
             );
-            $operatorLogo = substr_replace($operatorLogoPath, 'assets/', 3, 0);
         } else {
             echo ('wrong_extension');
         }
@@ -71,7 +69,7 @@ if ($operatorManager->checkOperatorExists($operator->getName())) {
 
 /* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
 if ($operator) {
-    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operator->getName();
+    $operatorUrl = '../../admin/fiche-operator-admin.php?'.$operator->getName();
 
 header("Location:".$operatorUrl);
 exit;

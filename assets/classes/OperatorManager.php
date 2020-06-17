@@ -57,11 +57,8 @@ class OperatorManager
         );
 
         $addOperatorQuery->bindValue(':name', $operator->getName());
-        // $addOperatorQuery->bindValue(':rate', $operator->getRate());
         $addOperatorQuery->bindValue(':link', $operator->getLink());
-        // $addOperatorQuery->bindValue(':is_premium', $operator->getIsPremium());
         $addOperatorQuery->bindValue(':logo', $operator->getLogo());
-        // $addOperatorQuery->bindValue(':id', $operator->getId());
 
         $addOperatorQuery->execute();
 

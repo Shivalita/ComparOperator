@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 16 juin 2020 à 16:52
+-- Généré le : mer. 17 juin 2020 à 14:53
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.6
 
@@ -32,15 +32,8 @@ CREATE TABLE `destinations` (
   `location` varchar(150) NOT NULL,
   `price` int(10) NOT NULL,
   `operator_id` int(10) NOT NULL,
-  `picture` varchar(255) DEFAULT NULL
+  `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `destinations`
---
-
-INSERT INTO `destinations` (`id`, `location`, `price`, `operator_id`, `picture`) VALUES
-(1, 'corse', 500, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -51,9 +44,9 @@ INSERT INTO `destinations` (`id`, `location`, `price`, `operator_id`, `picture`)
 CREATE TABLE `operators` (
   `id` int(10) NOT NULL,
   `name` varchar(150) NOT NULL,
-  `rate` int(2) DEFAULT NULL,
+  `rate` float DEFAULT 0,
   `link` varchar(255) NOT NULL,
-  `is_premium` tinyint(1) DEFAULT NULL,
+  `is_premium` int(11) NOT NULL DEFAULT 0,
   `logo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -62,11 +55,11 @@ CREATE TABLE `operators` (
 --
 
 INSERT INTO `operators` (`id`, `name`, `rate`, `link`, `is_premium`, `logo`) VALUES
-(1, 'club med', 5, 'https://www.clubmed.fr/', 0, ''),
-(13, 'Totoperator', NULL, 'www.totoperator.com', NULL, '../images/operators_logos/totoperator.jpeg'),
-(14, 'Tataperator', NULL, 'www.tataperator.com', NULL, '../images/operators_logos/tataperator.jpeg'),
-(15, 'Titiperator', NULL, 'www.titiperator.com', NULL, '../images/operators_logos/titiperator.jpeg'),
-(16, 'Tutuperator', NULL, 'www.tutuperator.com', NULL, '../images/operators_logos/tutuperator.jpeg');
+(106, 'Club Med', 0, 'https://www.clubmed.com', 0, '../assets/images/operators_logos/club med.jpeg'),
+(107, 'Totoperator', 0, 'https://www.totoperator.com', 0, '../assets/images/operators_logos/totoperator.jpeg'),
+(108, 'Tataperator', 0, 'https://www.tataperator.com', 0, '../assets/images/operators_logos/tataperator.jpeg'),
+(109, 'Titiperator', 0, 'https://www.titiperator.com', 0, '../assets/images/operators_logos/titiperator.jpeg'),
+(110, 'Tutuperator', 0, 'https://www.tutuperator.com', 0, '../assets/images/operators_logos/tutuperator.jpeg');
 
 -- --------------------------------------------------------
 
@@ -81,13 +74,6 @@ CREATE TABLE `reviews` (
   `operator_id` int(10) NOT NULL,
   `ip_address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `reviews`
---
-
-INSERT INTO `reviews` (`id`, `message`, `author`, `operator_id`, `ip_address`) VALUES
-(1, 'super club !', 'alex', 1, '');
 
 --
 -- Index pour les tables déchargées
@@ -127,7 +113,7 @@ ALTER TABLE `destinations`
 -- AUTO_INCREMENT pour la table `operators`
 --
 ALTER TABLE `operators`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`
