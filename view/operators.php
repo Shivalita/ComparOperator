@@ -1,3 +1,9 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+$operatorManager = new OperatorManager($db);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,122 +26,57 @@
   </div>
 
 
-
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-md-2">
 
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/random/800x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
-            <span class="badge badge-success">Premium</span>
-            <h5 class="card-title">Operator name</h5>
-            <div class="stars">
-              <form action="">
-                <input class="star star-5" id="star-5" type="radio" name="star"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star"/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star"/>
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star"/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star"/>
-                <label class="star star-1" for="star-1"></label>
-                <small class="text-muted">44 review</small>
-              </form>
+      <?php    $allOperators = $operatorManager->getAllOperators();
+      foreach ($allOperators as $oneOperator) { ?>
+
+        <div class="col mb-4">
+          <div class="card shadow">
+            <img src="<?=($oneOperator['logo']);?>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
+              <?php
+              if($oneOperator['is_premium'] === '1')
+              {
+                echo '<span class="badge badge-success">Premium</span>';
+              }
+              ?>
+              <span class="badge badge-success"></span>
+              <h5 class="card-title"><?=($oneOperator['name']);?> </h5>
+              <div class="stars">
+                <form action="">
+                  <input class="star star-1" id="star-1" type="radio" name="star"/>
+                  <label class="star star-1" for="star-1"></label>
+                  <input class="star star-2" id="star-2" type="radio" name="star"/>
+                  <label class="star star-2" for="star-2"></label>
+                  <input class="star star-3" id="star-3" type="radio" name="star"/>
+                  <label class="star star-3" for="star-3"></label>
+                  <input class="star star-4" id="star-4" type="radio" name="star"/>
+                  <label class="star star-4" for="star-4"></label>
+                  <input class="star star-5" id="star-5" type="radio" name="star"/>
+                  <label class="star star-5" for="star-5"></label>
+                  <small class="text-muted">44 review</small>
+                </form>
+              </div>
+              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <a class="btn btn-info btn-lg btn-block" href="<?=($oneOperator['link']);?>" role="button">WEBSITE</a>
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                  <a class="btn btn-warning btn-lg btn-block" href="operator.php?<?=($oneOperator['name']);?>" role="button">Voir les destinations</a>
+                </div>
+              </div>
             </div>
-            <a class="btn btn-warning btn-lg btn-block" href="#" role="button">Voir les destinations</a>
           </div>
         </div>
-      </div>
 
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/random/800x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
-            <span class="badge badge-success">Premium</span>
-            <h5 class="card-title">Operator name</h5>
-            <div class="stars">
-              <form action="">
-                <input class="star star-5" id="star-5" type="radio" name="star"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star"/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star"/>
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star"/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star"/>
-                <label class="star star-1" for="star-1"></label>
-                <small class="text-muted">44 review</small>
-              </form>
-            </div>
-            <a class="btn btn-warning btn-lg btn-block" href="#" role="button">Voir les destinations</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/random/800x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
-            <span class="badge badge-success">Premium</span>
-            <h5 class="card-title">Operator name</h5>
-            <div class="stars">
-              <form action="">
-                <input class="star star-5" id="star-5" type="radio" name="star"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star"/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star"/>
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star"/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star"/>
-                <label class="star star-1" for="star-1"></label>
-                <small class="text-muted">44 review</small>
-              </form>
-            </div>
-            <a class="btn btn-warning btn-lg btn-block" href="#" role="button">Voir les destinations</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/random/800x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
-            <span class="badge badge-success">Premium</span>
-            <h5 class="card-title">Operator name</h5>
-            <div class="stars">
-              <form action="">
-                <input class="star star-5" id="star-5" type="radio" name="star"/>
-                <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star"/>
-                <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star"/>
-                <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star"/>
-                <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star"/>
-                <label class="star star-1" for="star-1"></label>
-                <small class="text-muted">44 review</small>
-              </form>
-            </div>
-            <a class="btn btn-warning btn-lg btn-block" href="#" role="button">Voir les destinations</a>
-          </div>
-        </div>
-      </div>
-
+      <?php } ?>
     </div>
   </div>
-
   <?php include '../assets/partials/footer.php'; ?>
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
