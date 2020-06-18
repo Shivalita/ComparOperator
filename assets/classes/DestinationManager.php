@@ -1,6 +1,6 @@
 <?php
 
-class OperatorManager
+class DestinationManager
 {
     protected $db;
 
@@ -50,26 +50,23 @@ class OperatorManager
 
 
     /* ---------- CREATE DESTINATION ---------- */
-    public function createDestination(Destination $destination, $operatorName)
+    public function createDestination(Destination $destination)
     {
         $addDestinationQuery = $this->db->prepare(
-        'INSERT INTO destinations(location, price, img, description)
-         VALUES(:location, :price, :img, :description)'
+        'INSERT INTO destinations(location, price, operator_id, img, description)
+         VALUES(:location, :price, :operator_id, :img, :description)'
         );
 
         $addDestinationQuery->bindValue(':location', $destination->getLocation());
         $addDestinationQuery->bindValue(':price', $destination->getPrice());
+        $addDestinationQuery->bindValue(':operator_id', $destination->getOperatorId());
         $addDestinationQuery->bindValue(':img', $destination->getImg());
         $addDestinationQuery->bindValue(':description', $destination->getDescription());
 
         $addDestinationQuery->execute();
 
-        $operator = $operatorManager->getOperator($operatorName);
-        $operatorId = $operator->getId();
-
-        $operator->hydrate([
-            'id' => $this->db->lastInsertId(),
-            'operator_id' =>  $operatorId
+        $destination->hydrate([
+            'id' => $this->db->lastInsertId()
         ]);
     }
 

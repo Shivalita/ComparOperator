@@ -1,17 +1,22 @@
 <?php
-// include($_SERVER['DOCUMENT_ROOT'].'/comparOperator/config.php');
-// include(ROOT.DS.'assets'.DS.'config'.DS.'connection.php');
-// include(ROOT.DS.'assets'.DS.'config'.DS.'autoload.php');
+include('../../config.php');
 
+$destinationManager = new DestinationManager($db);
 $operatorManager = new OperatorManager($db);
 
 /* ----- GET DATA ----- */
 
 /* Get post data and store it in variables */
-if (!empty($_POST['operatorName']) && !empty($_POST['operatorLink'])) {
-    $cleanName = cleanData($_POST['operatorName']);
-    $operatorName = htmlspecialchars($cleanName);
-    $operatorLink = cleanData($_POST['operatorLink']);
+if (
+    !empty($_POST['destinationLocation']) && 
+    !empty($_POST['destinationPrice']) && 
+    !empty($_POST['destinationDescription'])
+) {
+    $cleanName = cleanData($_POST['destinationLocation']);
+    $destinationLocation = htmlspecialchars($cleanName);
+    $destinationPrice = cleanData($_POST['destinationPrice']);
+    $destinationDescription = $_POST['destinationDescription'];
+    $operatorId = $_POST['operator_id'];
 }
 
 /* Remove data spaces and backslashs */
@@ -22,22 +27,16 @@ function cleanData($data) {
 }
 
 /* Check file extension/size/errors, then store it */
-if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) {
-    if ($_FILES['operatorLogo']['size'] <= 1000000) {
-        $infosfichier = pathinfo($_FILES['operatorLogo']['name']);
+if (!empty($_FILES['destinationImage']) AND $_FILES['destinationImage']['error'] === 0) {
+    if ($_FILES['destinationImage']['size'] <= 1000000) {
+        $infosfichier = pathinfo($_FILES['destinationImage']['name']);
         $extension_upload = $infosfichier['extension'];
         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
         if (in_array($extension_upload, $extensions_autorisees)) {
-            // $file = $_FILES['operatorLogo'];
-            // $contentFile = file_get_contents($file['tmp_name']);
-            // $operatorLogo = './images/operators_logos/'.$operatorName.'.'.$extension_upload;
-            // file_put_contents($operatorLogo, $contentFile);
-            // var_export(realpath('../images/operators_logos'));
-            // var_export(__DIR__);
-            $operatorLogo = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
+            $destinationImage = '../images/destinations_img/'.$destinationLocation.'.'.$extension_upload;
             move_uploaded_file(
-                $_FILES['operatorLogo']['tmp_name'],
-                $operatorLogo
+                $_FILES['destinationImage']['tmp_name'],
+                $destinationImage
             );
         } else {
             echo ('wrong_extension');
@@ -46,31 +45,52 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
         echo ('file_size');
     }
 } else {
-    /* Assign a default logo if not added */
-    $operatorLogo = '';
+    /* Assign a default image if not added */
+    $destinationImage = '';
 }
 
+function getFormattedOperatorName($nameToFormat) {
+    $nameToFormat = str_replace('%', ' ', $nameToFormat);
+    $nameToFormat = ucwords($nameToFormat);
+    return $nameToFormat;
+}
 
-/* ----- CREATE NEW OPERATOR INSTANCE ----- */
-$operator = new Operator([
-    'name' => ucfirst($operatorName), 
-    'link' => $operatorLink, 
-    'logo' => $operatorLogo
+if (isset($_GET['name'])) {
+    $operatorName = getFormattedOperatorName($_GET['name']);
+    $operatorId = $operator->getId();
+}
+
+/* ----- CREATE NEW DESTINATION INSTANCE ----- */
+$destination = new Destination([
+    'location' => ucfirst($destinationLocation), 
+    'price' => $destinationPrice, 
+    'operator_id' => $operatorId,
+    'img' => $destinationImage,
+    'description' => $destinationDescription
 ]);
 
-if ($operatorManager->checkOperatorExists($operator->getName())) {
-    echo ('Operator already registered');
-    // $message = 'Operator already registered.';
-    unset($operator);
+if ($destinationManager->checkDestinationExists($destination->getLocation())) {
+    $message = 'Destination already registered.';
+    unset($destination);
 } else {
-    $operatorManager->createOperator($operator);
-    $operatorManager->updateOperator($operator);
+    $destinationManager->createDestination($destination);
+    $destinationManager->updateDestination($destination);
 }
 
-/* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
-if ($operator) {
-    $operatorUrl = '../../admin/fiche-operator-admin.php?'.$operator->getName();
+/* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
+if ($destination) {
+    $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
 
-header("Location:".$operatorUrl);
-exit;
+// header("Location:".$destinationUrl);
+// exit;
 }
+
+
+/* ----- TESTS ----- */
+echo ('getLocation : '.$destination->getLocation());
+echo ('getPrice : '.$destination->getPrice());
+echo ('getOperatorId : '.$destination->getOperatorId());
+echo ('getImg : '.$destination->getImg());
+echo ('getDescription : '.$destination->getDescription());
+
+// echo $operatorId;
