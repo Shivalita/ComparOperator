@@ -58,3 +58,15 @@ foreach ($allOperators as $oneOperator) {
     echo ($oneOperator->getName());
 }
 // Displays the name of all registered operators except the current one
+
+
+/* ---------- GET OPERATOR DESTINATIONS ---------- */
+$operatorManager->getOperatorDestinations($operatorId); // Returns an ARRAY OF OBJECTS
+// Returns the list of all destinations of this operator
+
+// Ex:
+$allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
+foreach ($allOperatorDestinations as $oneDestination) {
+    echo ($oneDestination->getLocation());
+}
+// Displays the locations of all registered destinations for this operator

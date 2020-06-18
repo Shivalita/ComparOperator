@@ -2,6 +2,7 @@
 include('../../config.php');
 
 $destinationManager = new DestinationManager($db);
+$operatorManager = new OperatorManager($db);
 
 /* ----- GET DATA ----- */
 
@@ -98,3 +99,4 @@ if ($destinationManager->checkDestinationExists($destination->getLocation())) {
 
 
 // echo $operatorId;
+var_dump($operatorManager->getOperatorDestinations(128));
