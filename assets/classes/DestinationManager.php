@@ -13,18 +13,24 @@ class DestinationManager
     public function getAllDestinations() 
     {
         $allDestinationsQuery = $this->db->query(
-            // 'SELECT * (DISTINCT location) FROM destinations'
-            'SELECT 
-                *
-            FROM 
-                destinations
-            GROUP BY 
-                location
-            ORDER BY
-                location'
+            'SELECT * FROM destinations'
+            // 'SELECT 
+            //     *
+            // FROM 
+            //     destinations
+            // GROUP BY 
+            //     location
+            // ORDER BY
+            //     location'
         );
         $allDestinationsArray = $allDestinationsQuery->fetchAll(PDO::FETCH_ASSOC);
+        // $tata = [];
     
+        // foreach ($allDestinationsArray as $oneDestination) {
+        //     array_push($tata, $oneDestination);
+        // }
+        
+        // return $tata;
         return $allDestinationsArray;
     }
 
