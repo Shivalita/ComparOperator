@@ -65,7 +65,7 @@ $operatorManager = new OperatorManager($db);
                   <a class="btn btn-info btn-lg btn-block" href="<?=($oneOperator['link']);?>" role="button">WEBSITE</a>
                 </div>
                 <div class="btn-group mr-2 mt-2" role="group" aria-label="Second group">
-                  <a class="btn btn-warning btn-lg btn-block" href="operator.php?<?=($oneOperator['name']);?>" role="button">Voir les destinations</a>
+                  <a class="btn btn-warning btn-lg btn-block" href="operator.php?name=<?=($oneOperator['name']);?>" role="button">Voir les destinations</a>
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ $operatorManager = new OperatorManager($db);
       <?php } ?>
     </div>
   </div>
-  
+
   <?php include '../assets/partials/footer.php'; ?>
 
   <!-- Optional JavaScript -->
