@@ -13,18 +13,10 @@
   <?php 
     include ('../config.php');
     include ('../assets/partials/nav-admin.php'); 
-    include ('../assets/apps/fiche-operator-process.php'); 
+    include ('../assets/apps/get-operator-id.php'); 
 
     $destinationManager = new DestinationManager($db);
     $operatorManager = new OperatorManager($db);
-
-    $allDestinations = $destinationManager->getAllDestinations();
-      foreach ($allDestinations as $oneDestination) {
-          echo($oneDestination['location']).'<br>';
-          echo($oneDestination['price']).'<br>';
-          echo($oneDestination['operator_id']).'<br>';
-          echo($oneDestination['description']).'<br><br>';
-      }
   ?>
 
   <div class="container mt-5">

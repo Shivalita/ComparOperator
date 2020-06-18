@@ -11,6 +11,7 @@
   <body>
 
     <?php 
+    include ('../config.php');
     include ('../assets/partials/nav-admin.php'); 
     ?>
     

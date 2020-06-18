@@ -61,14 +61,14 @@ if ($operatorManager->checkOperatorExists($operator->getName())) {
 }
 
 /* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
-function setFormattedOperatorName($nameToFormat) {
-    $nameToFormat = str_replace(' ', '%', $nameToFormat);
+function setFormattedName($nameToFormat) {
+    $nameToFormat = str_replace(' ', '%20', $nameToFormat);
     $nameToFormat = strtolower($nameToFormat);
     return $nameToFormat;
 }
 
 if ($operator) {
-    $operatorUrlName = setFormattedOperatorName($operator->getName());
+    $operatorUrlName = setFormattedName($operator->getName());
     $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName;
 
 header("Location:".$operatorUrl);

@@ -13,7 +13,7 @@ class OperatorManager
     public function getAllOperators() 
     {
         $allOperatorsQuery = $this->db->query(
-            'SELECT * FROM operators'
+            'SELECT * FROM operators ORDER BY is_premium DESC'
         );
         $allOperatorsArray = $allOperatorsQuery->fetchAll(PDO::FETCH_ASSOC);
        
@@ -113,7 +113,6 @@ class OperatorManager
             );
             $getOperatorData->execute([$request]);
             $operatorData = $getOperatorData->fetch(PDO::FETCH_ASSOC);
-            
         }
 
         return new Operator($operatorData);
@@ -132,7 +131,6 @@ class OperatorManager
         while ($operatorData = $otherOperatorsQuery->fetch(PDO::FETCH_ASSOC)) {
             $otherOperator = new Operator($operatorData);
             array_push($otherOperatorsArray, $otherOperator);
-            // break;
         }
         return $otherOperatorsArray;
     }
@@ -150,7 +148,6 @@ class OperatorManager
         while ($operatorDestination = $operatorDestinationsQuery->fetch(PDO::FETCH_ASSOC)) {
             $destination = new Destination($operatorDestination);
             array_push($operatorDestinationsArray, $destination);
-            // break;
         }
 
         return $operatorDestinationsArray;

@@ -9,7 +9,7 @@
       <a class="nav-item nav-link text-white" href="fiche-operator-admin.php">Fiche TO</a>
       <a class="nav-item nav-link text-white" href="fiche-destination-admin.php">Fiche Destination</a>
       <a class="nav-item nav-link text-white" href="/index.php">Retour au site</a>
-      <form class="" action="#" method="POST">
+      <form class="" action="" method="POST">
       <?php
         if (isset($_GET['name'])) {
           echo ('<input name="nameValue" type="hidden" value="'.$_GET['name'].'">');
