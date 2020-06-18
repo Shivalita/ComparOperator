@@ -1,3 +1,10 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+$operatorManager = new OperatorManager($db);
+$destinationManager = new DestinationManager($db);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,39 +52,21 @@
     <h2 class="text-center mb-4">Nos destinations</h2>
 
     <div class="row row-cols-1 row-cols-md-3">
+    <?php  $allDestinations = $destinationManager->getAllDestinations();
+      foreach ($allDestinations as $oneDestination) { ?>
 
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/nnzkZNYWHaU/600x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title text-center">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="#" role="button">En savoir plus</a>
+        <div class="col mb-4">
+          <div class="card shadow">
+            <img src="<?= ($oneDestination['img']); ?> " class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center"><?= ($oneDestination['location']); ?></h5>
+              <p class="card-text"><?= ($oneDestination['description']); ?></p>
+              <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="destination.php?name=<?= ($oneDestination['location']); ?>" role="button">En savoir plus</a>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/nnzkZNYWHaU/600x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title text-center">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="#" role="button">En savoir plus</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card shadow">
-          <img src="https://source.unsplash.com/nnzkZNYWHaU/600x600" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title text-center">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            <a class="btn btn-warning font-weight-bold d-flex justify-content-center" href="#" role="button">En savoir plus</a>
-          </div>
-        </div>
-      </div>
+          <!-- echo ($oneDestination['location']); -->
+      <?php } ?>
 
     </div>
   </div>

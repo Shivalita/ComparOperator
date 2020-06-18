@@ -1,8 +1,10 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
-
 $operatorManager = new OperatorManager($db);
+$destinationManager = new DestinationManager($db);
+
+$operator = $operatorManager -> getOperator($_GET['name']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,60 +26,28 @@ $operatorManager = new OperatorManager($db);
     </div>
   </div>
 
-<div class="container">
-  <h1 class="text-center mt-3 mb-4">Les Destinations</h1>
-  <div class="row row-cols-1 row-cols-md-4">
+  <div class="container">
+    <h1 class="text-center mt-3 mb-4">Les Destinations</h1>
+    <div class="row row-cols-1 row-cols-md-4">
+      <?php $allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
+      foreach ($allOperatorDestinations as $oneDestination) { ?>
 
-    <div class="col mb-4">
-      <div class="card">
-        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <span class"float-right">A partir de €€€</span>
-          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name<?=($oneOperator['name']);?>" role="button">Voir les prix</a>
+        <div class="col mb-4">
+          <div class="card">
+            <img src="<?= ($oneDestination->getImg()); ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><?= ($oneDestination->getLocation()); ?></h5>
+              <span class"float-right">A partir de <?= ($oneDestination->getPrice()); ?>€</span>
+              <p class="card-text mt-2"><?= ($oneDestination->getDescription()); ?></p>
+              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Voir le voyage</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+        <!-- echo ($oneDestination->getLocation()); -->
+      <?php  } ?>
 
-    <div class="col mb-4">
-      <div class="card">
-        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <span class"float-right">A partir de €€€</span>
-          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
-        </div>
-      </div>
     </div>
-
-    <div class="col mb-4">
-      <div class="card">
-        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <span class"float-right">A partir de €€€</span>
-          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col mb-4">
-      <div class="card">
-        <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <span class"float-right">A partir de €€€</span>
-          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
 
 
   <?php include '../assets/partials/footer.php'; ?>
