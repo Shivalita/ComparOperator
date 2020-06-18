@@ -13,7 +13,15 @@ class DestinationManager
     public function getAllDestinations() 
     {
         $allDestinationsQuery = $this->db->query(
-            'SELECT * FROM destinations'
+            // 'SELECT * (DISTINCT location) FROM destinations'
+            'SELECT 
+                *
+            FROM 
+                destinations
+            GROUP BY 
+                location
+            ORDER BY
+                location'
         );
         $allDestinationsArray = $allDestinationsQuery->fetchAll(PDO::FETCH_ASSOC);
     
@@ -166,8 +174,6 @@ class DestinationManager
          );
          $destinationQuery->execute([$destinationLocation]);
          $destinationArray = $destinationQuery->fetchAll(PDO::FETCH_ASSOC);
-
-         
  
          while ($destinationOperator = $destinationQuery->fetch(PDO::FETCH_ASSOC)) {
              $operator = new Operator($destinationOperator);
