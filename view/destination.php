@@ -3,6 +3,8 @@ include($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
+
+$destination = $destinationManager -> getDestination($_GET['name']);
 ?>
 
 <!doctype html>
@@ -22,7 +24,7 @@ $destinationManager = new DestinationManager($db);
 
   <div class="jumbotron jumbotron-fluid fond1">
     <div class="container text-center">
-      <h1 class="display-4 text-white">destination Name</h1>
+      <h1 class="display-4 text-white"><?php echo $_GET['name'] ?></h1>
     </div>
   </div>
 
@@ -41,18 +43,14 @@ $destinationManager = new DestinationManager($db);
     <div class="tab-content text-center" id="myTabContent">
 
       <div class="tab-pane fade show active" id="describ" role="tabpanel" aria-labelledby="home-tab">
-        <img src="https://source.unsplash.com/random/600x450" class="img-fluid mt-3 mb-3" alt="Responsive image">
-        <p class="">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-          a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-          also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-          with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-          software like Aldus PageMaker including versions</p>
+        <img src="https://source.unsplash.com/random/600x450/?<?php echo $_GET['name'] ?>" class="img-fluid mt-3 mb-3" alt="Responsive image">
+        <p class=""><?= ($destination->getDescription()); ?></p>
         </div>
 
         <div class="tab-pane fade" id="maps" role="tabpanel" aria-labelledby="profile-tab">
           <div class="container-fluid">
             <div class="map-responsive mt-3">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=<?php echo $_GET['name'] ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -66,13 +64,13 @@ $destinationManager = new DestinationManager($db);
             </ol>
             <div class="carousel-inner mt-3">
               <div class="carousel-item active">
-                <img src="https://source.unsplash.com/random/800x600/?travel/1" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/1" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/800x600/?travel/2" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/2" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/800x600/?travel/3" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/3" class="d-block w-100 img-fluid" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

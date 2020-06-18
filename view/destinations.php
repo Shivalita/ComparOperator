@@ -28,53 +28,21 @@ $destinationManager = new DestinationManager($db);
   <div class="container">
     <div class="row row-cols-1 row-cols-md-2">
 
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <span class"float-right">A partir de €€€</span>
-            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
+      <?php  $allDestinations = $destinationManager->getAllDestinations();
+      foreach ($allDestinations as $oneDestination) { ?>
+        <!-- echo ($oneDestination['location']); -->
+        <div class="col mb-4">
+          <div class="card">
+            <img src="https://source.unsplash.com/random/400x300/?<?= ($oneDestination['location']); ?> " class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold text-center"><?= ($oneDestination['location']); ?> </h5>
+              <p class="text-success font-weight-bold"><span>A partir de <?= ($oneDestination['price']); ?> €</span></p>
+              <p class="card-text mt-2"><?= ($oneDestination['description']); ?> </p>
+              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?name=<?= ($oneDestination['location']); ?> " role="button">Voir les prix</a>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <span class"float-right">A partir de €€€</span>
-            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <span class"float-right">A partir de €€€</span>
-            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col mb-4">
-        <div class="card">
-          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <span class"float-right">A partir de €€€</span>
-            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
-          </div>
-        </div>
-      </div>
+      <?php  } ?>
 
     </div>
   </div>
