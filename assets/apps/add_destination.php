@@ -58,9 +58,7 @@ if (isset($_GET['name'])) {
     $operatorName = getFormattedOperatorName($_GET['name']);
 }
 
-
 $operatorId = $destinationManager->getOperatorId($_POST['operatorName']);
-echo $operatorId;
 
 /* ----- CREATE NEW DESTINATION INSTANCE ----- */
 $destination = new Destination([
@@ -72,11 +70,12 @@ $destination = new Destination([
 ]);
 
 $destination->setOperatorId($operatorId);
+var_dump($destination);
 
-if ($destinationManager->checkDestinationExists($destination->getLocation())) {
-    $message = 'Destination already registered.';
-    unset($destination);
-} else {
+// if ($destinationManager->checkDestinationExists($destination->getLocation())) {
+//     $message = 'Destination already registered.';
+//     unset($destination);
+// } else {
     echo ('getLocation : '.$destination->getLocation().'<br>');
     echo ('getPrice : '.$destination->getPrice().'<br>');
     echo ('getOperatorId : '.$destination->getOperatorId().'<br>');
@@ -84,19 +83,15 @@ if ($destinationManager->checkDestinationExists($destination->getLocation())) {
     echo ('getDescription : '.$destination->getDescription().'<br>');
     $destinationManager->createDestination($destination);
     $destinationManager->updateDestination($destination);
-}
+// }
 
-// /* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
+/* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
 // if ($destination) {
 //     $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
 
-// // header("Location:".$destinationUrl);
+// header("Location:".$destinationUrl);
 // exit;
 // }
 
 
 /* ----- TESTS ----- */
-
-
-// echo $operatorId;
-var_dump($operatorManager->getOperatorDestinations(128));

@@ -155,6 +155,28 @@ class DestinationManager
         }
         return $otherDestinationsArray;
     }
+
+     /* ---------- GET DESTINATION OPERATORS ---------- */
+     public function getDestinationOperators($destinationLocation)
+     {
+         $destinationOperatorsArray = [];
+ 
+         $destinationQuery = $this->db->prepare(
+             'SELECT * FROM destinations WHERE location = ?'
+         );
+         $destinationQuery->execute([$destinationLocation]);
+         $destinationArray = $destinationQuery->fetchAll(PDO::FETCH_ASSOC);
+
+         
+ 
+         while ($destinationOperator = $destinationQuery->fetch(PDO::FETCH_ASSOC)) {
+             $operator = new Operator($destinationOperator);
+             array_push($destinationOperatorsArray, $operator);
+             // break;
+         }
+ 
+         return $destinationOperatorsArray;
+     }
 }
 
 ?>
