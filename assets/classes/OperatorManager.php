@@ -136,6 +136,25 @@ class OperatorManager
         }
         return $otherOperatorsArray;
     }
+
+    /* ---------- GET OPERATOR DESTINATIONS ---------- */
+    public function getOperatorDestinations($operatorId)
+    {
+        $operatorDestinationsArray = [];
+
+        $operatorDestinationsQuery = $this->db->prepare(
+            'SELECT * FROM destinations WHERE operator_id = ?'
+        );
+        $operatorDestinationsQuery->execute([$operatorId]);
+
+        while ($operatorDestination = $operatorDestinationsQuery->fetch(PDO::FETCH_ASSOC)) {
+            $destination = new Destination($operatorDestination);
+            array_push($operatorDestinationsArray, $destination);
+            // break;
+        }
+
+        return $operatorDestinationsArray;
+    }
         
 }
 
