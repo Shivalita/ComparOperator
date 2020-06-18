@@ -1,3 +1,4 @@
+<?php include ('../assets/apps/premium_process.php'); ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <a class="navbar-brand text-white" href="index.php">ADMINISTRATOR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +10,14 @@
       <a class="nav-item nav-link text-white" href="fiche-destination-admin.php">Fiche Destination</a>
       <a class="nav-item nav-link text-white" href="/index.php">Retour au site</a>
       <form class="" action="#" method="POST">
-        <a class="btn btn-success" href="#" role="button">Deviens Premium</a>
+      <?php
+        if (isset($_GET['name'])) {
+          echo ('<input name="nameValue" type="hidden" value="'.$_GET['name'].'">');
+        } else if (isset($_GET['location'])) {
+          echo ('<input name="locationValue" type="hidden" value="'.$_GET['location'].'">');
+        }
+      ?>
+        <button class="btn btn-success" type="submit" role="button" name="premium">Deviens Premium</button>
       </form>
     </div>
   </div>
