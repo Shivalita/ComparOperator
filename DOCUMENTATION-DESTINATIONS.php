@@ -2,59 +2,65 @@
 /* ------------------------------ DESTINATION PROPERTIES ------------------------------ */
 
 $operator->getId(); // Returns a NUMBER (int)
-$operator->getName(); // Returns a STRING
-$operator->getRate(); // Returns a NUMBER (float)
-$operator->getLink(); // Returns a STRING
-$operator->getIsPremium(); // Returns a NUMBER (0 or 1)
-$operator->getLogo(); // Returns a STRING
+$operator->getLocation(); // Returns a STRING
+$operator->getPrice(); // Returns a NUMBER (int)
+$operator->getOperatorId(); // Returns a NUMBER (int)
+$operator->getImg(); // Returns a STRING
+$operator->getDescription(); // Returns a STRING
 
 
 /* ------------------------------ DESTINATION MANAGER METHODS ------------------------------ */
 
-/* ---------- GET ALL OPERATORS LIST ---------- */
-$operatorManager->getAllOperators(); // Returns an ARRAY of data
+/* ---------- GET ALL DESTINATIONS LIST ---------- */
+$destinationManager->getAllDestinations(); // Returns an ARRAY of data
 
 // Ex:
-$allOperators = $operatorManager->getAllOperators();
-foreach ($allOperators as $oneOperator) {
-    echo ($oneOperator['name']);
+$allDestinations = $destinationManager->getAllDestinations();
+foreach ($allDestinations as $oneDestination) {
+    echo ($oneDestination['location']);
 }
-// Displays the name of all registered operators
+// Displays the name of all registered destinations
 
 
-/* ---------- COUNT OPERATORS ---------- */
-$operatorManager->countOperators(); // Returns the NUMBER of operators registered
+/* ---------- COUNT DESTINATIONS ---------- */
+$destinationManager->countDestinations(); // Returns the NUMBER of destinations registered
 
 
 /* ---------- CHECK IF OPERATOR EXISTS ---------- */
-$operatorManager->checkOperatorExists($operator); // Returns a BOOLEAN (true if exists)
-// $operator can be either an ID or a NAME
+$destinationManager->checkDestinationExists($destination); // Returns a BOOLEAN (true if exists)
+// $destination can be either an ID or a LOCATION
 
 // Ex:
-echo ($operatorManager->checkOperatorExists(1)); // Returns true
-echo ($operatorManager->checkOperatorExists('club med')); // Returns true
-echo ($operatorManager->checkOperatorExists(100000)); // Returns false
+echo ($destinationManager->checkDestinationExists(1)); // Returns true
+echo ($destinationManager->checkDestinationExists('Paris')); // Returns true
+echo ($destinationManager->checkDestinationExists(100000)); // Returns false
 
 
-/* ---------- GET OPERATOR ---------- */
-$operatorManager->getOperator($request); // Returns an OBJECT
-// $request can be either an ID or a NAME
+/* ---------- GET DESTINATION ---------- */
+$destinationManager->getDestination($request); // Returns an OBJECT
+// $request can be either an ID or a LOCATION
 
 // Ex:
-$op = $operatorManager->getOperator(1);
+$dest = $destinationManager->getDestination(1);
 // Same as :
-$op = $operatorManager->getOperator('club med');
+$dest = $destinationManager->getDestination('Paris');
 
-$op->getLink(); // Returns 'https://www.clubmed.fr/'
+$dest->getDescription(); // Returns 'Lorem ipsum.../'
 
 
-/* ---------- GET OTHER OPERATORS LIST ---------- */
-$operatorManager->getOtherOperators($currentOperatorName); // Returns an ARRAY OF OBJECTS
-// Returns a list of all operators except the current one
+/* ---------- GET OPERATOR ID ---------- */
+$destinationManager->getOperatorId($operatorName); // Returns a NUMBER
+// Ex:
+echo ($destinationManager->getOperatorId('Totoperator')); // Returns 107
+
+
+/* ---------- GET OTHER DESTINATIONS LIST ---------- */
+$destinationManager->getOtherDestinations($currentDestinationLocation); // Returns an ARRAY OF OBJECTS
+// Returns a list of all destinations except the current one
 
 // Ex:
-$allOperators = $operatorManager->getOtherOperators($operator->getName());
-foreach ($allOperators as $oneOperator) {
-    echo ($oneOperator->getName());
+$allDestinations = $destinationManager->getOtherDestinations($destination->getLocation());
+foreach ($allDestinations $oneDestination) {
+    echo ($oneDestination->getLocation());
 }
-// Displays the name of all registered operators except the current one
+// Displays the name of all registered destinations except the current one

@@ -34,6 +34,8 @@
   </div>
   <hr style="width:100%;height:2px;">
 
+  <?php var_dump($_GET['name']); ?>
+
   <div class="container">
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
@@ -42,8 +44,8 @@
           <input type="text" class="form-control mb-2" placeholder="Nom destination" name="destinationLocation">
           <input type="text" class="form-control mb-2" placeholder="€" name="destinationPrice">
           <textarea class="form-control mb-2" placeholder="Description" name="destinationDescription"></textarea>
-          <input type="file" class="form-control-file" accept="image/*" name="destinationImage" required>
-          <input name="operator_id" type="hidden" value="<?= $operatorId ?>">
+          <input type="file" class="form-control-file" accept="image/*" name="destinationImage" >
+          <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
           <div class="text-center">
               <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
         </div>

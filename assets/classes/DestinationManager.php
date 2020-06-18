@@ -57,21 +57,104 @@ class DestinationManager
          VALUES(:location, :price, :operator_id, :img, :description)'
         );
 
-        $addDestinationQuery->bindValue(':location', $destination->getLocation());
-        $addDestinationQuery->bindValue(':price', $destination->getPrice());
-        $addDestinationQuery->bindValue(':operator_id', $destination->getOperatorId());
-        $addDestinationQuery->bindValue(':img', $destination->getImg());
-        $addDestinationQuery->bindValue(':description', $destination->getDescription());
+        // $addDestinationQuery->bindValue(':location', $destination->getLocation());
+        // $addDestinationQuery->bindValue(':price', $destination->getPrice());
+        // $addDestinationQuery->bindValue(':operator_id', $destination->getOperatorId());
+        // $addDestinationQuery->bindValue(':img', $destination->getImg());
+        // $addDestinationQuery->bindValue(':description', $destination->getDescription());
 
-        $addDestinationQuery->execute();
+        $addDestinationQuery->execute([
+            ':location' => $destination->getLocation(),
+            ':price' => $destination->getPrice(),
+            ':operator_id' => $destination->getOperatorId(),
+            ':img' => $destination->getImg(),
+            ':description' => $destination->getDescription()
+        ]);
 
         $destination->hydrate([
             'id' => $this->db->lastInsertId()
         ]);
     }
 
+    /* ---------- GET OPERATOR ID ---------- */
+    public function getOperatorId($operatorName) 
+    {
+        $getOperatorIdQuery = $this->db->prepare(
+            'SELECT id FROM operators WHERE name = ?'
+        );
+        $getOperatorIdQuery->execute([$operatorName]);
+        $operator = $getOperatorIdQuery->fetch(PDO::FETCH_ASSOC);
+        $operatorId = $operator['id'];
+    
+        return $operatorId;
+    }
 
+    /* ---------- UPDATE DESTINATION ---------- */
+    public function updateDestination(Destination $destination)
+    {
+       $updateDestinationQuery = $this->db->prepare(
+           'UPDATE destinations 
+            SET location = ?, price = ?, operator_id = ?, img = ?, description = ?
+            WHERE id = ?'
+        );
+       $updateDestinationQuery->execute([
+           $destination->getLocation(),
+           $destination->getPrice(),
+           $destination->getOperatorId(),
+           $destination->getImg(),
+           $destination->getDescription(),
+           $destination->getId()
+       ]); 
+    }
 
+    /* ---------- DELETE DESTINATION ---------- */
+    public function deleteDestination(Destination $destination)
+    {
+        $deleteDestinationQuery = $this->db->prepare(
+            'DELETE FROM destinations WHERE id = ?'
+        );
+        $deleteDestinationQuery->execute([$destination->getId()]);
+    }
+
+    /* ---------- GET DESTINATION ---------- */
+    public function getDestination($request)
+    {
+        if (is_int($request)) {
+            $getDestinationData = $this->db->prepare(
+                'SELECT * FROM destinations WHERE id = ?'
+            );
+            $getDestinationData->execute([$request]);
+            $destinationData = $getDestinationData->fetch(PDO::FETCH_ASSOC);
+       
+        } else if (is_string($request)) {
+            $getDestinationData = $this->db->prepare(
+                'SELECT * FROM destinations WHERE location = ?'
+            );
+            $getDestinationData->execute([$request]);
+            $destinationData = $getDestinationData->fetch(PDO::FETCH_ASSOC);
+            
+        }
+
+        return new Destination($destinationData);
+    }
+
+    /* ---------- GET OTHER DESTINATIONS LIST ---------- */
+    public function getOtherDestinations($currentDestinationLocation)
+    {
+        $otherDestinationsArray = [];
+
+        $otherDestinationsQuery = $this->db->prepare(
+            'SELECT * FROM destinations WHERE location <> :location ORDER BY location'
+        );
+        $otherDestinationsQuery->execute([':location' => $currentDestinationLocation]);
+
+        while ($destinationData = $otherDestinationsQuery->fetch(PDO::FETCH_ASSOC)) {
+            $otherDestination = new Destination($destinationData);
+            array_push($otherDestinationsArray, $otherDestination);
+            // break;
+        }
+        return $otherDestinationsArray;
+    }
 }
 
 ?>
