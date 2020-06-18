@@ -53,8 +53,7 @@ $operator = new Operator([
 ]);
 
 if ($operatorManager->checkOperatorExists($operator->getName())) {
-    echo ('Operator already registered');
-    // $message = 'Operator already registered.';
+    $message = 'Operator already registered.';
     unset($operator);
 } else {
     $operatorManager->createOperator($operator);
