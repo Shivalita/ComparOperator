@@ -1,4 +1,10 @@
-<?php include ('../config.php'); ?>
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+$operatorManager = new OperatorManager($db);
+$destinationManager = new DestinationManager($db);
+?>
+<!-- include ('../config.php'); -->
 
 <!doctype html>
 <html lang="en">
@@ -29,14 +35,19 @@
     <h3>Liste tours operateurs</h3>
     <div class="row">
 
-      <div class="col-sm-12 mb-4">
-        <div class="card">
-          <div class="card-body d-inline-flex">
-            <p>Tour opérateur n°1</p>
-            <a class="btn btn-warning ml-5" href="./view/fiche-destination-admin.html" role="button">Fiche </a>
+      <?php    $allOperators = $operatorManager->getAllOperators();
+      foreach ($allOperators as $oneOperator) { ?>
+
+        <div class="col-sm-6 mb-4">
+          <div class="card">
+            <div class="card-body d-inline-flex">
+              <p><?=($oneOperator['name']);?></p>
+              <a class="btn btn-warning ml-5" href="fiche-operator-admin.php?name=<?=($oneOperator['name']);?>" role="button">Fiche</a>
+            </div>
           </div>
         </div>
-      </div>
+
+      <?php } ?>
 
     </div>
   </div>
@@ -51,8 +62,8 @@
           <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
           <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" >
           <div class="text-center">
-              <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
-        </div>
+            <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+          </div>
         </form>
       </div>
     </div>

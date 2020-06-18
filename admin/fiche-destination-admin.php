@@ -1,3 +1,12 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+$operatorManager = new OperatorManager($db);
+$destinationManager = new DestinationManager($db);
+
+$destination = $destinationManager -> getDestination($_GET['name']);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,23 +19,28 @@
   </head>
   <body>
 
+<<<<<<< HEAD
     <?php 
     include ('../config.php');
     include ('../assets/partials/nav-admin.php'); 
+=======
+    <?php
+    include ('../assets/partials/nav-admin.php');
+>>>>>>> e0877db22fc616daf201440a069d8d2745d50029
     ?>
-    
+
 
     <div class="container">
       <div class="container w-75 d-flex justify-content-center  mt-5">
         <div class="card p-4 shadow" style="width: 22rem;">
-          <h4 class="text-center text-underlined"><strong>Fiche destination</strong></h4>
+          <h4 class="text-center text-underlined"><strong><?= ($destination->getLocation()); ?></strong></h4>
           <form class="p-3" action="./apps/add_destination.php" method="POST" enctype="multipart/form-data">
             <input type="text" class="form-control mb-2" placeholder="Nom destination" name="#">
             <textarea class="form-control mb-2" placeholder="Description" name="#"></textarea>
             <input type="file" class="form-control-file" accept="image/*" name="#" required>
           </form>
           <div class="text-center">
-                <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+                <button class="btn btn-success align-center" type="submit" name="submit">Modifier</button>
           </div>
         </div>
       </div>
