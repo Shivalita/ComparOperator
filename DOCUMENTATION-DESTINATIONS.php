@@ -48,6 +48,12 @@ $dest = $destinationManager->getDestination('Paris');
 $dest->getDescription(); // Returns 'Lorem ipsum.../'
 
 
+/* ---------- GET OPERATOR ID ---------- */
+$destinationManager->getOperatorId($operatorName); // Returns a NUMBER
+// Ex:
+echo ($destinationManager->getOperatorId('Totoperator')); // Returns 107
+
+
 /* ---------- GET OTHER DESTINATIONS LIST ---------- */
 $destinationManager->getOtherDestinations($currentDestinationLocation); // Returns an ARRAY OF OBJECTS
 // Returns a list of all destinations except the current one
