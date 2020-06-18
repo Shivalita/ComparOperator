@@ -51,7 +51,7 @@ include('../config.php');
         <form class="p-3" action="../assets/apps/add_operator.php" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName">
           <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
-          <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" required>
+          <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" >
           <div class="text-center">
               <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
         </div>

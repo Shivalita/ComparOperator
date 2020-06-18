@@ -2,7 +2,6 @@
 include('../../config.php');
 
 $destinationManager = new DestinationManager($db);
-$operatorManager = new OperatorManager($db);
 
 /* ----- GET DATA ----- */
 
@@ -16,7 +15,6 @@ if (
     $destinationLocation = htmlspecialchars($cleanName);
     $destinationPrice = cleanData($_POST['destinationPrice']);
     $destinationDescription = $_POST['destinationDescription'];
-    $operatorId = $_POST['operator_id'];
 }
 
 /* Remove data spaces and backslashs */
@@ -34,10 +32,10 @@ if (!empty($_FILES['destinationImage']) AND $_FILES['destinationImage']['error']
         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
         if (in_array($extension_upload, $extensions_autorisees)) {
             $destinationImage = '../images/destinations_img/'.$destinationLocation.'.'.$extension_upload;
-            move_uploaded_file(
-                $_FILES['destinationImage']['tmp_name'],
-                $destinationImage
-            );
+            // move_uploaded_file(
+            //     $_FILES['destinationImage']['tmp_name'],
+            //     $destinationImage
+            // );
         } else {
             echo ('wrong_extension');
         }
@@ -57,8 +55,11 @@ function getFormattedOperatorName($nameToFormat) {
 
 if (isset($_GET['name'])) {
     $operatorName = getFormattedOperatorName($_GET['name']);
-    $operatorId = $operator->getId();
 }
+
+
+$operatorId = $destinationManager->getOperatorId($_POST['operatorName']);
+echo $operatorId;
 
 /* ----- CREATE NEW DESTINATION INSTANCE ----- */
 $destination = new Destination([
@@ -69,28 +70,31 @@ $destination = new Destination([
     'description' => $destinationDescription
 ]);
 
+$destination->setOperatorId($operatorId);
+
 if ($destinationManager->checkDestinationExists($destination->getLocation())) {
     $message = 'Destination already registered.';
     unset($destination);
 } else {
+    echo ('getLocation : '.$destination->getLocation().'<br>');
+    echo ('getPrice : '.$destination->getPrice().'<br>');
+    echo ('getOperatorId : '.$destination->getOperatorId().'<br>');
+    echo ('getImg : '.$destination->getImg().'<br>');
+    echo ('getDescription : '.$destination->getDescription().'<br>');
     $destinationManager->createDestination($destination);
     $destinationManager->updateDestination($destination);
 }
 
-/* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
-if ($destination) {
-    $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
+// /* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
+// if ($destination) {
+//     $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
 
-// header("Location:".$destinationUrl);
+// // header("Location:".$destinationUrl);
 // exit;
-}
+// }
 
 
 /* ----- TESTS ----- */
-echo ('getLocation : '.$destination->getLocation());
-echo ('getPrice : '.$destination->getPrice());
-echo ('getOperatorId : '.$destination->getOperatorId());
-echo ('getImg : '.$destination->getImg());
-echo ('getDescription : '.$destination->getDescription());
+
 
 // echo $operatorId;

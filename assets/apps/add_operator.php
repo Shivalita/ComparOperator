@@ -28,10 +28,10 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
         if (in_array($extension_upload, $extensions_autorisees)) {
             $operatorLogoPath = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
-            move_uploaded_file(
-                $_FILES['operatorLogo']['tmp_name'],
-                $operatorLogoPath
-            );
+            // move_uploaded_file(
+            //     $_FILES['operatorLogo']['tmp_name'],
+            //     $operatorLogoPath
+            // );
             $operatorLogo = substr_replace($operatorLogoPath, 'assets/', 3, 0);
         } else {
             echo ('wrong_extension');
