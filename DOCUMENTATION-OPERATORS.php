@@ -19,7 +19,7 @@ $allOperators = $operatorManager->getAllOperators();
 foreach ($allOperators as $oneOperator) {
     echo ($oneOperator['name']);
 }
-// Displays the name of all registered operators
+// Displays the name of all registered operators ORDER BY premium ones first
 
 
 /* ---------- COUNT OPERATORS ---------- */

@@ -48,14 +48,14 @@ if (!empty($_FILES['destinationImage']) AND $_FILES['destinationImage']['error']
     $destinationImage = '';
 }
 
-function getFormattedOperatorName($nameToFormat) {
-    $nameToFormat = str_replace('%', ' ', $nameToFormat);
+function getFormattedName($nameToFormat) {
+    $nameToFormat = str_replace('%20', ' ', $nameToFormat);
     $nameToFormat = ucwords($nameToFormat);
     return $nameToFormat;
 }
 
 if (isset($_GET['name'])) {
-    $operatorName = getFormattedOperatorName($_GET['name']);
+    $operatorName = getFormattedName($_GET['name']);
 }
 
 $operatorId = $destinationManager->getOperatorId($_POST['operatorName']);
@@ -71,29 +71,21 @@ $destination = new Destination([
 
 $destination->setOperatorId($operatorId);
 
-    // echo ('getLocation : '.$destination->getLocation().'<br>');
-    // echo ('getPrice : '.$destination->getPrice().'<br>');
-    // echo ('getOperatorId : '.$destination->getOperatorId().'<br>');
-    // echo ('getImg : '.$destination->getImg().'<br>');
-    // echo ('getDescription : '.$destination->getDescription().'<br>');
-    $destinationManager->createDestination($destination);
-    $destinationManager->updateDestination($destination);
-// }
+$destinationManager->createDestination($destination);
+$destinationManager->updateDestination($destination);
+
 
 /* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
+function setFormattedName($nameToFormat) {
+    $nameToFormat = str_replace(' ', '%20', $nameToFormat);
+    $nameToFormat = strtolower($nameToFormat);
+    return $nameToFormat;
+}
+
 if ($destination) {
-    $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
+    $destinationUrlName = setFormattedName($destination->getLocation());
+    $destinationUrl = '../../admin/fiche-destination-admin.php?location='.$destinationUrlName;
 
 header("Location:".$destinationUrl);
 exit;
 }
-
-
-/* ----- TESTS ----- */
-// $allDestinations = $destinationManager->getAllDestinations();
-// foreach ($allDestinations as $oneDestination) {
-//      echo($oneDestination['location']).'<br>';
-//      echo($oneDestination['price']).'<br>';
-//      echo($oneDestination['operator_id']).'<br>';
-//      echo($oneDestination['description']).'<br><br>';
-// }

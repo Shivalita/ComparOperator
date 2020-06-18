@@ -70,12 +70,6 @@ class DestinationManager
          VALUES(:location, :price, :operator_id, :img, :description)'
         );
 
-        // $addDestinationQuery->bindValue(':location', $destination->getLocation());
-        // $addDestinationQuery->bindValue(':price', $destination->getPrice());
-        // $addDestinationQuery->bindValue(':operator_id', $destination->getOperatorId());
-        // $addDestinationQuery->bindValue(':img', $destination->getImg());
-        // $addDestinationQuery->bindValue(':description', $destination->getDescription());
-
         $addDestinationQuery->execute([
             ':location' => $destination->getLocation(),
             ':price' => $destination->getPrice(),
@@ -164,7 +158,6 @@ class DestinationManager
         while ($destinationData = $otherDestinationsQuery->fetch(PDO::FETCH_ASSOC)) {
             $otherDestination = new Destination($destinationData);
             array_push($otherDestinationsArray, $otherDestination);
-            // break;
         }
         return $otherDestinationsArray;
     }
@@ -183,8 +176,6 @@ class DestinationManager
          while ($destinationOperator = $destinationQuery->fetch(PDO::FETCH_ASSOC)) {
              $operator = new Operator($destinationOperator);
              array_push($destinationOperatorsArray, $operator);
-             // break;
-         }
  
          return $destinationOperatorsArray;
      }

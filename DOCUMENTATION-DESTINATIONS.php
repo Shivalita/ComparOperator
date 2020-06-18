@@ -19,7 +19,7 @@ $allDestinations = $destinationManager->getAllDestinations();
 foreach ($allDestinations as $oneDestination) {
     echo ($oneDestination['location']);
 }
-// Displays the name of all registered destinations
+// Displays the name of all registered destinations WITHOUT DUPLICATES
 
 
 /* ---------- COUNT DESTINATIONS ---------- */
