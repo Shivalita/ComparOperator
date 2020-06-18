@@ -20,7 +20,7 @@ $operatorManager = new OperatorManager($db);
 
   <div class="jumbotron jumbotron-fluid fond">
     <div class="container text-center">
-      <h1 class="display-4 text-white">Nom Operator</h1>
+      <h1 class="display-4 text-white"><?php echo $_GET['name'] ?></h1>
     </div>
   </div>
 
@@ -35,7 +35,7 @@ $operatorManager = new OperatorManager($db);
           <h5 class="card-title">Card title</h5>
           <span class"float-right">A partir de €€€</span>
           <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
+          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name<?=($oneOperator['name']);?>" role="button">Voir les prix</a>
         </div>
       </div>
     </div>
