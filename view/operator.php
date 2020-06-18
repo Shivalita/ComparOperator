@@ -24,64 +24,58 @@ $operatorManager = new OperatorManager($db);
     </div>
   </div>
 
-  <!-- <div class="container d-flex justify-content-center">
-    <div class="row row-cols-1 row-cols-md-1">
-      <div class="card mb-3 shadow" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="https://source.unsplash.com/random/800x800/?landscape" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 <div class="container">
   <h1 class="text-center mt-3 mb-4">Les Destinations</h1>
   <div class="row row-cols-1 row-cols-md-4">
+
     <div class="col mb-4">
       <div class="card">
         <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a class="btn btn-warning float-right font-weight-bold" href="#" role="button">Voir les prix</a>
+          <span class"float-right">A partir de €€€</span>
+          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
         </div>
       </div>
     </div>
+
     <div class="col mb-4">
       <div class="card">
         <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <span class"float-right">A partir de €€€</span>
+          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
         </div>
       </div>
     </div>
+
     <div class="col mb-4">
       <div class="card">
         <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          <span class"float-right">A partir de €€€</span>
+          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
         </div>
       </div>
     </div>
+
     <div class="col mb-4">
       <div class="card">
         <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <span class"float-right">A partir de €€€</span>
+          <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 

@@ -27,7 +27,7 @@ $operatorManager = new OperatorManager($db);
 
 
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2">
+    <div class="row row-cols-1 row-cols-md-3">
 
       <?php    $allOperators = $operatorManager->getAllOperators();
       foreach ($allOperators as $oneOperator) { ?>
@@ -64,7 +64,7 @@ $operatorManager = new OperatorManager($db);
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                   <a class="btn btn-info btn-lg btn-block" href="<?=($oneOperator['link']);?>" role="button">WEBSITE</a>
                 </div>
-                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                <div class="btn-group mr-2 mt-2" role="group" aria-label="Second group">
                   <a class="btn btn-warning btn-lg btn-block" href="operator.php?<?=($oneOperator['name']);?>" role="button">Voir les destinations</a>
                 </div>
               </div>
@@ -75,6 +75,7 @@ $operatorManager = new OperatorManager($db);
       <?php } ?>
     </div>
   </div>
+  
   <?php include '../assets/partials/footer.php'; ?>
 
   <!-- Optional JavaScript -->
