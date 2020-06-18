@@ -23,25 +23,25 @@ $destinationManager = new DestinationManager($db);
   <div class="container mb-5">
     <div id="carouselExampleSlidesOnly" class="carousel slide shadow" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/41gqn1q-tqc/1600x800/" alt="First slide">
+        <div class="carousel-item active" data-interval="1000">
+          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/EXdXLrZXS9Q/1600x800/" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
-            <h1>New York</h1>
-            <a class="btn btn-warning btn-lg" href="#" role="button">Visiter</a>
+            <h1>Londres</h1>
+            <a class="btn btn-warning btn-lg" href="destination.php?name=Londres" role="button">Visiter</a>
           </div>
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/random/1600x800/?travel/2" alt="Second slide">
+        <div class="carousel-item" data-interval="1000">
+          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/NiyRORf8d8I/1600x800/" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Hello</h3>
-            <a class="btn btn-warning btn-lg" href="#" role="button">Visiter</a>
+            <h3>Tokyo</h3>
+            <a class="btn btn-warning btn-lg" href="destination.php?name=Tokyo" role="button">Visiter</a>
           </div>
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/random/1600x800/?travel/3" alt="Third slide">
+        <div class="carousel-item" data-interval="1000">
+          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/random/1600x800/?London,city/3" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Hello</h3>
-            <a class="btn btn-warning btn-lg" href="#" role="button">Visiter</a>
+            <h3>Paris</h3>
+            <a class="btn btn-warning btn-lg" href="destination.php?name=Paris" role="button">Visiter</a>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@ $destinationManager = new DestinationManager($db);
 
         <div class="col mb-4">
           <div class="card shadow">
-            <img src="<?= ($oneDestination['img']); ?> " class="card-img-top" alt="...">
+            <img src="<?= ($oneDestination['img']); ?>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-center"><?= ($oneDestination['location']); ?></h5>
               <p class="card-text"><?= ($oneDestination['description']); ?></p>
@@ -65,7 +65,6 @@ $destinationManager = new DestinationManager($db);
             </div>
           </div>
         </div>
-          <!-- echo ($oneDestination['location']); -->
       <?php } ?>
 
     </div>
