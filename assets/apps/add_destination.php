@@ -70,28 +70,30 @@ $destination = new Destination([
 ]);
 
 $destination->setOperatorId($operatorId);
-var_dump($destination);
 
-// if ($destinationManager->checkDestinationExists($destination->getLocation())) {
-//     $message = 'Destination already registered.';
-//     unset($destination);
-// } else {
-    echo ('getLocation : '.$destination->getLocation().'<br>');
-    echo ('getPrice : '.$destination->getPrice().'<br>');
-    echo ('getOperatorId : '.$destination->getOperatorId().'<br>');
-    echo ('getImg : '.$destination->getImg().'<br>');
-    echo ('getDescription : '.$destination->getDescription().'<br>');
+    // echo ('getLocation : '.$destination->getLocation().'<br>');
+    // echo ('getPrice : '.$destination->getPrice().'<br>');
+    // echo ('getOperatorId : '.$destination->getOperatorId().'<br>');
+    // echo ('getImg : '.$destination->getImg().'<br>');
+    // echo ('getDescription : '.$destination->getDescription().'<br>');
     $destinationManager->createDestination($destination);
     $destinationManager->updateDestination($destination);
 // }
 
 /* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
-// if ($destination) {
-//     $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
+if ($destination) {
+    $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
 
-// header("Location:".$destinationUrl);
-// exit;
-// }
+header("Location:".$destinationUrl);
+exit;
+}
 
 
 /* ----- TESTS ----- */
+// $allDestinations = $destinationManager->getAllDestinations();
+// foreach ($allDestinations as $oneDestination) {
+//      echo($oneDestination['location']).'<br>';
+//      echo($oneDestination['price']).'<br>';
+//      echo($oneDestination['operator_id']).'<br>';
+//      echo($oneDestination['description']).'<br><br>';
+// }
