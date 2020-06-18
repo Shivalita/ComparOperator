@@ -6,15 +6,69 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <title>Hello, world!</title>
+  <title>Desinations</title>
 </head>
 <body>
 
   <?php include '../assets/partials/nav-user.php'; ?>
 
-  <div class="jumbotron jumbotron-fluid fond">
+  <div class="jumbotron jumbotron-fluid fond1">
     <div class="container text-center">
       <h1 class="display-4 text-white">Nos Destinations</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+
+      <div class="col mb-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <span class"float-right">A partir de €€€</span>
+            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <span class"float-right">A partir de €€€</span>
+            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <span class"float-right">A partir de €€€</span>
+            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/random/400x300/?landscape" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <span class"float-right">A partir de €€€</span>
+            <p class="card-text mt-2">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a class="btn btn-warning float-right font-weight-bold" href="destination.php?=name" role="button">Voir les prix</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
