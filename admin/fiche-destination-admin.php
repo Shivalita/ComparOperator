@@ -10,7 +10,10 @@
   </head>
   <body>
 
-    <?php include '../assets/partials/nav-admin.php'; ?>
+    <?php 
+    include ('../assets/partials/nav-admin.php'); 
+    ?>
+    
 
     <div class="container">
       <div class="container w-75 d-flex justify-content-center  mt-5">

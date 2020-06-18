@@ -12,8 +12,19 @@
 
   <?php 
     include ('../config.php');
-    include '../assets/partials/nav-admin.php'; 
-    include '../assets/apps/fiche-operator-process.php'; 
+    include ('../assets/partials/nav-admin.php'); 
+    include ('../assets/apps/fiche-operator-process.php'); 
+
+    $destinationManager = new DestinationManager($db);
+    $operatorManager = new OperatorManager($db);
+
+    $allDestinations = $destinationManager->getAllDestinations();
+      foreach ($allDestinations as $oneDestination) {
+          echo($oneDestination['location']).'<br>';
+          echo($oneDestination['price']).'<br>';
+          echo($oneDestination['operator_id']).'<br>';
+          echo($oneDestination['description']).'<br><br>';
+      }
   ?>
 
   <div class="container mt-5">
@@ -33,8 +44,6 @@
     </div>
   </div>
   <hr style="width:100%;height:2px;">
-
-  <?php var_dump($_GET['name']); ?>
 
   <div class="container">
     <div class="container w-75 d-flex justify-content-center  mt-5">
