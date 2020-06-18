@@ -14,24 +14,23 @@ class DestinationManager
     {
         $allDestinationsQuery = $this->db->query(
             'SELECT * FROM destinations'
-            // 'SELECT 
-            //     *
-            // FROM 
-            //     destinations
-            // GROUP BY 
-            //     location
-            // ORDER BY
-            //     location'
         );
         $allDestinationsArray = $allDestinationsQuery->fetchAll(PDO::FETCH_ASSOC);
-        // $tata = [];
-    
-        // foreach ($allDestinationsArray as $oneDestination) {
-        //     array_push($tata, $oneDestination);
-        // }
-        
-        // return $tata;
-        return $allDestinationsArray;
+
+        function super_unique($array,$key)
+        {
+           $temp_array = [];
+           foreach ($array as &$v) {
+               if (!isset($temp_array[$v[$key]]))
+               $temp_array[$v[$key]] =& $v;
+           }
+           $array = array_values($temp_array);
+           return $array;
+        }
+
+        $allDestinations = super_unique($allDestinationsArray, 'location');
+
+        return $allDestinations;
     }
 
      /* ---------- COUNT DESTINATIONS ---------- */

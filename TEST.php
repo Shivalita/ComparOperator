@@ -6,9 +6,10 @@ $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
 
 $allDestinations = $destinationManager->getAllDestinations();
-$destinationsLocations = [];
-    foreach ($allDestinations as $oneDestination) {
 
+    foreach ($allDestinations as $oneDestination) {
+        var_dump($oneDestination);
+        echo '<br>';
     }
 
 ?>
