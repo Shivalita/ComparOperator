@@ -8,8 +8,8 @@ $operatorManager = new OperatorManager($db);
 
 /* Get post data and store it in variables */
 if (
-    !empty($_POST['destinationLocation']) && 
-    !empty($_POST['destinationPrice']) && 
+    !empty($_POST['destinationLocation']) &&
+    !empty($_POST['destinationPrice']) &&
     !empty($_POST['destinationDescription'])
 ) {
     $cleanName = cleanData($_POST['destinationLocation']);
@@ -62,8 +62,8 @@ $operatorId = $destinationManager->getOperatorId($_POST['operatorName']);
 
 /* ----- CREATE NEW DESTINATION INSTANCE ----- */
 $destination = new Destination([
-    'location' => ucfirst($destinationLocation), 
-    'price' => $destinationPrice, 
+    'location' => ucfirst($destinationLocation),
+    'price' => $destinationPrice,
     'operator_id' => $operatorId,
     'img' => $destinationImage,
     'description' => $destinationDescription
@@ -86,12 +86,12 @@ var_dump($destination);
 // }
 
 /* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
-// if ($destination) {
-//     $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
+if ($destination) {
+    $destinationUrl = '../../admin/fiche-destination-admin.php?'.$destination->getLocation();
 
-// header("Location:".$destinationUrl);
-// exit;
-// }
+header("Location:".$destinationUrl);
+exit;
+}
 
 
 /* ----- TESTS ----- */
