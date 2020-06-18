@@ -10,36 +10,43 @@
 </head>
 <body>
 
-  <?php 
-    include ('../config.php');
-    include ('../assets/partials/nav-admin.php'); 
-    include ('../assets/apps/fiche-operator-process.php'); 
+  <?php
+  include ('../config.php');
+  include ('../assets/partials/nav-admin.php');
+  include ('../assets/apps/fiche-operator-process.php');
 
-    $destinationManager = new DestinationManager($db);
-    $operatorManager = new OperatorManager($db);
+  $destinationManager = new DestinationManager($db);
+  $operatorManager = new OperatorManager($db);
 
-    $allDestinations = $destinationManager->getAllDestinations();
-      foreach ($allDestinations as $oneDestination) {
-          echo($oneDestination['location']).'<br>';
-          echo($oneDestination['price']).'<br>';
-          echo($oneDestination['operator_id']).'<br>';
-          echo($oneDestination['description']).'<br><br>';
-      }
+  $operator = $operatorManager -> getOperator($_GET['name']);
+
+  $allDestinations = $destinationManager->getAllDestinations();
+  foreach ($allDestinations as $oneDestination) {
+    echo($oneDestination['location']).'<br>';
+    echo($oneDestination['price']).'<br>';
+    echo($oneDestination['operator_id']).'<br>';
+    echo($oneDestination['description']).'<br><br>';
+  }
   ?>
 
   <div class="container mt-5">
-    <h1 class="text-center mb-5">Nom du tour operator!</h1>
+    <h1 class="text-center mb-5"><?php echo $_GET['name'] ?></h1>
     <h3>Liste destinations</h3>
     <div class="row">
 
-      <div class="col-sm-12 mb-4">
-        <div class="card">
-          <div class="card-body d-inline-flex">
-            <p>destinations n°1</p>
-            <a class="btn btn-warning ml-5" href="./view/fiche-operator-admin.php" role="button">Fiche </a>
+      <?php $allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
+      foreach ($allOperatorDestinations as $oneDestination) { ?>
+
+        <div class="col-sm-6 mb-4">
+          <div class="card">
+            <div class="card-body d-inline-flex">
+              <p><?= ($oneDestination->getLocation()); ?></p>
+              <a class="btn btn-warning ml-5" href="fiche-destination-admin.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Fiche </a>
+            </div>
           </div>
         </div>
-      </div>
+
+      <?php  } ?>
 
     </div>
   </div>
@@ -56,15 +63,15 @@
           <input type="file" class="form-control-file" accept="image/*" name="destinationImage" >
           <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
           <div class="text-center">
-              <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
-        </div>
+            <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+          </div>
         </form>
-      
+
       </div>
     </div>
   </div>
 
-  <div class="d-flex justify-content-center mt-3">
+  <div class="d-flex justify-content-center mt-3 mb-5">
     <a class="btn btn-danger d-flex justify-content-center w-25" href="#" role="button">Supprimer ce TO</a>
   </div>
 
