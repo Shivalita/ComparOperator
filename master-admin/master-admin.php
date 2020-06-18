@@ -1,3 +1,11 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+
+$operatorManager = new OperatorManager($db);
+$destinationManager = new DestinationManager($db);
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,12 +32,15 @@
       </thead>
       <tbody>
         <!-- FAIRE LA BOUCLE FOREACH A PARTIR D'ICI -->
+        <?php    $allOperators = $operatorManager->getAllOperators();
+        foreach ($allOperators as $oneOperator) { ?>
         <tr>
           <th scope="row"><a class="btn btn-danger" href="#" role="button">Supprimer</a></th>
-          <td>Mark</td>
+          <td class="font-weight-bold"><?=($oneOperator['name']);?></td>
           <td><input class="form-check-input ml-3" type="checkbox" id="gridCheck1"></td>
         </tr>
         <!-- JUSQU'ICI -->
+        <?php } ?>
       </tbody>
     </table>
   </div>
@@ -46,12 +57,15 @@
         </tr>
       </thead>
       <tbody>
+        <?php  $allDestinations = $destinationManager->getAllDestinations();
+        foreach ($allDestinations as $oneDestination) { ?>
         <!-- FAIRE LA BOUCLE FOREACH A PARTIR D'ICI -->
         <tr>
           <th scope="row"><a class="btn btn-danger" href="#" role="button">Supprimer</a></th>
-          <td>Mark</td>
-          <td>Hello,World!</td>
+          <td class="font-weight-bold"><?= ($oneDestination['location']); ?></td>
+          <td class="font-italic"><?= ($oneDestination['description']); ?></td>
         </tr>
+        <?php } ?>
         <!-- JUSQU'ICI -->
       </tbody>
     </table>

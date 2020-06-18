@@ -57,7 +57,7 @@ $destinationManager = new DestinationManager($db);
 
         <div class="col mb-4">
           <div class="card shadow">
-            <img src="<?= ($oneDestination['img']); ?>" class="card-img-top" alt="...">
+            <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?= ($oneDestination['location']); ?>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title text-center"><?= ($oneDestination['location']); ?></h5>
               <p class="card-text"><?= ($oneDestination['description']); ?></p>

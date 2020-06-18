@@ -20,7 +20,7 @@
             <a href="#!">Mentions légals</a>
           </li>
           <li>
-            <a href="../admin/index.php">Rejoignez nous!</a>
+            <a href="../admin-login.php">Rejoignez nous!</a>
           </li>
         </ul>
       </div>

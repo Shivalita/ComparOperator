@@ -16,14 +16,14 @@
           <div class="form-group mt-3">
             <div class="form-group">
               <label for="exampleInputPassword1">Username Admin</label>
-              <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" required>
+              <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
           </div>
-          <button type="submit" name="login" class="btn btn-success pb-1">Se connecter</button><br/>
+          <a class="btn btn-success" href="master-admin.php" role="button">Se connecter</a>
         </form>
       </div>
     </div>

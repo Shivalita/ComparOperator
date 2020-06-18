@@ -24,8 +24,6 @@ $destinationManager = new DestinationManager($db);
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link text-white" href="fiche-operator-admin.php">Fiche TO</a>
-        <a class="nav-item nav-link text-white" href="fiche-destination-admin.php">Fiche Destination</a>
         <a class="nav-item nav-link text-white" href="/index.php">Retour au site</a>
       </div>
     </div>
