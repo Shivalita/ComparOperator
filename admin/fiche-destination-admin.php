@@ -19,14 +19,9 @@ $destination = $destinationManager -> getDestination($_GET['name']);
   </head>
   <body>
 
-<<<<<<< HEAD
-    <?php 
-    include ('../config.php');
-    include ('../assets/partials/nav-admin.php'); 
-=======
     <?php
+    include ('../config.php');
     include ('../assets/partials/nav-admin.php');
->>>>>>> e0877db22fc616daf201440a069d8d2745d50029
     ?>
 
 

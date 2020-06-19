@@ -35,7 +35,7 @@ $destinationManager = new DestinationManager($db);
 
         <div class="col mb-4">
           <div class="card shadow">
-            <img src="<?=($oneOperator['logo']);?>" class="card-img-top" alt="...">
+            <img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
               <?php
@@ -45,7 +45,7 @@ $destinationManager = new DestinationManager($db);
               }
               ?>
               <span class="badge badge-success"></span>
-              <h5 class="card-title"><?=($oneOperator['name']);?> </h5>
+              <h5 class="card-title text-center font-weight-bold"><?=($oneOperator['name']);?> </h5>
               <div class="stars">
                 <form action="">
                   <input class="star star-1" id="star-1" type="radio" name="star"/>
