@@ -34,7 +34,7 @@ $destinationManager = new DestinationManager($db);
         <!-- echo ($oneDestination['location']); -->
         <div class="col mb-4">
           <div class="card shadow">
-            <img src="https://source.unsplash.com/random/400x300/?<?= ($oneDestination['location']); ?> " class="card-img-top" alt="...">
+            <img src="https://source.unsplash.com/random/800x600/?city,landscape,<?= ($oneDestination['location']); ?> " class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title font-weight-bold text-center"><?= ($oneDestination['location']); ?> </h5>
               <p class="text-success font-weight-bold"><span>A partir de <?= ($oneDestination['price']); ?> €</span></p>

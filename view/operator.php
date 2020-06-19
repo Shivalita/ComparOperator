@@ -111,7 +111,7 @@ $operator = $operatorManager -> getOperator($_GET['name']);
           Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,
           when an unknown printer took a galley of type and scrambled it to make a type
           specimen book.</small>
-          <p class="font-italic text-muted">'.$operator->getName().'</p>
+          <p class="font-italic"><small>'.$operator->getName().'</small></p>
           </div>
           </div>
           ');
