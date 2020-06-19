@@ -60,7 +60,7 @@
           <input type="file" class="form-control-file" accept="image/*" name="destinationImage" >
           <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
           <div class="text-center">
-            <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+            <button class="btn btn-success align-center mt-2" type="submit" name="submit">Ajouter</button>
           </div>
         </form>
 
