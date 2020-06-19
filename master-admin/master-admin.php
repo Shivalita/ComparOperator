@@ -21,6 +21,23 @@ $destinationManager = new DestinationManager($db);
 
   <div class="container mt-5">
     <h1 class="text-center mb-5">Espace Administrateur</h1>
+
+    <div class="container">
+      <div class="container w-75 d-flex justify-content-center  mt-5">
+        <div class="card p-4 shadow" style="width: 22rem;">
+          <h4 class="text-center text-underlined"><strong>Ajouter un TO</strong></h4>
+          <form class="p-3" action="../assets/apps/add_operator.php" method="POST" enctype="multipart/form-data">
+            <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName">
+            <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
+            <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" >
+            <div class="text-center">
+              <button class="btn btn-success mt-2 align-center" type="submit" name="submit">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <h3>Liste tour operator</h3>
     <table class="table">
       <thead class="thead-dark">

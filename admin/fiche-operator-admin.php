@@ -10,36 +10,43 @@
 </head>
 <body>
 
-  <?php 
-    include ('../config.php');
-    include ('../assets/partials/nav-admin.php'); 
-    include ('../assets/apps/get-operator-id.php'); 
+  <?php
+  // include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+  include ('../config.php');
+  include ('../assets/partials/nav-admin.php');
+  include ('../assets/apps/fiche-operator-process.php');
 
-    $destinationManager = new DestinationManager($db);
-    $operatorManager = new OperatorManager($db);
+  $destinationManager = new DestinationManager($db);
+  $operatorManager = new OperatorManager($db);
+
+  $operator = $operatorManager -> getOperator($_GET['name']);
+
   ?>
 
   <div class="container mt-5">
     <h1 class="text-center mb-5"><?php echo $_GET['name'] ?></h1>
     <h3>Liste destinations</h3>
-    <div class="row">
-
-      <?php $allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
-      foreach ($allOperatorDestinations as $oneDestination) { ?>
-
-        <div class="col-sm-6 mb-4">
-          <div class="card">
-            <div class="card-body d-inline-flex">
-              <p><?= ($oneDestination->getLocation()); ?></p>
-              <a class="btn btn-warning ml-5" href="fiche-destination-admin.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Fiche </a>
-            </div>
-          </div>
-        </div>
-
-      <?php  } ?>
-
-    </div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- FAIRE LA BOUCLE FOREACH A PARTIR D'ICI -->
+        <?php    $allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
+        foreach ($allOperatorDestinations as $oneDestination) { ?>
+        <tr>
+          <th scope="row"><a class="btn btn-warning" href="fiche-destination-admin.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Fiche </a></th>
+          <td class="font-weight-bold"><?= ($oneDestination->getLocation()); ?></td>
+        </tr>
+        <!-- JUSQU'ICI -->
+        <?php } ?>
+      </tbody>
+    </table>
   </div>
+
   <hr style="width:100%;height:2px;">
 
   <div class="container">
@@ -53,7 +60,7 @@
           <input type="file" class="form-control-file" accept="image/*" name="destinationImage" >
           <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
           <div class="text-center">
-            <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
+            <button class="btn btn-success align-center mt-2" type="submit" name="submit">Ajouter</button>
           </div>
         </form>
 

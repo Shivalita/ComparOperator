@@ -33,7 +33,7 @@ $destinationManager = new DestinationManager($db);
       foreach ($allDestinations as $oneDestination) { ?>
         <!-- echo ($oneDestination['location']); -->
         <div class="col mb-4">
-          <div class="card">
+          <div class="card shadow">
             <img src="https://source.unsplash.com/random/400x300/?<?= ($oneDestination['location']); ?> " class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title font-weight-bold text-center"><?= ($oneDestination['location']); ?> </h5>

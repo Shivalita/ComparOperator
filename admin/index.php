@@ -30,42 +30,29 @@ $destinationManager = new DestinationManager($db);
   </nav>
 
   <div class="container mt-5">
-    <h3>Liste tours operateurs</h3>
-    <div class="row">
-
-      <?php    $allOperators = $operatorManager->getAllOperators();
-      foreach ($allOperators as $oneOperator) { ?>
-
-        <div class="col-sm-6 mb-4">
-          <div class="card">
-            <div class="card-body d-inline-flex">
-              <p><?=($oneOperator['name']);?></p>
-              <a class="btn btn-warning ml-5" href="fiche-operator-admin.php?name=<?=($oneOperator['name']);?>" role="button">Fiche</a>
-            </div>
-          </div>
-        </div>
-
-      <?php } ?>
-
-    </div>
+    <h1 class="text-center mb-5">Espace Administrateur</h1>
+    <h3>Liste tour operator</h3>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- FAIRE LA BOUCLE FOREACH A PARTIR D'ICI -->
+        <?php    $allOperators = $operatorManager->getAllOperators();
+        foreach ($allOperators as $oneOperator) { ?>
+          <tr>
+            <th scope="row"><a class="btn btn-warning" href="fiche-operator-admin.php?name=<?=($oneOperator['name']);?>" role="button">Fiche</a></th>
+            <td class="font-weight-bold"><?=($oneOperator['name']);?></td>
+          </tr>
+          <!-- JUSQU'ICI -->
+        <?php } ?>
+      </tbody>
+    </table>
   </div>
-  <hr style="width:100%;height:2px;">
 
-  <div class="container">
-    <div class="container w-75 d-flex justify-content-center  mt-5">
-      <div class="card p-4 shadow" style="width: 22rem;">
-        <h4 class="text-center text-underlined"><strong>Ajouter un TO</strong></h4>
-        <form class="p-3" action="../assets/apps/add_operator.php" method="POST" enctype="multipart/form-data">
-          <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName">
-          <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
-          <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" >
-          <div class="text-center">
-            <button class="btn btn-success align-center" type="submit" name="submit">Ajouter</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
