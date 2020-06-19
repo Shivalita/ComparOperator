@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<<<<<<< HEAD
   <?php 
     include ('../config.php');
     include ('../assets/partials/nav-admin.php'); 
@@ -18,25 +17,6 @@
 
     $destinationManager = new DestinationManager($db);
     $operatorManager = new OperatorManager($db);
-=======
-  <?php
-  include ('../config.php');
-  include ('../assets/partials/nav-admin.php');
-  include ('../assets/apps/fiche-operator-process.php');
-
-  $destinationManager = new DestinationManager($db);
-  $operatorManager = new OperatorManager($db);
-
-  $operator = $operatorManager -> getOperator($_GET['name']);
-
-  $allDestinations = $destinationManager->getAllDestinations();
-  foreach ($allDestinations as $oneDestination) {
-    echo($oneDestination['location']).'<br>';
-    echo($oneDestination['price']).'<br>';
-    echo($oneDestination['operator_id']).'<br>';
-    echo($oneDestination['description']).'<br><br>';
-  }
->>>>>>> e0877db22fc616daf201440a069d8d2745d50029
   ?>
 
   <div class="container mt-5">
