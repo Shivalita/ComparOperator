@@ -43,20 +43,20 @@ $destination = $destinationManager -> getDestination($_GET['name']);
     <div class="tab-content text-center" id="myTabContent">
 
       <div class="tab-pane fade show active" id="describ" role="tabpanel" aria-labelledby="home-tab">
-        <img src="https://source.unsplash.com/random/600x450/?<?php echo $_GET['name'] ?>" class="img-fluid mt-3 mb-3" alt="Responsive image">
+        <img src="https://source.unsplash.com/random/600x450/?city,landscape,<?php echo $_GET['name'] ?>" class="img-fluid mt-3 mb-3 shadow" alt="Responsive image">
         <p class=""><?= ($destination->getDescription()); ?></p>
         </div>
 
         <div class="tab-pane fade" id="maps" role="tabpanel" aria-labelledby="profile-tab">
           <div class="container-fluid">
-            <div class="map-responsive mt-3">
+            <div class="map-responsive mt-3 shadow">
               <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=<?php echo $_GET['name'] ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
 
         <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="contact-tab">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div id="carouselExampleIndicators" class="carousel slide shadow" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -64,13 +64,13 @@ $destination = $destinationManager -> getDestination($_GET['name']);
             </ol>
             <div class="carousel-inner mt-3">
               <div class="carousel-item active">
-                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/1" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?php echo $_GET['name'] ?>/1" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/2" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?city,landscape<?php echo $_GET['name'] ?>/2" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/3" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?php echo $_GET['name'] ?>/3" class="d-block w-100 img-fluid" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -94,7 +94,7 @@ $destination = $destinationManager -> getDestination($_GET['name']);
       <div class="row row-cols-1 row-cols-md-3">
 
         <div class="col mb-4">
-          <div class="card">
+          <div class="card shadow">
             <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Nom operator</h5>
@@ -110,7 +110,7 @@ $destination = $destinationManager -> getDestination($_GET['name']);
         </div>
 
         <div class="col mb-4">
-          <div class="card">
+          <div class="card shadow">
             <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Nom operator</h5>
@@ -126,7 +126,7 @@ $destination = $destinationManager -> getDestination($_GET['name']);
         </div>
 
         <div class="col mb-4">
-          <div class="card">
+          <div class="card shadow">
             <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Nom operator</h5>
@@ -142,7 +142,7 @@ $destination = $destinationManager -> getDestination($_GET['name']);
         </div>
 
         <div class="col mb-4">
-          <div class="card">
+          <div class="card shadow">
             <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Nom operator</h5>
