@@ -92,70 +92,29 @@ $destination = $destinationManager -> getDestination($_GET['name']);
     <div class="container">
       <h1 class="text-center mb-3">Les tours opérators proposant ce voyage</h1>
       <div class="row row-cols-1 row-cols-md-3">
+<?php
+$allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation());
 
+foreach ($allDestinationOperators as $destinationOperator) {
+    echo('
         <div class="col mb-4">
-          <div class="card shadow">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
+        <div class="card shadow">
+        <img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">'.$destinationOperator['name'].'</h5>
+            <p class="card-text">'.$destinationOperator['description'].'</p>
         </div>
-
-        <div class="col mb-4">
-          <div class="card shadow">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
+        <div class="card-footer bg-white">
+            <small class="float-right text-success font-weight-bold">A partir de '.$destinationOperator['price'].'€</small>
         </div>
-
-        <div class="col mb-4">
-          <div class="card shadow">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
+        <div class="card-footer d-flex justify-content-center">
+            <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
         </div>
-
-        <div class="col mb-4">
-          <div class="card shadow">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
         </div>
+    </div>
+    ');
+}
+?>
       </div>
     </div>
 
