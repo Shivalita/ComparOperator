@@ -60,7 +60,48 @@ $destinationManager->getOtherDestinations($currentDestinationLocation); // Retur
 
 // Ex:
 $allDestinations = $destinationManager->getOtherDestinations($destination->getLocation());
-foreach ($allDestinations $oneDestination) {
+foreach ($allDestinations as $oneDestination) {
     echo ($oneDestination->getLocation());
 }
 // Displays the name of all registered destinations except the current one
+
+
+/* ---------- GET ALL OPERATORS FOR THIS DESTINATION ---------- */
+$destinationManager->getDestinationOperators($destinationLocation); // Returns an ARRAY
+// Returns a list of each destination for this location, with his data and the operator data
+$allOperators = $destinationManager->getDestinationOperators($destination->getLocation());
+foreach ($allDestinationOperators as $destinationOperator) {
+    echo $destinationOperator['operator_id'];
+    echo $destinationOperator['id'];
+    echo $destinationOperator['location'];
+    echo $destinationOperator['name'];
+    echo $destinationOperator['price'];
+// Displays both destination data (location, description, price...), 
+// and operator offering data (name, logo, is_premium...)
+
+
+/* ---------- CODE A INSERER DANS VIEW/DESTINATION ---------- */
+
+$allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation());
+
+        foreach ($allDestinationOperators as $destinationOperator) {
+            echo('
+                <div class="col mb-4">
+                <div class="card">
+                <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">'.$destinationOperator['name'].'</h5>
+                    <p class="card-text">'.$destinationOperator['description'].'</p>
+                </div>
+                <div class="card-footer bg-white">
+                    <small class="float-right text-success font-weight-bold">A partir de '.$destinationOperator['price'].'€€€</small>
+                </div>
+                <div class="card-footer d-flex justify-content-center">
+                    <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
+                </div>
+                </div>
+            </div>
+            ');
+        }
+
+// De rien ^^

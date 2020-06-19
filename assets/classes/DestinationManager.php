@@ -162,37 +162,59 @@ class DestinationManager
         return $otherDestinationsArray;
     }
 
+    // /* ---------- GET DESTINATION OPERATORS ---------- */
+    // public function getDestinationOperators($destinationLocation)
+    // {
+    //     $destinationQuery = $this->db->prepare(
+    //         'SELECT * FROM destinations WHERE location = ?'
+    //     );
+    //     $destinationQuery->execute([$destinationLocation]);
+    //     $destinationArray = $destinationQuery->fetchAll(PDO::FETCH_ASSOC);
+
+    //     $destinationOperatorsId = [];
+    //     foreach ($destinationArray as $destination) {
+    //         array_push($destinationOperatorsId, $destination['operator_id']);
+    //     }
+
+    //     $operatorsDataArray = [];
+    //     foreach ($destinationOperatorsId as $operatorId) {
+    //         $operatorsQuery = $this->db->prepare(
+    //             'SELECT * FROM operators WHERE id = ?'
+    //         );
+    //         $operatorsQuery->execute([$operatorId]);
+    //         $operatorsData = $operatorsQuery->fetch(PDO::FETCH_ASSOC);
+    //         array_push($operatorsDataArray, $operatorsData);
+    //     }
+
+    //     $destinationOperatorsArray = [];
+    //     foreach ($operatorsDataArray as $operatorData) {
+    //         $destinationOperator = new Operator($operatorData);
+    //         array_push($destinationOperatorsArray, $destinationOperator);
+    //     }
+       
+    //     return $destinationOperatorsArray;
+    // }
+
+
+
+
     /* ---------- GET DESTINATION OPERATORS ---------- */
     public function getDestinationOperators($destinationLocation)
     {
-        $destinationQuery = $this->db->prepare(
-            'SELECT * FROM destinations WHERE location = ?'
+        $allDestinationsOperatorsArray = [];
+
+        $destinationsOperatorsQuery = $this->db->prepare(
+            ' SELECT destinations.*, operators.*
+                FROM destinations 
+                INNER JOIN operators 
+                ON destinations.operator_id = operators.id
+                AND destinations.location = ?'
         );
-        $destinationQuery->execute([$destinationLocation]);
-        $destinationArray = $destinationQuery->fetchAll(PDO::FETCH_ASSOC);
 
-        $destinationOperatorsId = [];
-        foreach ($destinationArray as $destination) {
-            array_push($destinationOperatorsId, $destination['operator_id']);
-        }
+        $destinationsOperatorsQuery->execute([$destinationLocation]);
+        $allDestinationsOperatorsArray = $destinationsOperatorsQuery->fetchAll(PDO::FETCH_ASSOC);
 
-        $operatorsDataArray = [];
-        foreach ($destinationOperatorsId as $operatorId) {
-            $operatorsQuery = $this->db->prepare(
-                'SELECT * FROM operators WHERE id = ?'
-            );
-            $operatorsQuery->execute([$operatorId]);
-            $operatorsData = $operatorsQuery->fetch(PDO::FETCH_ASSOC);
-            array_push($operatorsDataArray, $operatorsData);
-        }
-
-        $destinationOperatorsArray = [];
-        foreach ($operatorsDataArray as $operatorData) {
-            $destinationOperator = new Operator($operatorData);
-            array_push($destinationOperatorsArray, $destinationOperator);
-        }
-       
-        return $destinationOperatorsArray;
+        return $allDestinationsOperatorsArray;
     }
 }
 
