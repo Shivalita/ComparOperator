@@ -5,11 +5,13 @@ include('config.php');
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
 
-$allDestinations = $destinationManager->getAllDestinations();
+$allOperators = $destinationManager->getDestinationOperators('Miami');
 
-    foreach ($allDestinations as $oneDestination) {
-        var_dump($oneDestination);
-        echo '<br>';
-    }
+foreach ($allOperators as $oneOperator) {
+    echo ($oneOperator->getId().'</br>');
+    echo ($oneOperator->getName().'</br>');
+    echo ($oneOperator->getIsPremium().'</br>');
+    echo '<br><br>';
+}
 
 ?>
