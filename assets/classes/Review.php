@@ -26,11 +26,12 @@ class Review
 
     public function getId() 
     {
-        return $this->id;
+        return (int)$this->id;
     }
 
-    public function setId(int $id)
+    public function setId($id)
     {
+        $id = (int) $id;
         $this->id = $id;
     }
 
@@ -54,13 +55,14 @@ class Review
         $this->author = $author;
     }
 
-    public function getTourId() 
+    public function getOperatorId() 
     {
         return $this->operator_id;
     }
 
-    public function setTourId(int $operator_id)
+    public function setOperatorId($operatorId)
     {
+        $operator_id = $operatorId;
         $this->operator_id = $operator_id;
     }
 
@@ -69,7 +71,7 @@ class Review
         return $this->ip_address;
     }
 
-    public function setIpAddress(string $ip_address)
+    public function setIpAddress($ip_address)
     {
         $this->ip_address = $ip_address;
     }

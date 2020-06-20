@@ -5,7 +5,7 @@ include ('../config.php');
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
 
-$destination = $destinationManager -> getDestination($_GET['name']);
+$destination = $destinationManager->getDestination($_GET['location']);
 ?>
 
 <!doctype html>
@@ -27,18 +27,28 @@ $destination = $destinationManager -> getDestination($_GET['name']);
   <div class="container">
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
-        <h4 class="text-center text-underlined"><strong><?= ($destination->getLocation()); ?></strong></h4>
-        <form class="p-3" action="./apps/add_destination.php" method="POST" enctype="multipart/form-data">
-          <input type="text" class="form-control mb-2" placeholder="Nom destination" name="#">
-          <textarea class="form-control mb-2" placeholder="Description" name="#"></textarea>
-          <input type="file" class="form-control-file" accept="image/*" name="#" required>
+        <h4 class="text-center text-underlined"><strong><?= $destination->getLocation() ?></strong></h4>
+        <form class="p-3" action="../assets/apps/update-destination.php" method="POST" enctype="multipart/form-data">
+          <input name="destinationLocation" type="hidden" value="<?= $destination->getLocation() ?>">
+          <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
+          <input type="text" class="form-control mb-2" placeholder="<?= $destination->getPrice() ?>€" name="destinationPrice">
+          <textarea class="form-control mb-2" placeholder="<?= $destination->getDescription() ?>" name="destinationDescription"></textarea>
+          <input type="file" class="form-control-file" accept="image/*" name="destinationImg">
+          <div class="text-center">
+            <button class="btn btn-success align-center mt-3" type="submit" name="submit">Modifier</button>
+          </div>
         </form>
-        <div class="text-center">
-          <button class="btn btn-success align-center" type="submit" name="submit">Modifier</button>
-        </div>
       </div>
     </div>
   </div>
+
+  <form class="mt-4" action="../assets/apps/operator-delete-destination.php" method="POST">
+    <input name="destinationLocation" type="hidden" value="<?= $destination->getLocation() ?>">
+    <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
+    <div class="text-center">
+      <button class="btn btn-danger align-center" type="submit" name="submit">Supprimer cette destination</button>
+    </div>
+  </form>
 
 
   <!-- Optional JavaScript -->

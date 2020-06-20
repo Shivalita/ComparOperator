@@ -9,44 +9,6 @@ class OperatorManager
         $this->db = $db;
     }
 
-    /* ---------- GET ALL OPERATORS ---------- */
-    public function getAllOperators() 
-    {
-        $allOperatorsQuery = $this->db->query(
-            'SELECT * FROM operators ORDER BY is_premium DESC'
-        );
-        $allOperatorsArray = $allOperatorsQuery->fetchAll(PDO::FETCH_ASSOC);
-       
-        return $allOperatorsArray;
-    }
-
-    /* ---------- COUNT OPERATORS ---------- */
-     public function countOperators()
-    {
-        $operatorsCountQuery = $this->db->query(
-            'SELECT * from operators'
-        );
-        $operatorsCount = $operatorsCountQuery->fetchAll(PDO::FETCH_ASSOC);
-
-        return count($operatorsCount);
-    }
-
-     /* ---------- CHECK IF OPERATOR EXISTS ---------- */
-     public function checkOperatorExists($operator)
-    {
-        if (is_int($operator)) {
-            return (bool) $this->db->query(
-                'SELECT COUNT(*) FROM operators WHERE id = '
-                .$operator)->fetchColumn();
-        }
-
-        $verifyOperatorExists = $this->db->prepare(
-            'SELECT COUNT(*) FROM operators WHERE name = :name'
-        );
-        $verifyOperatorExists->execute([':name' => $operator]);
-        
-        return (bool) $verifyOperatorExists->fetchColumn();           
-    }
 
     /* ---------- CREATE OPERATOR ---------- */
     public function createOperator(Operator $operator)
@@ -70,32 +32,6 @@ class OperatorManager
         ]);
     }
 
-    /* ---------- UPDATE OPERATOR ---------- */
-    public function updateOperator(Operator $operator)
-    {
-       $updateOperatorQuery = $this->db->prepare(
-           'UPDATE operators 
-            SET name = ?, rate = ?, link = ?, is_premium = ?, logo = ?
-            WHERE id = ?'
-        );
-       $updateOperatorQuery->execute([
-           $operator->getName(),
-           $operator->getRate(),
-           $operator->getLink(),
-           $operator->getIsPremium(),
-           $operator->getLogo(),
-           $operator->getId()
-       ]); 
-    }
-
-    /* ---------- DELETE OPERATOR ---------- */
-    public function deleteOperator(Operator $operator)
-    {
-        $deleteOperatorQuery = $this->db->prepare(
-            'DELETE FROM operators WHERE id = ?'
-        );
-        $deleteOperatorQuery->execute([$operator->getId()]);
-    }
 
     /* ---------- GET OPERATOR ---------- */
     public function getOperator($request)
@@ -118,22 +54,77 @@ class OperatorManager
         return new Operator($operatorData);
     }
 
-    /* ---------- GET OTHER OPERATORS LIST ---------- */
-    public function getOtherOperators($currentOperatorName)
+
+    /* ---------- UPDATE OPERATOR ---------- */
+    public function updateOperator(Operator $operator)
     {
-        $otherOperatorsArray = [];
-
-        $otherOperatorsQuery = $this->db->prepare(
-            'SELECT * FROM operators WHERE name <> :name ORDER BY name'
+       $updateOperatorQuery = $this->db->prepare(
+           'UPDATE operators 
+            SET name = ?, rate = ?, link = ?, is_premium = ?, logo = ?
+            WHERE id = ?'
         );
-        $otherOperatorsQuery->execute([':name' => $currentOperatorName]);
-
-        while ($operatorData = $otherOperatorsQuery->fetch(PDO::FETCH_ASSOC)) {
-            $otherOperator = new Operator($operatorData);
-            array_push($otherOperatorsArray, $otherOperator);
-        }
-        return $otherOperatorsArray;
+       $updateOperatorQuery->execute([
+           $operator->getName(),
+           $operator->getRate(),
+           $operator->getLink(),
+           $operator->getIsPremium(),
+           $operator->getLogo(),
+           $operator->getId()
+       ]); 
     }
+
+
+    /* ---------- DELETE OPERATOR ---------- */
+    public function deleteOperator(Operator $operator)
+    {
+        $deleteOperatorQuery = $this->db->prepare(
+            'DELETE FROM operators WHERE id = ?'
+        );
+        $deleteOperatorQuery->execute([$operator->getId()]);
+    }
+
+
+    /* ---------- CHECK IF OPERATOR EXISTS ---------- */
+    public function checkOperatorExists($operator)
+    {
+        if (is_int($operator)) {
+            return (bool) $this->db->query(
+                'SELECT COUNT(*) FROM operators WHERE id = '
+                .$operator)->fetchColumn();
+        }
+
+        $verifyOperatorExists = $this->db->prepare(
+            'SELECT COUNT(*) FROM operators WHERE name = :name'
+        );
+        $verifyOperatorExists->execute([':name' => $operator]);
+        
+        return (bool) $verifyOperatorExists->fetchColumn();           
+    }
+
+
+    /* ---------- GET ALL OPERATORS ---------- */
+    public function getAllOperators() 
+    {
+        $allOperatorsQuery = $this->db->query(
+            'SELECT * FROM operators ORDER BY is_premium DESC'
+        );
+        $allOperatorsArray = $allOperatorsQuery->fetchAll(PDO::FETCH_ASSOC);
+       
+        return $allOperatorsArray;
+    }
+
+
+    /* ---------- COUNT OPERATORS ---------- */
+     public function countOperators()
+    {
+        $operatorsCountQuery = $this->db->query(
+            'SELECT * from operators'
+        );
+        $operatorsCount = $operatorsCountQuery->fetchAll(PDO::FETCH_ASSOC);
+
+        return count($operatorsCount);
+    }
+
 
     /* ---------- GET OPERATOR DESTINATIONS ---------- */
     public function getOperatorDestinations($operatorId)
@@ -152,7 +143,24 @@ class OperatorManager
 
         return $operatorDestinationsArray;
     }
-        
+
+
+    /* ---------- GET OTHER OPERATORS LIST ---------- */
+    public function getOtherOperators($currentOperatorName)
+    {
+        $otherOperatorsArray = [];
+
+        $otherOperatorsQuery = $this->db->prepare(
+            'SELECT * FROM operators WHERE name <> :name ORDER BY name'
+        );
+        $otherOperatorsQuery->execute([':name' => $currentOperatorName]);
+
+        while ($operatorData = $otherOperatorsQuery->fetch(PDO::FETCH_ASSOC)) {
+            $otherOperator = new Operator($operatorData);
+            array_push($otherOperatorsArray, $otherOperator);
+        }
+        return $otherOperatorsArray;
+    }
 }
 
 ?>

@@ -75,16 +75,16 @@ $destinationManager->createDestination($destination);
 $destinationManager->updateDestination($destination);
 
 
-/* ----- REDIRECT TO DESTINATION PAGE WITH GET NAME ----- */
+/* ----- REDIRECT TO DESTINATION PAGE ----- */
 function setFormattedName($nameToFormat) {
     $nameToFormat = str_replace(' ', '%20', $nameToFormat);
-    $nameToFormat = strtolower($nameToFormat);
     return $nameToFormat;
 }
 
 if ($destination) {
+    $operatorName = $_POST['operatorName'];
     $destinationUrlName = setFormattedName($destination->getLocation());
-    $destinationUrl = '../../admin/fiche-destination-admin.php?location='.$destinationUrlName;
+    $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName;
 
 header("Location:".$destinationUrl);
 exit;

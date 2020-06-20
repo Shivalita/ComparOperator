@@ -1,3 +1,11 @@
+<?php
+// include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include('config.php');
+
+$operatorManager = new OperatorManager($db);
+$destinationManager = new DestinationManager($db);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,8 +24,9 @@
       <div class="col mb-4">
         <div class="card shadow">
           <div class="card-body">
-            <h5 class="card-title text-center">Administrateur Tour Operateurs</h5>
-          <form class="mx-auto" action="#" method="#" >
+            <h5 class="card-title text-center">Administrateur Tour Opérateurs</h5>
+          <form class="mx-auto" action="assets/apps/operator-login.php" method="POST" >
+          <!-- <input name="operatorName" type="hidden" value="Club Med"> -->
               <div class="form-group mt-3">
                 <div class="form-group">
                   <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
@@ -27,7 +36,7 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
               </div>
-              <a class="btn btn-success" href="admin/index.php" role="button">Se connecter</a>
+              <button class="btn btn-success" type="submit" role="button">Se connecter</button>
             </form>
           </div>
         </div>

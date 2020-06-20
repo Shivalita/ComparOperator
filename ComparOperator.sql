@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 18 juin 2020 à 19:29
+-- Généré le : sam. 20 juin 2020 à 23:24
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.2.19
 
@@ -41,18 +41,12 @@ CREATE TABLE `destinations` (
 --
 
 INSERT INTO `destinations` (`id`, `location`, `price`, `operator_id`, `img`, `description`) VALUES
-(9, 'Paris', 1200, 130, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(10, 'Miami', 1750, 131, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(11, 'Londres', 550, 132, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(12, 'Paris', 1350, 133, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(13, 'Tokyo', 1300, 134, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (14, 'Paris', 1700, 135, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(33, 'Barcelone', 600, 136, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
+(33, 'Barcelone', 555, 136, '', 'Please'),
 (38, 'Montreal', 1250, 149, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (39, 'Miami', 1600, 149, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (40, 'Tokyo', 1450, 149, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (41, 'Paris', 1500, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(42, 'Londres', 950, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (43, 'Tokyo', 1400, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (44, 'Barcelone', 1100, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
 (45, 'Montreal', 1300, 140, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
@@ -87,22 +81,20 @@ CREATE TABLE `operators` (
 --
 
 INSERT INTO `operators` (`id`, `name`, `rate`, `link`, `is_premium`, `logo`) VALUES
-(106, 'Club Med', 0, 'https://www.clubmed.com', 0, '../assets/images/operators_logos/club med.jpeg'),
-(107, 'Totoperator', 0, 'https://www.totoperator.com', 0, '../assets/images/operators_logos/totoperator.jpeg'),
-(108, 'Tataperator', 0, 'https://www.tataperator.com', 0, '../assets/images/operators_logos/tataperator.jpeg'),
-(109, 'Titiperator', 0, 'https://www.titiperator.com', 0, '../assets/images/operators_logos/titiperator.jpeg'),
-(110, 'Tutuperator', 0, 'https://www.tutuperator.com', 0, '../assets/images/operators_logos/tutuperator.jpeg'),
+(106, 'Club Med', 0, 'https://www.clubmed.com', 0, ''),
+(107, 'Totoperator', 0, 'https://www.totoperator.com', 0, ''),
+(108, 'Tataperator', 0, 'https://www.tataperator.com', 0, ''),
+(109, 'Titiperator', 0, 'https://www.titiperator.com', 0, ''),
+(110, 'Tutuperator', 0, 'https://www.tutuperator.com', 0, ''),
 (130, 'Tototravel', 0, 'https://www.tototravel.com', 0, ''),
-(131, 'Voyages', 0, 'https://www.voyages.com', 0, ''),
-(132, 'Youpi', 0, 'https://www.youpi.com', 0, ''),
-(133, 'Youhou', 0, 'https://www.youhou.com', 0, ''),
-(134, 'Hihi', 0, 'https://www.hihi.com', 0, ''),
 (135, 'POO', 0, 'https://www.poo.com', 0, ''),
 (136, 'Go', 0, 'https://www.go.com', 1, ''),
 (139, 'Premium', 0, 'https://www.premium.com', 1, ''),
 (140, 'Prem', 0, 'https://www.prem.com', 1, ''),
 (147, 'Yay', 0, 'https://www.yay.com', 1, ''),
-(149, 'Rich', 0, 'https://www.rich.com', 1, '');
+(149, 'Rich', 0, 'https://www.rich.com', 1, ''),
+(168, 'Youhouuu', 0, 'https://www.youhouuu.com', 0, '../assets/images/operators_logos/Youhouuu.jpg'),
+(170, 'Victoiiiiire', 0, 'https://www.win.com', 0, '../assets/images/operators-logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -112,11 +104,28 @@ INSERT INTO `operators` (`id`, `name`, `rate`, `link`, `is_premium`, `logo`) VAL
 
 CREATE TABLE `reviews` (
   `id` int(10) NOT NULL,
-  `message` varchar(250) NOT NULL,
+  `message` varchar(1000) NOT NULL,
   `author` varchar(150) NOT NULL,
   `operator_id` int(10) NOT NULL,
   `ip_address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `message`, `author`, `operator_id`, `ip_address`) VALUES
+(1, 'Coucou !', 'Toto', 147, '::1'),
+(2, 'Yaaaaay \\o/', 'Tata', 136, '::1'),
+(3, 'Reviews are working !', 'Titi', 139, '::1'),
+(4, 'Sérieux et pas cher, je recommande !', 'Jason', 147, '::1'),
+(5, 'Très contente de mon voyage, je suis arrivée en temps et en heure et pour pas trop cher. Recommandé.', 'Martine', 147, '::1'),
+(6, 'Très bien.', 'Marie', 147, '::1'),
+(7, 'Mon vol a été retardé de 3h, et l\'hôtesse était désagréable... A part ça vol ok.', 'Gérard', 147, '::1'),
+(8, 'Des voleurs, j\'ai dû payer beaucoup plus cher que prévu, à fuir !!!', 'Albert', 147, '::1'),
+(10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam commodo imperdiet dolor quis molestie. Mauris non placerat lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac.', 'Laurent', 147, '::1'),
+(11, 'Super !', 'Tutu', 147, '::1'),
+(12, 'Mouais, cher et pas terrible je trouve... Je ne reviendrai pas chez cet opérateur.', 'Mireille', 147, '::1');
 
 --
 -- Index pour les tables déchargées
@@ -150,19 +159,19 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT pour la table `destinations`
 --
 ALTER TABLE `destinations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT pour la table `operators`
 --
 ALTER TABLE `operators`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Contraintes pour les tables déchargées

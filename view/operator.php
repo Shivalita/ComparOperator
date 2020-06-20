@@ -1,5 +1,6 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -69,11 +70,12 @@ $operator = $operatorManager -> getOperator($_GET['name']);
           </div>
           <div class="modal-body">
 
-            <form class="#" action="#" method="post">
+            <form class="#" action="../assets/apps/add-comment.php" method="POST">
+              <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
               <div class="form-group">
-                <input type="text" class="form-control mb-2" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" name="#">
+                <input type="text" class="form-control mb-2" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" name="username">
                 <div class="form-group">
-                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Votre avis" rows="3" maxlength="100" name="#"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Votre avis" rows="3" maxlength="400" name="message"></textarea>
                 </div>
               </div>
 

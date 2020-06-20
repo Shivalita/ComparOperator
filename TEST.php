@@ -1,21 +1,11 @@
-<!-- 
 <?php
 
 include('config.php');
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
+$reviewManager = new reviewManager($db);
 
-// $allOperators = $destinationManager->getDestinationOperators('Miami');
-
-?> -->
-
-<?php
-// include('config.php');
-
-$operatorManager = new OperatorManager($db);
-$destinationManager = new DestinationManager($db);
-
-$destination = $destinationManager -> getDestination($_GET['name']);
+$operator = $operatorManager -> getOperator($_GET['name']);
 ?>
 
 <!doctype html>
@@ -27,209 +17,132 @@ $destination = $destinationManager -> getDestination($_GET['name']);
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <title>Operators</title>
+  <title>Operator</title>
 </head>
 <body>
+  <?php include '../assets/partials/nav-user.php'; ?>
 
-  <?php include 'assets/partials/nav-user.php'; ?>
-
-  <div class="jumbotron jumbotron-fluid fond1">
+  <div class="jumbotron jumbotron-fluid fond">
     <div class="container text-center">
       <h1 class="display-4 text-white"><?php echo $_GET['name'] ?></h1>
     </div>
   </div>
 
   <div class="container">
-    <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#describ" role="tab" aria-controls="home" aria-selected="true">Description</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#maps" role="tab" aria-controls="profile" aria-selected="false">Maps</a>
-      </li>
-      <li class="nav-item" role="presentation">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#images" role="tab" aria-controls="contact" aria-selected="false">Images</a>
-      </li>
-    </ul>
-    <div class="tab-content text-center" id="myTabContent">
+    <h1 class="text-center mt-3 mb-4">Les Destinations</h1>
+    <div class="row row-cols-1 row-cols-md-4">
+      <?php $allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
+      foreach ($allOperatorDestinations as $oneDestination) { ?>
 
-      <div class="tab-pane fade show active" id="describ" role="tabpanel" aria-labelledby="home-tab">
-        <img src="https://source.unsplash.com/random/600x450/?<?php echo $_GET['name'] ?>" class="img-fluid mt-3 mb-3" alt="Responsive image">
-        <p class=""><?= ($destination->getDescription()); ?></p>
-        </div>
-
-        <div class="tab-pane fade" id="maps" role="tabpanel" aria-labelledby="profile-tab">
-          <div class="container-fluid">
-            <div class="map-responsive mt-3">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=<?php echo $_GET['name'] ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="col mb-4">
+          <div class="card shadow">
+            <img src="https://source.unsplash.com/random/800x600/?city,landscape,<?= ($oneDestination->getLocation()); ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center font-weight-bold"><?= ($oneDestination->getLocation()); ?></h5>
+              <p class="text-success font-weight-bold"><span>A partir de <?= ($oneDestination->getPrice()); ?>€</span></p>
+              <p class="card-text mt-2"><?= ($oneDestination->getDescription()); ?></p>
+              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Voir le voyage</a>
             </div>
           </div>
         </div>
+        <!-- echo ($oneDestination->getLocation()); -->
+      <?php  } ?>
 
-        <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="contact-tab">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner mt-3">
-              <div class="carousel-item active">
-                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/1" class="d-block w-100 img-fluid" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/2" class="d-block w-100 img-fluid" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/1600x800/?<?php echo $_GET['name'] ?>/3" class="d-block w-100 img-fluid" alt="...">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h1 class="text-center mt-3 mb-4">Nos avis clients</h1>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-info mb-2" data-toggle="modal" data-target="#exampleModal">
+      Laissez votre avis
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLabel">Laisser votre avis</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
+          <div class="modal-body">
 
+            <form class="#" action="assets/apps/add-comment.php" method="POST">
+              <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
+              <div class="form-group">
+                <input type="text" class="form-control mb-2" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" name="username">
+                <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Votre avis" rows="3" maxlength="200" name="message"></textarea>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-success">Envoyer</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
-    <hr class="bg-dark mb-5" style="width:50%">
+    <div id="carouselExampleCaptions" class="carousel slide shadow" data-ride="carousel">
+      <ol class="carousel-indicators">
+<!-- --------------------------------------- DEBUT CODE A RECUPERER ---------------------------------- -->
+      <?php
+      $operatorId = $operator->getId();
+      $reviews = $reviewManager->getOperatorReviews($operatorId);
 
-    <div class="container">
-      <h1 class="text-center mb-3">Les tours opérators proposant ce voyage</h1>
-      <div class="row row-cols-1 row-cols-md-3">
-
-<?php
-        $allDestinationOperators = $destinationManager->getDestinationOperators('Paris');
-
-        // var_dump($allDestinationOperators);
-
-        foreach ($allDestinationOperators as $destinationOperator) {
-            // echo 'operator_id = '.$destinationOperator['operator_id'].'<br>';
-            // echo 'id = '.$destinationOperator['id'].'<br>';
-            // echo 'location = '.$destinationOperator['location'].'<br>';
-            // echo 'name = '.$destinationOperator['name'].'<br>';
-            // echo 'name = '.$destinationOperator['price'].'<br>';
-            // echo '<br>-------------------------------------------------------------------<br>';
-            echo('
-                <div class="col mb-4">
-                <div class="card">
-                <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">'.$destinationOperator['name'].'</h5>
-                    <p class="card-text">'.$destinationOperator['price'].'</p>
-                </div>
-                <div class="card-footer bg-white">
-                    <small class="float-right text-success font-weight-bold">A partir de '.$destinationOperator['price'].'€€€</small>
-                </div>
-                <div class="card-footer d-flex justify-content-center">
-                    <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-                </div>
-                </div>
-            </div>
-            ');
-        }
-
-        
-        // foreach ($allOperators as $oneOperator) {
-        //     var_dump($oneOperator);
-        //     echo('
-        //     <div class="col mb-4">
-        //     <div class="card">
-        //       <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-        //       <div class="card-body">
-        //         <h5 class="card-title">'.$oneOperator->getName().'</h5>
-        //         <p class="card-text">'.$oneOperator->getName().'</p>
-        //       </div>
-        //       <div class="card-footer bg-white">
-        //         <small class="float-right text-success font-weight-bold">A partir de '.$oneOperator->getName().'€€€</small>
-        //       </div>
-        //       <div class="card-footer d-flex justify-content-center">
-        //         <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-        //       </div>
-        //     </div>
-        //   </div>
-        //     ');
-        // }
-?>
-        <!-- <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
+      for ($i = 0; $i < count($reviews); $i++) { 
+        echo ('<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>');
+      }
+      ?>
+        <!-- <li data-target="#carouselExampleCaptions" data-slide-to="0"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li> -->
+      </ol>
+      <div class="carousel-inner">
+        <?php
+        for ($i = 0; $i < count($reviews); $i++) {
+          if ($i <= 0) {
+            echo ('<div class="carousel-item active">');
+          } else {
+            echo ('<div class="carousel-item">');
+          }
+        ?>
+        <img src="https://source.unsplash.com/G9i_plbfDgk/1600x325/" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5><i class="fas fa-user fa-2x"></i></h5>
+          <small><?= $reviews[$i]["message"] ?></small>
+          <p class="font-italic"><small><?= $reviews[$i]["author"] ?></small></p>
           </div>
         </div>
-
-        <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random/800x600/?travel" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Nom operator</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer bg-white">
-              <small class="float-right text-success font-weight-bold">A partir de €€€</small>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-            </div>
-          </div>
-        </div>
+        <?php } ?>
+<!-- --------------------------------------- FIN CODE A RECUPERER ---------------------------------- -->
       </div>
-    </div> -->
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
 
-    <?php include 'assets/partials/footer.php'; ?>
+<?php include '../assets/partials/footer.php'; ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
-  </html>
-
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+</html>

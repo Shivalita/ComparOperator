@@ -35,7 +35,14 @@ $destinationManager = new DestinationManager($db);
 
         <div class="col mb-4">
           <div class="card shadow">
-            <img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">
+          <?php 
+            if ($oneOperator['logo']) {
+              echo ('<img src="'.$oneOperator["logo"].'" class="card-img-top" alt="...">');
+            } else {
+              echo ('<img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">');
+            }
+          ?>
+            <!-- <img src="<?= ($oneOperator['logo']) ?>" class="card-img-top" alt="..."> -->
             <div class="card-body">
               <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
               <?php
@@ -62,9 +69,15 @@ $destinationManager = new DestinationManager($db);
                 </form>
               </div>
               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group mr-2" role="group" aria-label="First group">
-                  <a class="btn btn-info btn-lg btn-block" href="<?=($oneOperator['link']);?>" role="button">WEBSITE</a>
-                </div>
+              <?php 
+                if ($oneOperator['is_premium']) {
+                  echo ('
+                  <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <a class="btn btn-info btn-lg btn-block" href="'.$oneOperator['link'].'" role="button">WEBSITE</a>
+                  </div>
+                  ');
+                }
+              ?>
                 <div class="btn-group mr-2 mt-2" role="group" aria-label="Second group">
                   <a class="btn btn-warning btn-lg btn-block" href="operator.php?name=<?=($oneOperator['name']);?>" role="button">Voir les destinations</a>
                 </div>

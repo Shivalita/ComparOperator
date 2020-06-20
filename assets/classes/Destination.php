@@ -59,12 +59,12 @@ class Destination
 
     public function getOperatorId() 
     {
-        return (int)$this->operator_id;
+        return $this->operator_id;
     }
 
-    public function setOperatorId($operator_id)
+    public function setOperatorId($operatorId)
     {
-        $operator_id = (int) $operator_id;
+        $operator_id = $operatorId;
         $this->operator_id = $operator_id;
     }
 

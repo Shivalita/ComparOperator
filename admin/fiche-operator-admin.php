@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-  <title>Admin - fiche TO</title>
+  <title>Admin - fiche opérateur</title>
 </head>
 <body>
 
@@ -38,7 +38,7 @@
         <?php    $allOperatorDestinations = $operatorManager->getOperatorDestinations($operator->getId());
         foreach ($allOperatorDestinations as $oneDestination) { ?>
         <tr>
-          <th scope="row"><a class="btn btn-warning" href="fiche-destination-admin.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Fiche </a></th>
+          <th scope="row"><a class="btn btn-warning" href="fiche-destination-admin.php?name=<?= ($_GET['name']); ?>&location=<?= ($oneDestination->getLocation()); ?>" role="button">Fiche </a></th>
           <td class="font-weight-bold"><?= ($oneDestination->getLocation()); ?></td>
         </tr>
         <!-- JUSQU'ICI -->
@@ -53,7 +53,7 @@
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
-        <form class="p-3" action="../assets/apps/add_destination.php" method="POST" enctype="multipart/form-data">
+        <form class="p-3" action="../assets/apps/add-destination.php" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control mb-2" placeholder="Nom destination" name="destinationLocation">
           <input type="text" class="form-control mb-2" placeholder="€" name="destinationPrice">
           <textarea class="form-control mb-2" placeholder="Description" name="destinationDescription"></textarea>
@@ -68,10 +68,12 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-center mt-3 mb-5">
-    <a class="btn btn-danger d-flex justify-content-center w-25" href="#" role="button">Supprimer ce TO</a>
-  </div>
-
+  <form class="p-3" action="../assets/apps/operator-delete-operator.php" method="POST">
+    <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
+    <div class="d-flex justify-content-center mt-3 mb-5">
+      <button class="btn btn-danger d-flex justify-content-center w-25" href="#" role="button">Supprimer cet opérateur</button>
+    </div>
+  </form>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

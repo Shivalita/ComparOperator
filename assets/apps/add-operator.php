@@ -1,6 +1,7 @@
 <?php
 
-include('../../config.php');
+include ('../../config.php');
+include ('../../assets/apps/feedback-message.php');
 
 $operatorManager = new OperatorManager($db);
 
@@ -28,10 +29,10 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
         $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
         if (in_array($extension_upload, $extensions_autorisees)) {
             $operatorLogoPath = '../images/operators_logos/'.$operatorName.'.'.$extension_upload;
-            // move_uploaded_file(
-            //     $_FILES['operatorLogo']['tmp_name'],
-            //     $operatorLogoPath
-            // );
+            move_uploaded_file(
+                $_FILES['operatorLogo']['tmp_name'],
+                $operatorLogoPath
+            );
             $operatorLogo = substr_replace($operatorLogoPath, 'assets/', 3, 0);
         } else {
             echo ('wrong_extension');
@@ -41,7 +42,7 @@ if (!empty($_FILES['operatorLogo']) AND $_FILES['operatorLogo']['error'] === 0) 
     }
 } else {
     /* Assign a default logo if not added */
-    $operatorLogo = '';
+    $operatorLogo = '../assets/images/operators-logo.jpg';
 }
 
 
@@ -53,24 +54,15 @@ $operator = new Operator([
 ]);
 
 if ($operatorManager->checkOperatorExists($operator->getName())) {
-    $message = 'Operator already registered.';
+    $message = 'Ce tour opérateur est déjà enregistré.';
     unset($operator);
 } else {
     $operatorManager->createOperator($operator);
     $operatorManager->updateOperator($operator);
+    $message = 'Le tour opérateur a été ajouté.';
 }
 
-/* ----- REDIRECT TO OPERATOR PAGE WITH GET NAME ----- */
-function setFormattedName($nameToFormat) {
-    $nameToFormat = str_replace(' ', '%20', $nameToFormat);
-    $nameToFormat = strtolower($nameToFormat);
-    return $nameToFormat;
-}
-
-if ($operator) {
-    $operatorUrlName = setFormattedName($operator->getName());
-    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName;
-
+/* ----- REDIRECT TO MASTER ADMIN PAGE ----- */
+$operatorUrl = '../../master-admin/master-admin.php';
 header("Location:".$operatorUrl);
 exit;
-}
