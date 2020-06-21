@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);

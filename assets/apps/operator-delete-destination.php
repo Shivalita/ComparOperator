@@ -12,17 +12,24 @@ if (!empty($_POST['destinationLocation'])) {
 /* ----- DELETE DESTINATION ----- */
 if ($destination) {
     if (!$destinationManager->checkDestinationExists($destination->getLocation())) {
-        $message = 'Destination not found.';
+        $error = 'Destination introuvable';
         unset($destination);
     } else {
         $destinationManager->deleteDestination($destination);
-        $message = 'Destination deleted.';
+        $success = 'Destination supprimée';
     }
 }
 
 /* ----- REDIRECT TO MASTER ADMIN ----- */
 $operatorUrlName = $_POST['operatorName'];
-$operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName;
+
+if ($success) {
+    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName.'&success='.$success;
+} else if ($error) {
+    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName.'&error='.$error;
+} else {
+    $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorUrlName;
+}
 
 header("Location:".$operatorUrl);
 exit;

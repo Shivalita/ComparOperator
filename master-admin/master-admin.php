@@ -1,6 +1,6 @@
 <?php
-// include($_SERVER['DOCUMENT_ROOT'].'/config.php');
-include('../config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -30,8 +30,8 @@ $destinationManager = new DestinationManager($db);
         <div class="card p-4 shadow" style="width: 22rem;">
           <h4 class="text-center text-underlined"><strong>Ajouter un tour opérateur</strong></h4>
           <form class="p-3" action="../assets/apps/add-operator.php" method="POST" enctype="multipart/form-data">
-            <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName">
-            <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink">
+            <input type="text" class="form-control mb-2" placeholder="Nom Tour operateurs" name="operatorName" required>
+            <input type="text" class="form-control mb-2" placeholder="Lien site internet" name="operatorLink" required>
             <input type="file" class="form-control-file" accept="image/*" name="operatorLogo" >
             <div class="text-center">
               <button class="btn btn-success mt-2 align-center" type="submit" name="submit">Ajouter</button>

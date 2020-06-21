@@ -1,5 +1,6 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -11,6 +12,7 @@ $destinationManager = new DestinationManager($db);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://kit.fontawesome.com/a58b6117a4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -18,20 +20,39 @@ $destinationManager = new DestinationManager($db);
 </head>
 <body>
 
-  <?php include '../assets/partials/nav-user.php'; ?>
+  <?php 
+  include ('../assets/partials/nav-user.php'); 
+  include ('../assets/apps/feedback.php');
+  ?>
 
-  <div class="jumbotron jumbotron-fluid fond1">
+  <div class="jumbotron jumbotron-fluid fond1 shadow-sm">
     <div class="container text-center">
       <h1 class="display-4 text-white">Nos Destinations</h1>
     </div>
   </div>
 
   <div class="container">
+
+    <nav class="navbar navbar-light bg-dark border border-white shadow rounded mb-4 d-flex justify-content-center">
+      <form class="form-inline" action="../assets/apps/search-destination.php" method="POST">
+        <div class="input-group mr-2">
+          <select class="custom-select" id="inputGroupSelect01" name="sortBy">
+            <option selected>Trier</option>
+            <option value="premium">Premium</option>
+            <option value="rate">Le mieux noté</option>
+            <option value="lowPrice">Le moins cher</option>
+            <option value="highPrice">Le plus cher</option>
+          </select>
+        </div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Quelle Destination ?" aria-label="Search" name="location" required>
+        <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </nav>
+
     <div class="row row-cols-1 row-cols-md-2">
 
       <?php  $allDestinations = $destinationManager->getAllDestinations();
       foreach ($allDestinations as $oneDestination) { ?>
-        <!-- echo ($oneDestination['location']); -->
         <div class="col mb-4">
           <div class="card shadow">
             <img src="https://source.unsplash.com/random/800x600/?city,landscape,<?= ($oneDestination['location']); ?> " class="card-img-top" alt="...">

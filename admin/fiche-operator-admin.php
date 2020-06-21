@@ -11,8 +11,8 @@
 <body>
 
   <?php
-  // include($_SERVER['DOCUMENT_ROOT'].'/config.php');
-  include ('../config.php');
+  include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+  // include ('../config.php');
   include ('../assets/partials/nav-admin.php');
   include ('../assets/apps/fiche-operator-process.php');
   include ('../assets/apps/feedback.php');
@@ -56,9 +56,9 @@
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
         <!-- <small>ici l'affichage du message d'erreur ou de validation </small> -->
         <form id="addDestinationForm" class="p-3 form" action="../assets/apps/add-destination.php" method="POST" enctype="multipart/form-data">
-          <input type="text" class="form-control mb-2" placeholder="Nom destination" name="destinationLocation">
-          <input type="text" class="form-control mb-2" placeholder="€" name="destinationPrice">
-          <textarea class="form-control mb-2" placeholder="Description" name="destinationDescription"></textarea>
+          <input type="text" class="form-control mb-2" placeholder="Nom destination" name="destinationLocation" required>
+          <input type="text" class="form-control mb-2" placeholder="€" name="destinationPrice" required>
+          <textarea class="form-control mb-2" placeholder="Description" name="destinationDescription" required></textarea>
           <input type="file" class="form-control-file" accept="image/*" name="destinationImage" >
           <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
           <div class="text-center">

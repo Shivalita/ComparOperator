@@ -9,19 +9,25 @@ if (!empty($_POST['operatorName'])) {
     $operator = $operatorManager->getOperator($_POST['operatorName']);
 }
 
-
 /* ----- DELETE OPERATOR ----- */
 if ($operator) {
     if (!$operatorManager->checkOperatorExists($operator->getName())) {
-        $message = 'Operator not found.';
+        $error = 'Opérateur introuvable';
         unset($operator);
     } else {
         $operatorManager->deleteOperator($operator);
-        $message = 'Operator deleted.';
+        $success = 'Opérateur supprimé';
     }
 }
 
 /* ----- REDIRECT TO MASTER ADMIN ----- */
+if ($success) {
+    $masterUrl = '../../master-admin/master-admin.php?'.'success='.$success;
+} else if ($error) {
+    $masterUrl = '../../master-admin/master-admin.php?'.'error='.$error;
+} else {
+    $masterUrl = '../../master-admin/master-admin.php?';
+}
 
-header("Location: ../../master-admin/master-admin.php");
+header("Location:".$masterUrl);
 exit;

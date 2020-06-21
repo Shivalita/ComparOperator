@@ -70,7 +70,7 @@ $allOperators = $operatorManager->getAllOperators();
 foreach ($allOperators as $oneOperator) {
     echo ($oneOperator['name']);
 }
-// Displays the name of ALL DATABASE REGISTERED operators ORDER BY premium ones first
+// Displays the name of ALL DATABASE REGISTERED operators ORDERED BY premium ones first
 /* ------------------------------------------------------------------------- */
 
 
@@ -81,7 +81,7 @@ $operatorManager->countOperators(); // Returns the NUMBER of operators registere
 
 /* ---------- GET ALL OPERATOR'S DESTINATIONS ------------------------------ */
 $operatorManager->getOperatorDestinations($operatorId); // Returns an ARRAY OF OBJECTS
-// Returns the list of all destinations offered by this operator
+// Returns the list of all destinations offered by this operator ORDERED BY highest prices first
 // Each destination is a DESTINATION OBJECT INSTANCE
 
 // Ex:

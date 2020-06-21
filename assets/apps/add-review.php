@@ -54,6 +54,6 @@ if ($success) {
 } else {
     $operatorUrl = '../../view/operator.php?name='.$operatorName;
 }
-$operatorUrl = '../../view/operator.php?name='.$operatorName;
+
 header("Location:".$operatorUrl);
 exit;

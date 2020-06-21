@@ -132,7 +132,7 @@ class OperatorManager
         $operatorDestinationsArray = [];
 
         $operatorDestinationsQuery = $this->db->prepare(
-            'SELECT * FROM destinations WHERE operator_id = ?'
+            'SELECT * FROM destinations WHERE operator_id = ? ORDER BY price DESC'
         );
         $operatorDestinationsQuery->execute([$operatorId]);
 

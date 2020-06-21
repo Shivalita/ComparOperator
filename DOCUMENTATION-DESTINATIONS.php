@@ -90,16 +90,19 @@ echo ($destinationManager->getOperatorId('Totoperator')); // Returns 107
 
 
 /* ---------- GET ALL DESTINATIONS/OPERATORS FOR A LOCATION ---------------- */
-$destinationManager->getDestinationOperators($destinationLocation); // Returns an ARRAY OF DATA
-// Returns a list of each destination offered for a location
+$destinationManager->getDestinationOperators($destinationLocation, $sort); // Returns an ARRAY OF DATA
+// Returns a list of each destination available for a location, SORTED BY $sort
+// $sort can be 'lowPrice', 'highPrice', 'rate', or 'premium' string
 // Each destination has BOTH destination's data and operator's data
-$allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation());
+
+// Ex:
+$allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation(), 'lowPrice');
 foreach ($allDestinationOperators as $destinationOperator) {
     echo $destinationOperator['description']; // destination data
     echo $destinationOperator['price']; // destination data
     echo $destinationOperator['link']; // operator data
     echo $destinationOperator['is_premium']; // operator data
-// Displays each destination's data and the associated operator's data for a location
+// Displays each destination's data and the associated operator's data for the location, SORTED BY lower price
 /* ------------------------------------------------------------------------- */
 
 

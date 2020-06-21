@@ -1,6 +1,6 @@
 <?php
-// include($_SERVER['DOCUMENT_ROOT'].'/config.php');
-include('../config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -18,36 +18,9 @@ $destinationManager = new DestinationManager($db);
 </head>
 <body>
 
-  <?php include '../assets/partials/nav-user.php'; ?>
+<?php include ('../assets/partials/nav-user.php'); ?>
 
-
-  <div class="container mb-5">
-    <div id="carouselExampleSlidesOnly" class="carousel slide shadow" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="5000">
-          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/EXdXLrZXS9Q/1600x800/" alt="First slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>Londres</h1>
-            <a class="btn btn-warning btn-lg" href="destination.php?name=Londres" role="button">Visiter</a>
-          </div>
-        </div>
-        <div class="carousel-item" data-interval="5000">
-          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/NiyRORf8d8I/1600x800/" alt="Second slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>Tokyo</h1>
-            <a class="btn btn-warning btn-lg" href="destination.php?name=Tokyo" role="button">Visiter</a>
-          </div>
-        </div>
-        <div class="carousel-item" data-interval="5000">
-          <img class="d-block w-100 img-fluid" src="https://source.unsplash.com/nnzkZNYWHaU/1600x800/" alt="Third slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>Paris</h1>
-            <a class="btn btn-warning btn-lg" href="destination.php?name=Paris" role="button">Visiter</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<?php include ('../assets/partials/home-carousel.php'); ?>
 
   <div class="container">
     <h2 class="text-center mb-4">Nos destinations</h2>

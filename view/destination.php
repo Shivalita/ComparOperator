@@ -1,5 +1,6 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -20,7 +21,7 @@ $destination = $destinationManager -> getDestination($_GET['name']);
 </head>
 <body>
 
-  <?php include '../assets/partials/nav-user.php'; ?>
+  <?php include ('../assets/partials/nav-user.php'); ?>
 
   <div class="jumbotron jumbotron-fluid fond1">
     <div class="container text-center">
@@ -90,28 +91,39 @@ $destination = $destinationManager -> getDestination($_GET['name']);
     <hr class="bg-dark mb-5" style="width:50%">
 
     <div class="container">
-      <h1 class="text-center mb-3">Les tours opérators proposant ce voyage</h1>
+      <h1 class="text-center mb-3">Les tours opérateurs proposant ce voyage</h1>
       <div class="row row-cols-1 row-cols-md-3">
 <?php
-$allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation());
+if (isset($_GET['sort'])) {
+  $allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation(), $_GET['sort']);
+} else {
+  $allDestinationOperators = $destinationManager->getDestinationOperators($destination->getLocation(), 'premium');
+}
 
 foreach ($allDestinationOperators as $destinationOperator) {
     echo('
         <div class="col mb-4">
-        <div class="card shadow">
-        <img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">'.$destinationOperator['name'].'</h5>
-            <p class="card-text">'.$destinationOperator['description'].'</p>
-        </div>
-        <div class="card-footer bg-white">
-            <small class="float-right text-success font-weight-bold">A partir de '.$destinationOperator['price'].'€</small>
-        </div>
-        <div class="card-footer d-flex justify-content-center">
-            <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
-        </div>
-        </div>
-    </div>
+          <div class="card shadow">
+          <img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+    ');
+          if($destinationOperator['is_premium'] === '1') {
+            echo '<span class="badge badge-success">Premium</span>';
+          } else {
+            echo '<span class="badge badge-success" style="visibility:hidden">Premium</span>';
+          }
+    echo('
+              <h5 class="card-title">'.$destinationOperator['name'].'</h5>
+              <p class="card-text">'.$destinationOperator['description'].'</p>
+          </div>
+          <div class="card-footer bg-white">
+              <small class="float-right text-success font-weight-bold">A partir de '.$destinationOperator['price'].'€</small>
+          </div>
+          <div class="card-footer d-flex justify-content-center">
+              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
+          </div>
+          </div>
+      </div>
     ');
 }
 ?>

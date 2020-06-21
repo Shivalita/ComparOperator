@@ -1,9 +1,10 @@
 <?php
-// include($_SERVER['DOCUMENT_ROOT'].'/config.php');
-include('config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include('config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
+include ('assets/apps/feedback.php');
 ?>
 
 <!doctype html>
@@ -24,17 +25,16 @@ $destinationManager = new DestinationManager($db);
       <div class="col mb-4">
         <div class="card shadow">
           <div class="card-body">
-            <h5 class="card-title text-center">Administrateur Tour Opérateurs</h5>
+            <h5 class="card-title text-center">Administrateur Tour Opérateur</h5>
           <form class="mx-auto" action="assets/apps/operator-login.php" method="POST" >
-          <!-- <input name="operatorName" type="hidden" value="Club Med"> -->
               <div class="form-group mt-3">
                 <div class="form-group">
-                  <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                  <input type="text" name='username' class="form-control" placeholder="Login" aria-label="Username" aria-describedby="addon-wrapping" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
               </div>
               <button class="btn btn-success" type="submit" role="button">Se connecter</button>
             </form>
@@ -46,17 +46,17 @@ $destinationManager = new DestinationManager($db);
         <div class="card shadow">
           <div class="card-body">
             <h5 class="card-title text-center">Master Admin</h5>
-          <form class="mx-auto" action="#" method="#" >
+          <form class="mx-auto" action="assets/apps/master-admin-login.php" method="POST" >
               <div class="form-group mt-3">
                 <div class="form-group">
-                  <input type="text" name='username' class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                  <input type="text" name='adminLogin' class="form-control" placeholder="Login" aria-label="adminLogin" aria-describedby="addon-wrapping" required>
                 </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" name="adminPassword" class="form-control" id="exampleInputPassword1" required>
               </div>
-              <a class="btn btn-success" href="master-admin/master-admin.php" role="button">Se connecter</a>
+              <button class="btn btn-success" type="submit" role="button">Se connecter</button>
             </form>
           </div>
         </div>

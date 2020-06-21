@@ -78,23 +78,17 @@ if (
 
 
     /* ----- REDIRECT TO DESTINATION PAGE ----- */
-    function setFormattedName($nameToFormat) {
-        $nameToFormat = str_replace(' ', '%20', $nameToFormat);
-        return $nameToFormat;
-    }
-
     if ($destination) {
         $operatorName = $_POST['operatorName'];
-        $destinationUrlName = setFormattedName($destination->getLocation());
         if ($success) {
-            $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName.'&success='.$success;
+            $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName.'&success='.$success;
         } else if ($error) {
-            $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName.'&error='.$error;
+            $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName.'&error='.$error;
         } else {
-            $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName;
+            $operatorUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName;
         }
         
-    header("Location:".$destinationUrl);
+    header("Location:".$operatorUrl);
     exit;
     }
 

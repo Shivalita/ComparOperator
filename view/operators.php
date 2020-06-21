@@ -1,5 +1,6 @@
 <?php
-include ('../config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -18,9 +19,12 @@ $destinationManager = new DestinationManager($db);
 </head>
 <body>
 
-  <?php include '../assets/partials/nav-user.php'; ?>
+  <?php 
+  include '../assets/partials/nav-user.php'; 
+  include ('../assets/apps/feedback.php');
+  ?>
 
-  <div class="jumbotron jumbotron-fluid fond">
+  <div class="jumbotron jumbotron-fluid fond shadow-sm">
     <div class="container text-center">
       <h1 class="display-4 text-white">Tour operateurs</h1>
     </div>
@@ -28,6 +32,14 @@ $destinationManager = new DestinationManager($db);
 
 
   <div class="container">
+
+    <nav class="navbar navbar-light bg-dark border border-white rounded shadow mb-4 d-flex justify-content-center">
+      <form class="form-inline" action="../assets/apps/search-operator.php"  method="POST">
+        <input class="form-control mr-sm-2" type="search" placeholder="Quel Operateur ?" aria-label="Search" name="operatorName">
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+
     <div class="row row-cols-1 row-cols-md-3">
 
       <?php    $allOperators = $operatorManager->getAllOperators();
@@ -35,7 +47,7 @@ $destinationManager = new DestinationManager($db);
 
         <div class="col mb-4">
           <div class="card shadow">
-          <?php 
+            <?php
             if ($oneOperator['logo']) {
               echo ('<img src="'.$oneOperator["logo"].'" class="card-img-top" alt="...">');
             } else {
@@ -50,7 +62,7 @@ $destinationManager = new DestinationManager($db);
                 echo '<span class="badge badge-success">Premium</span>';
               }
               ?>
-              <span class="badge badge-success"></span>
+              <!-- <span class="badge badge-success"></span> -->
               <h5 class="card-title text-center font-weight-bold"><?=($oneOperator['name']);?> </h5>
               <div class="stars">
                 <form action="">
@@ -68,15 +80,15 @@ $destinationManager = new DestinationManager($db);
                 </form>
               </div>
               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-              <?php 
+                <?php
                 if ($oneOperator['is_premium']) {
                   echo ('
                   <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <a class="btn btn-info btn-lg btn-block" href="'.$oneOperator['link'].'" role="button">WEBSITE</a>
+                  <a class="btn btn-info btn-lg btn-block" href="'.$oneOperator['link'].'" role="button">WEBSITE</a>
                   </div>
                   ');
                 }
-              ?>
+                ?>
                 <div class="btn-group mr-2 mt-2" role="group" aria-label="Second group">
                   <a class="btn btn-warning btn-lg btn-block" href="operator.php?name=<?=($oneOperator['name']);?>" role="button">Voir les destinations</a>
                 </div>

@@ -92,7 +92,7 @@ class DestinationManager
     );
     $allDestinationsArray = $allDestinationsQuery->fetchAll(PDO::FETCH_ASSOC);
 
-    function super_unique($array,$key)
+    function super_unique($array, $key)
     {
       $temp_array = [];
       foreach ($array as &$v) {
@@ -154,17 +154,47 @@ class DestinationManager
 
 
     /* ---------- GET ALL DESTINATIONS/OPERATORS FOR A LOCATION ---------- */
-    public function getDestinationOperators($destinationLocation)
+    public function getDestinationOperators($destinationLocation, $sort)
     {
       $allDestinationOperatorsArray = [];
 
-      $destinationOperatorsQuery = $this->db->prepare(
-      '   SELECT destinations.*, operators.*
-          FROM destinations
-          INNER JOIN operators
-          ON destinations.operator_id = operators.id
-          AND destinations.location = ?'
-      );
+      if ($sort === 'lowPrice') {
+        $destinationOperatorsQuery = $this->db->prepare(
+          '   SELECT destinations.*, operators.*
+              FROM destinations
+              INNER JOIN operators
+              ON destinations.operator_id = operators.id
+              AND destinations.location = ?
+              ORDER BY destinations.price ASC'
+          );
+      } else if ($sort === 'highPrice') {
+        $destinationOperatorsQuery = $this->db->prepare(
+          '   SELECT destinations.*, operators.*
+              FROM destinations
+              INNER JOIN operators
+              ON destinations.operator_id = operators.id
+              AND destinations.location = ?
+              ORDER BY destinations.price DESC'
+          );
+      } else if ($sort === 'rate') {
+        $destinationOperatorsQuery = $this->db->prepare(
+          '   SELECT destinations.*, operators.*
+              FROM destinations
+              INNER JOIN operators
+              ON destinations.operator_id = operators.id
+              AND destinations.location = ?
+              ORDER BY operators.rate DESC'
+          );
+      } else if ($sort === 'premium') {
+        $destinationOperatorsQuery = $this->db->prepare(
+          '   SELECT destinations.*, operators.*
+              FROM destinations
+              INNER JOIN operators
+              ON destinations.operator_id = operators.id
+              AND destinations.location = ?
+              ORDER BY operators.is_premium DESC'
+          );
+      }
 
       $destinationOperatorsQuery->execute([$destinationLocation]);
       $allDestinationOperatorsArray = $destinationOperatorsQuery->fetchAll(PDO::FETCH_ASSOC);

@@ -1,5 +1,5 @@
 <?php
-include('../config.php');
+include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);

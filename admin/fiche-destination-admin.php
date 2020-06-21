@@ -1,6 +1,6 @@
 <?php
-// include($_SERVER['DOCUMENT_ROOT'].'/config.php');
-include ('../config.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -22,6 +22,7 @@ $destination = $destinationManager->getDestination($_GET['location']);
 
   <?php
   include ('../assets/partials/nav-admin.php');
+  include ('../assets/apps/feedback.php');
   ?>
 
   <div class="container">

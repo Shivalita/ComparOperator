@@ -17,8 +17,6 @@ $operator = $operatorManager->getOperator($operatorName);
 $operatorId = $operator->getId();
 $destination->setOperatorId($operatorId);
 
-var_dump($destination);
-
 
 /* ----- UPDATE DESTINATION ----- */
 if (!empty($_POST['destinationPrice'])) {
@@ -27,16 +25,21 @@ if (!empty($_POST['destinationPrice'])) {
 if (!empty($_POST['destinationDescription'])) {
     $destination->setDescription($_POST['destinationDescription']);
 } 
-if (!empty($_POST['destinationImg'])) {
+if (!empty($_POST['destinationImg'])) { // INCOMPLET - NON FONCTIONNEL
     $destination->setImg($_POST['destinationImg']);
 }
 $destinationManager->updateDestination($destination);
-
-echo '<br>';
-var_dump($destination);
+$success = 'Destination mise à jour';
 
 
 /* ----- REDIRECT TO MASTER ADMIN ----- */
-$destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName;
+if ($success) {
+    $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName.'&success='.$success;
+} else if ($error) {
+    $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName.'&error='.$error;
+} else {
+    $destinationUrl = '../../admin/fiche-operator-admin.php?name='.$operatorName;
+}
+
 header("Location:".$destinationUrl);
 exit;
