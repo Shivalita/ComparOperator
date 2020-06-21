@@ -5,7 +5,7 @@
   <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link text-dark mt-2" href="destinations.php">Nos Destinations</a>
-      <a href="home.php"><img src="../assets/images/travel-transparent.png" width="154" height="70" class="mt-0" alt=""></a>
+      <a href="home.php"><img src="../assets/images/travel-transparent.png" width="154" height="70" class="" alt=""></a>
       <a class="nav-item nav-link text-dark mt-2" href="operators.php">Les Tours Operateurs</a>
     </div>
   </div>
