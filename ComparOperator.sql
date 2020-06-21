@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 20 juin 2020 à 23:24
+-- Généré le : Dim 21 juin 2020 à 13:22
 -- Version du serveur :  5.7.24
 -- Version de PHP : 7.2.19
 
@@ -41,25 +41,30 @@ CREATE TABLE `destinations` (
 --
 
 INSERT INTO `destinations` (`id`, `location`, `price`, `operator_id`, `img`, `description`) VALUES
-(14, 'Paris', 1700, 135, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(33, 'Barcelone', 555, 136, '', 'Please'),
-(38, 'Montreal', 1250, 149, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(39, 'Miami', 1600, 149, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(40, 'Tokyo', 1450, 149, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(41, 'Paris', 1500, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(43, 'Tokyo', 1400, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(44, 'Barcelone', 1100, 147, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(45, 'Montreal', 1300, 140, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(46, 'Londres', 850, 140, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(47, 'Tokyo', 1600, 140, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(48, 'Miami', 1900, 140, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(49, 'Londres', 950, 136, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(50, 'Paris', 1350, 136, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(51, 'Barcelone', 1300, 139, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(52, 'Tokyo', 1600, 139, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(53, 'Montreal', 1400, 139, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(54, 'Miami', 1700, 139, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(55, 'Paris', 1800, 139, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.');
+(72, 'Los Angeles', 1500, 172, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(73, 'Paris', 500, 172, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(74, 'New York', 1200, 172, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(75, 'Rome', 750, 172, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(76, 'Berlin', 800, 173, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(77, 'Lisbonne', 450, 173, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(78, 'Prague', 599, 173, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(79, 'Barcelone', 999, 173, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(80, 'Paris', 300, 171, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(81, 'Prague', 420, 171, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(82, 'Berlin', 500, 171, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(83, 'Rome', 600, 171, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(84, 'Los Angeles', 1200, 174, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(85, 'Paris', 800, 174, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(86, 'New York', 1300, 174, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(87, 'Rome', 750, 174, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(88, 'Prague', 300, 175, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(89, 'Londres', 750, 175, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(90, 'Budapest', 700, 175, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(91, 'New York', 890, 175, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(92, 'Londres', 560, 176, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(93, 'Budapest', 600, 176, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(94, 'Prague', 299, 176, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(95, 'Los Angeles', 1200, 176, '', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.');
 
 -- --------------------------------------------------------
 
@@ -81,20 +86,12 @@ CREATE TABLE `operators` (
 --
 
 INSERT INTO `operators` (`id`, `name`, `rate`, `link`, `is_premium`, `logo`) VALUES
-(106, 'Club Med', 0, 'https://www.clubmed.com', 0, ''),
-(107, 'Totoperator', 0, 'https://www.totoperator.com', 0, ''),
-(108, 'Tataperator', 0, 'https://www.tataperator.com', 0, ''),
-(109, 'Titiperator', 0, 'https://www.titiperator.com', 0, ''),
-(110, 'Tutuperator', 0, 'https://www.tutuperator.com', 0, ''),
-(130, 'Tototravel', 0, 'https://www.tototravel.com', 0, ''),
-(135, 'POO', 0, 'https://www.poo.com', 0, ''),
-(136, 'Go', 0, 'https://www.go.com', 1, ''),
-(139, 'Premium', 0, 'https://www.premium.com', 1, ''),
-(140, 'Prem', 0, 'https://www.prem.com', 1, ''),
-(147, 'Yay', 0, 'https://www.yay.com', 1, ''),
-(149, 'Rich', 0, 'https://www.rich.com', 1, ''),
-(168, 'Youhouuu', 0, 'https://www.youhouuu.com', 0, '../assets/images/operators_logos/Youhouuu.jpg'),
-(170, 'Victoiiiiire', 0, 'https://www.win.com', 0, '../assets/images/operators-logo.jpg');
+(171, 'Club Med', 0, 'https://www.clubmed.fr/', 1, '../assets/images/operators_logos/Club Med.jpg'),
+(172, 'TUI', 0, 'https://www.tui.fr', 1, '../assets/images/operators_logos/TUI.jpg'),
+(173, 'Thomas Cook', 0, 'https://www.thomascook.com/holidays', 0, '../assets/images/operators_logos/Thomas Cook.jpg'),
+(174, 'Expédia', 0, 'https://www.expedia.fr/', 1, '../assets/images/operators_logos/Expédia.jpg'),
+(175, 'Trivago', 0, 'https://www.trivago.fr/', 0, '../assets/images/operators_logos/Trivago.jpg'),
+(176, 'Trip Advisor', 0, 'https://www.tripadvisor.fr/', 0, '../assets/images/operators_logos/Trip Advisor.jpg');
 
 -- --------------------------------------------------------
 
@@ -115,17 +112,14 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `message`, `author`, `operator_id`, `ip_address`) VALUES
-(1, 'Coucou !', 'Toto', 147, '::1'),
-(2, 'Yaaaaay \\o/', 'Tata', 136, '::1'),
-(3, 'Reviews are working !', 'Titi', 139, '::1'),
-(4, 'Sérieux et pas cher, je recommande !', 'Jason', 147, '::1'),
-(5, 'Très contente de mon voyage, je suis arrivée en temps et en heure et pour pas trop cher. Recommandé.', 'Martine', 147, '::1'),
-(6, 'Très bien.', 'Marie', 147, '::1'),
-(7, 'Mon vol a été retardé de 3h, et l\'hôtesse était désagréable... A part ça vol ok.', 'Gérard', 147, '::1'),
-(8, 'Des voleurs, j\'ai dû payer beaucoup plus cher que prévu, à fuir !!!', 'Albert', 147, '::1'),
-(10, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam commodo imperdiet dolor quis molestie. Mauris non placerat lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac.', 'Laurent', 147, '::1'),
-(11, 'Super !', 'Tutu', 147, '::1'),
-(12, 'Mouais, cher et pas terrible je trouve... Je ne reviendrai pas chez cet opérateur.', 'Mireille', 147, '::1');
+(13, 'Super agence! J\'ai pu profiter de mes tongues au soleil ! :)', 'Alexandre', 171, '127.0.0.1'),
+(14, 'Un voyage merveilleux allant bien au delà de nos attentes pour notre voyage de noces. Un pays splendide rempli de couleurs, de paysage à couper le souffle, d\'une histoire riche et d\'une population souriante et accueillante.', 'Justine', 171, '127.0.0.1'),
+(15, 'Merci pour cet incroyable et inoubliable voyage de 3 semaines à Rome ! Prix attractif ', 'Matt', 171, '127.0.0.1'),
+(16, 'Agence organisee et disponible avant et durant le voyage. Merci ', 'Anto', 172, '127.0.0.1'),
+(17, 'Ravis de notre séjour à Paris. Comme d habitude, tout était très bien : voyage, location de voiture. Hôtel fabuleux.\r\nMerci à toute l\'équipe de nous avoir organisé ce beau voyage', 'Jacques', 174, '127.0.0.1'),
+(18, 'Comme d\'habitude super voyage et merveilleuses activités proposées !!!', 'Laetitia', 173, '127.0.0.1'),
+(19, 'Organisation impeccable, hormis le retard du chauffeur à notre arrivée à l\'aéroport de Prague ...', 'Momo', 175, '127.0.0.1'),
+(20, 'Découverte originale entre modernité et tradition dans un pays peu ouvert au tourisme. Guide francophone sur place offre un vrai plus.', 'Toto', 176, '127.0.0.1');
 
 --
 -- Index pour les tables déchargées
@@ -159,19 +153,19 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT pour la table `destinations`
 --
 ALTER TABLE `destinations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT pour la table `operators`
 --
 ALTER TABLE `operators`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Contraintes pour les tables déchargées
