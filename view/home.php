@@ -21,7 +21,7 @@ $destinationManager = new DestinationManager($db);
   <?php include '../assets/partials/nav-user.php'; ?>
 
 
-  <div class="container mb-5">
+  <div class="container mb-5 mt-2">
     <div id="carouselExampleSlidesOnly" class="carousel slide shadow" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-interval="5000">

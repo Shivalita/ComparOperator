@@ -11,6 +11,7 @@ $destinationManager = new DestinationManager($db);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://kit.fontawesome.com/a58b6117a4.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -20,13 +21,29 @@ $destinationManager = new DestinationManager($db);
 
   <?php include '../assets/partials/nav-user.php'; ?>
 
-  <div class="jumbotron jumbotron-fluid fond1">
+  <div class="jumbotron jumbotron-fluid fond1 shadow-sm">
     <div class="container text-center">
       <h1 class="display-4 text-white">Nos Destinations</h1>
     </div>
   </div>
 
   <div class="container">
+
+    <nav class="navbar navbar-light bg-dark border border-white shadow rounded mb-4 d-flex justify-content-center">
+      <form class="form-inline" action="#">
+        <div class="input-group mr-2">
+          <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Trier</option>
+            <option value="1" name="#">Premium</option>
+            <option value="2" name="#">Le moins cher</option>
+            <option value="3" name="#">Le plus cher</option>
+          </select>
+        </div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Quel Destination ?" aria-label="Search">
+        <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </nav>
+
     <div class="row row-cols-1 row-cols-md-2">
 
       <?php  $allDestinations = $destinationManager->getAllDestinations();

@@ -4,8 +4,12 @@ include('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
+$reviewManager = new ReviewManager($db);
 
 $operator = $operatorManager -> getOperator($_GET['name']);
+
+$operatorId = $reviewManager -> getOperatorId($_GET['name']);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -92,45 +96,44 @@ $operator = $operatorManager -> getOperator($_GET['name']);
 
     <div id="carouselExampleCaptions" class="carousel slide shadow" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleCaptions" data-slide-to="0"></li>
-        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <?php
+        $operatorId = $operator->getId();
+        $reviews = $reviewManager->getOperatorReviews($operatorId);
+
+        for ($i = 0; $i < count($reviews); $i++) {
+          echo ('<li data-target="#carouselExampleCaptions" data-slide-to="'.$i.'"></li>');
+        }
+        ?>
       </ol>
       <div class="carousel-inner">
         <?php
-        for ($i = 0; $i < count($allOperatorDestinations); $i++) {
+        for ($i = 0; $i < count($reviews); $i++) {
           if ($i <= 0) {
             echo ('<div class="carousel-item active">');
           } else {
             echo ('<div class="carousel-item">');
           }
-
-          echo ('
-          <img src="https://source.unsplash.com/G9i_plbfDgk/1600x325/" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-          <h5><i class="fas fa-user fa-2x"></i></h5>
-          <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type
-          specimen book.</small>
-          <p class="font-italic"><small>'.$operator->getName().'</small></p>
+          ?>
+          <img src="../assets/images/dark-bg.jpg" style="width: 800px; height: 300px;" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-sm-block">
+            <h5><i class="fas fa-user fa-2x"></i></h5>
+            <small><?= $reviews[$i]["message"] ?></small>
+            <p class="font-italic"><small><?= $reviews[$i]["author"] ?></small></p>
           </div>
-          </div>
-          ');
-        }
-        ?>
+        </div>
+      <?php } ?>
 
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
+</div>
 </div>
 
 <?php include '../assets/partials/footer.php'; ?>
