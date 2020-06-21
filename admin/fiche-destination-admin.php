@@ -28,6 +28,7 @@ $destination = $destinationManager->getDestination($_GET['location']);
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong><?= $destination->getLocation() ?></strong></h4>
+        <!-- <small>ici l'affichage du message d'erreur ou de validation </small> -->
         <form class="p-3" action="../assets/apps/update-destination.php" method="POST" enctype="multipart/form-data">
           <input name="destinationLocation" type="hidden" value="<?= $destination->getLocation() ?>">
           <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">

@@ -53,6 +53,7 @@
     <div class="container w-75 d-flex justify-content-center  mt-5">
       <div class="card p-4 shadow" style="width: 22rem;">
         <h4 class="text-center text-underlined"><strong>Ajouter une destination</strong></h4>
+        <!-- <small>ici l'affichage du message d'erreur ou de validation </small> -->
         <form class="p-3" action="../assets/apps/add-destination.php" method="POST" enctype="multipart/form-data">
           <input type="text" class="form-control mb-2" placeholder="Nom destination" name="destinationLocation">
           <input type="text" class="form-control mb-2" placeholder="€" name="destinationPrice">
