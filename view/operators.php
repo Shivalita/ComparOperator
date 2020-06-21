@@ -42,7 +42,6 @@ $destinationManager = new DestinationManager($db);
               echo ('<img src="../assets/images/operators-logo.jpg" class="card-img-top" alt="...">');
             }
           ?>
-            <!-- <img src="<?= ($oneOperator['logo']) ?>" class="card-img-top" alt="..."> -->
             <div class="card-body">
               <!-- Voir si possible d'afficher si l'operator est premium ou pas. EN DESSOUS -->
               <?php

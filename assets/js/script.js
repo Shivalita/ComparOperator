@@ -1,22 +1,18 @@
-// allChangePremiumForm = document.querySelectorAll('.changePremiumForm');
-// allPremiumCheckbox = document.querySelectorAll('.changePremium');
+// forms = document.querySelectorAll('.form');
+// addDestinationForm = document.querySelector('#addDestinationForm');
+// // allPremiumCheckbox = document.querySelectorAll('.changePremium');
 
-/* SUBMIT FORM IF PREMIUM CHECKBOX IS CLICKED TO TRIGGER CHANGE-PREMIUM.PHP */
-// allPremiumCheckbox.forEach(premiumCheckbox => {
-//     premiumCheckbox.addEventListener('change', function() {
-//         changePremiumForm.submit();
-//     })
-// });
+// /* PREVENT REFRESH ON FORMS SUBMITS */
+// // forms.forEach(form => {
+// //     form.addEventListener('submit', function(event) {
+// //         event.preventDefault();
+// //         form.submit();
+// //     })
+// // });
 
-// allChangePremiumForm.forEach(changePremiumForm => {
-//     premiumCheckbox = document.querySelector('.changePremium');
-//     for (let i = 0; i < allPremiumCheckbox.length; i++) {
-//         allPremiumCheckbox[i].addEventListener('change', function() {
-//             changePremiumForm.submit();
-//         })
-//     }
-// });
+// function submitForm() {
+//     Event.preventDefault();
+//     document.querySelector('#addDestinationForm').submit();
+// }
 
-
-
-
+// console.log('ok')

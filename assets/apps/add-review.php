@@ -39,12 +39,21 @@ if (!$reviewManager->checkUsernameExists($username, $operatorId)) {
     
     $reviewManager->createReview($review);
     $reviewManager->updateReview($review);
+
+    $success = 'Review postée';
 } else {
-    $message = 'Vous avez déjà posté une review pour cet opérateur.';
+    $error = 'Vous avez déjà posté une review pour cet opérateur';
 }
 
 
 /* ----- REDIRECT TO OPERATOR PAGE ----- */
+if ($success) {
+    $operatorUrl = '../../view/operator.php?name='.$operatorName.'&success='.$success;
+} else if ($error) {
+    $operatorUrl = '../../view/operator.php?name='.$operatorName.'&error='.$error;
+} else {
+    $operatorUrl = '../../view/operator.php?name='.$operatorName;
+}
 $operatorUrl = '../../view/operator.php?name='.$operatorName;
 header("Location:".$operatorUrl);
 exit;

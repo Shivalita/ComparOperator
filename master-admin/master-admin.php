@@ -4,7 +4,6 @@ include('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
-
 ?>
 
 <!doctype html>
@@ -18,8 +17,10 @@ $destinationManager = new DestinationManager($db);
 </head>
 <body>
 
-  <?php include '../assets/partials/nav-master-admin.php'; ?>
-  <?php include '../assets/apps/feedback-message.php'; ?>
+  <?php 
+  include ('../assets/partials/nav-master-admin.php'); 
+  include ('../assets/apps/feedback.php');
+  ?>
 
   <div class="container mt-5">
     <h1 class="text-center mb-5">Espace Administrateur</h1>

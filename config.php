@@ -7,3 +7,4 @@
     /* EX :
     include(ROOT.DS.'assets'.DS.'partials'.DS.'TEST.php');
     */
+?>

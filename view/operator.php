@@ -19,7 +19,11 @@ $operator = $operatorManager -> getOperator($_GET['name']);
   <title>Operator</title>
 </head>
 <body>
-  <?php include '../assets/partials/nav-user.php'; ?>
+  <?php 
+  include ('../assets/partials/nav-user.php'); 
+  include ('../assets/apps/feedback.php');
+  ?>
+  
 
   <div class="jumbotron jumbotron-fluid fond">
     <div class="container text-center">
@@ -70,7 +74,7 @@ $operator = $operatorManager -> getOperator($_GET['name']);
           </div>
           <div class="modal-body">
 
-            <form class="#" action="../assets/apps/add-comment.php" method="POST">
+            <form class="#" action="../assets/apps/add-review.php" method="POST">
               <input name="operatorName" type="hidden" value="<?= $_GET['name'] ?>">
               <div class="form-group">
                 <input type="text" class="form-control mb-2" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" name="username">
