@@ -8,7 +8,7 @@ if (isset($_POST['operatorName'])) {
 
     /* Check if this operator is registered */
     if (!$operatorManager->checkOperatorExists($operatorName)) {
-        $error = 'Cet opérateur n\'est pas disponible';
+        $error = 'Cet opérateur est introuvable';
         $operatorUrl = '../../view/operators.php?error='.$error;
         header("Location:".$operatorUrl);
         exit;

@@ -11,8 +11,8 @@
 <body>
 
   <?php
-  include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
-  // include ('../config.php');
+  // include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+  include ('../config.php');
   include ('../assets/partials/nav-admin.php');
   include ('../assets/apps/fiche-operator-process.php');
   include ('../assets/apps/feedback.php');

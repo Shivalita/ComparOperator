@@ -1,6 +1,6 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
-// include ('../config.php');
+// include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -60,7 +60,7 @@ $destinationManager = new DestinationManager($db);
               <h5 class="card-title font-weight-bold text-center"><?= ($oneDestination['location']); ?> </h5>
               <p class="text-success font-weight-bold"><span>A partir de <?= ($oneDestination['price']); ?> €</span></p>
               <p class="card-text mt-2"><?= ($oneDestination['description']); ?> </p>
-              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?name=<?= ($oneDestination['location']); ?> " role="button">Voir les prix</a>
+              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?location=<?= ($oneDestination['location']); ?> " role="button">Voir les prix</a>
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
-// include ('../config.php');
+// include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
 
-$destination = $destinationManager -> getDestination($_GET['name']);
+$destination = $destinationManager->getDestination($_GET['location']);
 ?>
 
 <!doctype html>
@@ -25,7 +25,7 @@ $destination = $destinationManager -> getDestination($_GET['name']);
 
   <div class="jumbotron jumbotron-fluid fond1">
     <div class="container text-center">
-      <h1 class="display-4 text-white"><?php echo $_GET['name'] ?></h1>
+      <h1 class="display-4 text-white"><?php echo $_GET['location'] ?></h1>
     </div>
   </div>
 
@@ -44,14 +44,14 @@ $destination = $destinationManager -> getDestination($_GET['name']);
     <div class="tab-content text-center" id="myTabContent">
 
       <div class="tab-pane fade show active" id="describ" role="tabpanel" aria-labelledby="home-tab">
-        <img src="https://source.unsplash.com/random/600x450/?city,landscape,<?php echo $_GET['name'] ?>" class="img-fluid mt-3 mb-3 shadow" alt="Responsive image">
+        <img src="https://source.unsplash.com/random/600x450/?city,landscape,<?php echo $_GET['location'] ?>" class="img-fluid mt-3 mb-3 shadow" alt="Responsive image">
         <p class=""><?= ($destination->getDescription()); ?></p>
         </div>
 
         <div class="tab-pane fade" id="maps" role="tabpanel" aria-labelledby="profile-tab">
           <div class="container-fluid">
             <div class="map-responsive mt-3 shadow">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=<?php echo $_GET['name'] ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=<?php echo $_GET['location'] ?>" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -65,13 +65,13 @@ $destination = $destinationManager -> getDestination($_GET['name']);
             </ol>
             <div class="carousel-inner mt-3">
               <div class="carousel-item active">
-                <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?php echo $_GET['name'] ?>/1" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?php echo $_GET['location'] ?>/1" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/1600x800/?city,landscape<?php echo $_GET['name'] ?>/2" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?city,landscape<?php echo $_GET['location'] ?>/2" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?php echo $_GET['name'] ?>/3" class="d-block w-100 img-fluid" alt="...">
+                <img src="https://source.unsplash.com/random/1600x800/?city,landscape,<?php echo $_GET['location'] ?>/3" class="d-block w-100 img-fluid" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -120,7 +120,7 @@ foreach ($allDestinationOperators as $destinationOperator) {
               <small class="float-right text-success font-weight-bold">A partir de '.$destinationOperator['price'].'€</small>
           </div>
           <div class="card-footer d-flex justify-content-center">
-              <a class="btn btn-warning btn-sm" href="#" role="button">Réserver</a>
+              <button class="btn btn-warning btn-sm">Réserver</button>
           </div>
           </div>
       </div>

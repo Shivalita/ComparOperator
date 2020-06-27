@@ -1,6 +1,6 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
-// include('../config.php');
+// include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
@@ -48,7 +48,7 @@ $operatorId = $reviewManager -> getOperatorId($_GET['name']);
               <h5 class="card-title text-center font-weight-bold"><?= ($oneDestination->getLocation()); ?></h5>
               <p class="text-success font-weight-bold"><span>A partir de <?= ($oneDestination->getPrice()); ?>€</span></p>
               <p class="card-text mt-2"><?= ($oneDestination->getDescription()); ?></p>
-              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?name=<?= ($oneDestination->getLocation()); ?>" role="button">Voir le voyage</a>
+              <a class="btn btn-warning float-right font-weight-bold" href="destination.php?name=<?= $operator->getName(); ?>&location=<?= $oneDestination->getLocation(); ?>" role="button">Voir le voyage</a>
             </div>
           </div>
         </div>

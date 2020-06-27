@@ -1,10 +1,10 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+// include ($_SERVER['DOCUMENT_ROOT'].'/config.php');
+include ('../config.php');
 
 $operatorManager = new OperatorManager($db);
 $destinationManager = new DestinationManager($db);
 ?>
-<!-- include ('../config.php'); -->
 
 <!doctype html>
 <html lang="en">

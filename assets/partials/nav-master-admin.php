@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link text-white" href="/index.php">Retour au site</a>
+      <a class="nav-item nav-link text-white" href="../view/home.php">Retour au site</a>
     </div>
   </div>
 </nav>

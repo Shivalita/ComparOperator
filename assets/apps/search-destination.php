@@ -41,9 +41,9 @@ if (isset($_POST['location'])) {
 
         /* ----- REDIRECT TO DESTINATION PAGE ----- */
         if (isset($_POST['sortBy']) && ($_POST['sortBy'] != 'Trier')) {
-            $destinationUrl = '../../view/destination.php?name='.$destinationLocation.'&sort='.$sort;
+            $destinationUrl = '../../view/destination.php?location='.$destinationLocation.'&sort='.$sort;
         } else {
-            $destinationUrl = '../../view/destination.php?name='.$destinationLocation;
+            $destinationUrl = '../../view/destination.php?location='.$destinationLocation;
         }
        
         header("Location:".$destinationUrl);

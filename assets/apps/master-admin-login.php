@@ -1,5 +1,5 @@
 <?php
-    if (($_POST['adminLogin'] === 'admin') && ($_POST['adminPassword'] === 'admin')) {
+    if (($_POST['adminLogin'] === 'admin') && ($_POST['adminPassword'] === 'P3admin')) {
         $masterUrl = '../../master-admin/master-admin.php';
     } else {
         $error = 'Login ou mot de passe incorrect';

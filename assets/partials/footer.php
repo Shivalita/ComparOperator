@@ -14,10 +14,13 @@
         <h5 class="text-uppercase">Links</h5>
         <ul class="list-unstyled">
           <li>
+            <a href="../view/a-propos.php">À propos</a>
+          </li>
+          <li>
             <a href="#!">Contact</a>
           </li>
           <li>
-            <a href="#!">Mentions légals</a>
+            <a href="#!">Mentions légales</a>
           </li>
           <li>
             <a href="../admin-login.php">Rejoignez nous!</a>
